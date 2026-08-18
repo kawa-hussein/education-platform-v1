@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "education-platform-v1",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-08-18",
+  "observability": { "enabled": true },
+  "assets": {
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "education-platform",
+      "database_id": "cbc4566c-936d-4a1b-91ee-d26e82c0d578",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

@@ -1,0 +1,1016 @@
+[
+  {
+    "code": "P01",
+    "title": "PROVIDER HOME / EXECUTIVE CONTROL TOWER",
+    "vertical": "P",
+    "line": 248
+  },
+  {
+    "code": "P02",
+    "title": "CUSTOMER / TENANT DIRECTORY & ACCOUNT 360",
+    "vertical": "P",
+    "line": 307
+  },
+  {
+    "code": "P03",
+    "title": "SALES CRM / LEAD-TO-CONTRACT",
+    "vertical": "P",
+    "line": 366
+  },
+  {
+    "code": "P04",
+    "title": "CONTRACT LIFECYCLE & LEGAL COMMERCIAL TERMS",
+    "vertical": "P",
+    "line": 427
+  },
+  {
+    "code": "P05",
+    "title": "PRODUCT CATALOG / PLANS / PRICING / ENTITLEMENTS",
+    "vertical": "P",
+    "line": 460
+  },
+  {
+    "code": "P06",
+    "title": "SUBSCRIPTION LIFECYCLE / RENEWALS / EXPANSION",
+    "vertical": "P",
+    "line": 505
+  },
+  {
+    "code": "P07",
+    "title": "PROVIDER BILLING / INVOICING / PAYMENTS / COLLECTIONS",
+    "vertical": "P",
+    "line": 571
+  },
+  {
+    "code": "P08",
+    "title": "USAGE METERING / QUOTAS / OVERAGES / ENTITLEMENT ENFORCEMENT",
+    "vertical": "P",
+    "line": 610
+  },
+  {
+    "code": "P09",
+    "title": "TENANT PROVISIONING / ENVIRONMENT ORCHESTRATION",
+    "vertical": "P",
+    "line": 639
+  },
+  {
+    "code": "P10",
+    "title": "IMPLEMENTATION / ONBOARDING / DATA MIGRATION DELIVERY",
+    "vertical": "P",
+    "line": 674
+  },
+  {
+    "code": "P11",
+    "title": "CUSTOMER COMMERCIAL SELF-SERVICE PORTAL",
+    "vertical": "P",
+    "line": 726
+  },
+  {
+    "code": "P12",
+    "title": "CUSTOMER SUCCESS / ADOPTION / ACCOUNT HEALTH",
+    "vertical": "P",
+    "line": 746
+  },
+  {
+    "code": "P13",
+    "title": "PROVIDER SUPPORT / SERVICE DESK / KNOWLEDGE",
+    "vertical": "P",
+    "line": 772
+  },
+  {
+    "code": "P14",
+    "title": "PRIVILEGED SUPPORT ACCESS / IMPERSONATION GOVERNANCE",
+    "vertical": "P",
+    "line": 802
+  },
+  {
+    "code": "P15",
+    "title": "SaaS OPERATIONS / OBSERVABILITY / SRE",
+    "vertical": "P",
+    "line": 837
+  },
+  {
+    "code": "P16",
+    "title": "INCIDENT / PROBLEM / CHANGE / MAINTENANCE MANAGEMENT",
+    "vertical": "P",
+    "line": 870
+  },
+  {
+    "code": "P17",
+    "title": "RELEASE / VERSION / DEPLOYMENT / FEATURE ROLLOUT",
+    "vertical": "P",
+    "line": 897
+  },
+  {
+    "code": "P18",
+    "title": "PROVIDER SECURITY / PRIVACY / COMPLIANCE",
+    "vertical": "P",
+    "line": 918
+  },
+  {
+    "code": "P19",
+    "title": "BACKUP / RESTORE / DISASTER RECOVERY / BUSINESS CONTINUITY",
+    "vertical": "P",
+    "line": 941
+  },
+  {
+    "code": "P20",
+    "title": "DEPLOYMENT MODELS / TENANT PLACEMENT / ISOLATION TIERS",
+    "vertical": "P",
+    "line": 960
+  },
+  {
+    "code": "P21",
+    "title": "REGION / DATA RESIDENCY / TENANT PLACEMENT",
+    "vertical": "P",
+    "line": 986
+  },
+  {
+    "code": "P22",
+    "title": "DOMAINS / WHITE-LABEL / CUSTOMER BRANDING",
+    "vertical": "P",
+    "line": 999
+  },
+  {
+    "code": "P23",
+    "title": "PROVIDER INTEGRATION / DEVELOPER / PARTNER PLATFORM",
+    "vertical": "P",
+    "line": 1013
+  },
+  {
+    "code": "P24",
+    "title": "CUSTOMER COMMUNICATION / STATUS / OPERATIONAL NOTICES",
+    "vertical": "P",
+    "line": 1030
+  },
+  {
+    "code": "P25",
+    "title": "OFFBOARDING / TERMINATION / DATA EXPORT / RETENTION / DELETION",
+    "vertical": "P",
+    "line": 1044
+  },
+  {
+    "code": "P26",
+    "title": "PROVIDER FINANCE / REVENUE OPERATIONS",
+    "vertical": "P",
+    "line": 1066
+  },
+  {
+    "code": "P27",
+    "title": "SaaS BUSINESS ANALYTICS / COMMERCIAL KPIs",
+    "vertical": "P",
+    "line": 1081
+  },
+  {
+    "code": "P28",
+    "title": "FinOps / COST-TO-SERVE / CAPACITY ECONOMICS",
+    "vertical": "P",
+    "line": 1110
+  },
+  {
+    "code": "P29",
+    "title": "PROVIDER INTERNAL ROLES / SEGREGATION OF DUTIES",
+    "vertical": "P",
+    "line": 1127
+  },
+  {
+    "code": "P30",
+    "title": "PROVIDER AUDIT / ADMIN ACTIVITY HISTORY",
+    "vertical": "P",
+    "line": 1152
+  },
+  {
+    "code": "P31",
+    "title": "ABUSE / FRAUD / RATE-LIMIT / PLATFORM PROTECTION",
+    "vertical": "P",
+    "line": 1170
+  },
+  {
+    "code": "P32",
+    "title": "PRODUCT FEEDBACK / FEATURE REQUEST / BETA PROGRAM",
+    "vertical": "P",
+    "line": 1185
+  },
+  {
+    "code": "P33",
+    "title": "CHANNEL / PARTNER / RESELLER MANAGEMENT — OPTIONAL",
+    "vertical": "P",
+    "line": 1198
+  },
+  {
+    "code": "P34",
+    "title": "PLATFORM LEGAL / POLICY / CUSTOMER ASSURANCE",
+    "vertical": "P",
+    "line": 1210
+  },
+  {
+    "code": "P35",
+    "title": "PROVIDER CONTROL-PLANE API / AUTOMATION EVENTS",
+    "vertical": "P",
+    "line": 1225
+  },
+  {
+    "code": "A01",
+    "title": "PLATFORM, TENANT & CUSTOMER MANAGEMENT",
+    "vertical": "A",
+    "line": 1255
+  },
+  {
+    "code": "A02",
+    "title": "ORGANIZATION, SCHOOL-CHAIN & BRANCH STRUCTURE",
+    "vertical": "A",
+    "line": 1362
+  },
+  {
+    "code": "A03",
+    "title": "PEOPLE & IDENTITY MASTER",
+    "vertical": "A",
+    "line": 1462
+  },
+  {
+    "code": "A04",
+    "title": "HOUSEHOLD & FAMILY",
+    "vertical": "A",
+    "line": 1515
+  },
+  {
+    "code": "A05",
+    "title": "IDENTITY & AUTHENTICATION",
+    "vertical": "A",
+    "line": 1541
+  },
+  {
+    "code": "A06",
+    "title": "ROLES, PERMISSIONS & DELEGATED ADMINISTRATION",
+    "vertical": "A",
+    "line": 1554
+  },
+  {
+    "code": "A07",
+    "title": "CONFIGURATION CENTER",
+    "vertical": "A",
+    "line": 1718
+  },
+  {
+    "code": "A08",
+    "title": "WORKFLOW ENGINE",
+    "vertical": "A",
+    "line": 1762
+  },
+  {
+    "code": "A09",
+    "title": "BUSINESS RULE ENGINE",
+    "vertical": "A",
+    "line": 1788
+  },
+  {
+    "code": "A10",
+    "title": "EVENT & AUTOMATION ENGINE",
+    "vertical": "A",
+    "line": 1811
+  },
+  {
+    "code": "A11",
+    "title": "COMMUNICATION CENTER",
+    "vertical": "A",
+    "line": 1833
+  },
+  {
+    "code": "A12",
+    "title": "NOTIFICATION CENTER",
+    "vertical": "A",
+    "line": 1873
+  },
+  {
+    "code": "A13",
+    "title": "DOCUMENT MANAGEMENT",
+    "vertical": "A",
+    "line": 1894
+  },
+  {
+    "code": "A14",
+    "title": "FORMS & CONSENTS",
+    "vertical": "A",
+    "line": 1909
+  },
+  {
+    "code": "A15",
+    "title": "TASK & CASE MANAGEMENT",
+    "vertical": "A",
+    "line": 1926
+  },
+  {
+    "code": "A16",
+    "title": "AUDIT & SYSTEM HISTORY",
+    "vertical": "A",
+    "line": 1940
+  },
+  {
+    "code": "A17",
+    "title": "PRIVACY, COMPLIANCE & GOVERNANCE",
+    "vertical": "A",
+    "line": 1970
+  },
+  {
+    "code": "A18",
+    "title": "DATA QUALITY",
+    "vertical": "A",
+    "line": 1984
+  },
+  {
+    "code": "A19",
+    "title": "IMPORT / EXPORT / MIGRATION",
+    "vertical": "A",
+    "line": 1998
+  },
+  {
+    "code": "A20",
+    "title": "INTEGRATIONS & API",
+    "vertical": "A",
+    "line": 2292
+  },
+  {
+    "code": "A21",
+    "title": "SEARCH",
+    "vertical": "A",
+    "line": 2310
+  },
+  {
+    "code": "A22",
+    "title": "ANALYTICS & REPORTING PLATFORM",
+    "vertical": "A",
+    "line": 2326
+  },
+  {
+    "code": "A23",
+    "title": "SYSTEM OPERATIONS",
+    "vertical": "A",
+    "line": 2349
+  },
+  {
+    "code": "A24",
+    "title": "BACKUP & DISASTER RECOVERY",
+    "vertical": "A",
+    "line": 2363
+  },
+  {
+    "code": "A25",
+    "title": "MASTER DATA GOVERNANCE & RECORD LIFECYCLE",
+    "vertical": "A",
+    "line": 2373
+  },
+  {
+    "code": "A26",
+    "title": "CONTRACT & AGREEMENT MANAGEMENT",
+    "vertical": "A",
+    "line": 2436
+  },
+  {
+    "code": "A27",
+    "title": "SERVICE DESK & INTERNAL REQUESTS",
+    "vertical": "A",
+    "line": 2478
+  },
+  {
+    "code": "A28",
+    "title": "INTERNATIONALIZATION, LOCALIZATION & COUNTRY PACKS",
+    "vertical": "A",
+    "line": 2520
+  },
+  {
+    "code": "A29",
+    "title": "RECORDS MANAGEMENT & ARCHIVAL",
+    "vertical": "A",
+    "line": 2543
+  },
+  {
+    "code": "A30",
+    "title": "MULTI-BRANCH / SCHOOL-GROUP ADMINISTRATION",
+    "vertical": "A",
+    "line": 2559
+  },
+  {
+    "code": "B01",
+    "title": "ACADEMIC YEAR & SCHOOL STRUCTURE",
+    "vertical": "B",
+    "line": 2726
+  },
+  {
+    "code": "B02",
+    "title": "ADMISSIONS CRM",
+    "vertical": "B",
+    "line": 2749
+  },
+  {
+    "code": "B03",
+    "title": "ENROLLMENT & RE-ENROLLMENT",
+    "vertical": "B",
+    "line": 2792
+  },
+  {
+    "code": "B04",
+    "title": "STUDENT DIRECTORY",
+    "vertical": "B",
+    "line": 2822
+  },
+  {
+    "code": "B05",
+    "title": "STUDENT 360 WORKSPACE",
+    "vertical": "B",
+    "line": 2834
+  },
+  {
+    "code": "B06",
+    "title": "CURRICULUM MANAGEMENT",
+    "vertical": "B",
+    "line": 2930
+  },
+  {
+    "code": "B07",
+    "title": "TIMETABLE & SCHEDULING",
+    "vertical": "B",
+    "line": 2963
+  },
+  {
+    "code": "B08",
+    "title": "CALENDAR & EVENTS",
+    "vertical": "B",
+    "line": 2990
+  },
+  {
+    "code": "B09",
+    "title": "TEACHING & LEARNING",
+    "vertical": "B",
+    "line": 3002
+  },
+  {
+    "code": "B10",
+    "title": "ATTENDANCE",
+    "vertical": "B",
+    "line": 3029
+  },
+  {
+    "code": "B11",
+    "title": "ASSESSMENT",
+    "vertical": "B",
+    "line": 3062
+  },
+  {
+    "code": "B12",
+    "title": "GRADEBOOK",
+    "vertical": "B",
+    "line": 3072
+  },
+  {
+    "code": "B13",
+    "title": "EXAM MANAGEMENT",
+    "vertical": "B",
+    "line": 3105
+  },
+  {
+    "code": "B14",
+    "title": "REPORT CARDS & TRANSCRIPTS",
+    "vertical": "B",
+    "line": 3120
+  },
+  {
+    "code": "B15",
+    "title": "BEHAVIOUR & CONDUCT",
+    "vertical": "B",
+    "line": 3145
+  },
+  {
+    "code": "B16",
+    "title": "SAFEGUARDING",
+    "vertical": "B",
+    "line": 3158
+  },
+  {
+    "code": "B17",
+    "title": "WELLBEING & COUNSELLING",
+    "vertical": "B",
+    "line": 3191
+  },
+  {
+    "code": "B18",
+    "title": "SEN / LEARNING SUPPORT",
+    "vertical": "B",
+    "line": 3202
+  },
+  {
+    "code": "B19",
+    "title": "MEDICAL & HEALTH",
+    "vertical": "B",
+    "line": 3215
+  },
+  {
+    "code": "B20",
+    "title": "PARENT PORTAL / APP",
+    "vertical": "B",
+    "line": 3230
+  },
+  {
+    "code": "B21",
+    "title": "STUDENT PORTAL",
+    "vertical": "B",
+    "line": 3262
+  },
+  {
+    "code": "B22",
+    "title": "TEACHER PORTAL",
+    "vertical": "B",
+    "line": 3280
+  },
+  {
+    "code": "B23",
+    "title": "PARENT MEETINGS",
+    "vertical": "B",
+    "line": 3297
+  },
+  {
+    "code": "B24",
+    "title": "CLUBS & ACTIVITIES",
+    "vertical": "B",
+    "line": 3308
+  },
+  {
+    "code": "B25",
+    "title": "TRIPS & EDUCATIONAL VISITS",
+    "vertical": "B",
+    "line": 3324
+  },
+  {
+    "code": "B26",
+    "title": "TRANSPORT",
+    "vertical": "B",
+    "line": 3339
+  },
+  {
+    "code": "B27",
+    "title": "DISMISSAL & PICKUP",
+    "vertical": "B",
+    "line": 3353
+  },
+  {
+    "code": "B28",
+    "title": "MEALS / CAFETERIA",
+    "vertical": "B",
+    "line": 3365
+  },
+  {
+    "code": "B29",
+    "title": "LIBRARY & MEDIA CENTER",
+    "vertical": "B",
+    "line": 3377
+  },
+  {
+    "code": "B30",
+    "title": "STUDENT BILLING & TUITION",
+    "vertical": "B",
+    "line": 3392
+  },
+  {
+    "code": "B31",
+    "title": "SCHOOL ACCOUNTING",
+    "vertical": "B",
+    "line": 3590
+  },
+  {
+    "code": "B32",
+    "title": "PROCUREMENT",
+    "vertical": "B",
+    "line": 3722
+  },
+  {
+    "code": "B33",
+    "title": "INVENTORY & ASSETS",
+    "vertical": "B",
+    "line": 3787
+  },
+  {
+    "code": "B34",
+    "title": "FACILITIES",
+    "vertical": "B",
+    "line": 3800
+  },
+  {
+    "code": "B35",
+    "title": "HR / WORKFORCE",
+    "vertical": "B",
+    "line": 3812
+  },
+  {
+    "code": "B36",
+    "title": "STAFF COVER / SUBSTITUTE MANAGEMENT",
+    "vertical": "B",
+    "line": 3884
+  },
+  {
+    "code": "B37",
+    "title": "FRONT DESK / RECEPTION",
+    "vertical": "B",
+    "line": 3895
+  },
+  {
+    "code": "B38",
+    "title": "VISITOR MANAGEMENT",
+    "vertical": "B",
+    "line": 3908
+  },
+  {
+    "code": "B39",
+    "title": "INCIDENT & EMERGENCY MANAGEMENT",
+    "vertical": "B",
+    "line": 3919
+  },
+  {
+    "code": "B40",
+    "title": "ALUMNI & DEVELOPMENT",
+    "vertical": "B",
+    "line": 3941
+  },
+  {
+    "code": "B41",
+    "title": "BOARDING / RESIDENTIAL LIFE — OPTIONAL",
+    "vertical": "B",
+    "line": 3977
+  },
+  {
+    "code": "B42",
+    "title": "PAYROLL & COMPENSATION",
+    "vertical": "B",
+    "line": 3991
+  },
+  {
+    "code": "B43",
+    "title": "FINANCIAL AID & TUITION ASSISTANCE",
+    "vertical": "B",
+    "line": 4116
+  },
+  {
+    "code": "B44",
+    "title": "EXPENSES, REIMBURSEMENTS & PETTY CASH",
+    "vertical": "B",
+    "line": 4148
+  },
+  {
+    "code": "B45",
+    "title": "FUND & GRANT ACCOUNTING",
+    "vertical": "B",
+    "line": 4187
+  },
+  {
+    "code": "B46",
+    "title": "MULTI-ENTITY / MULTI-BRANCH FINANCE & CONSOLIDATION",
+    "vertical": "B",
+    "line": 4212
+  },
+  {
+    "code": "B47",
+    "title": "CASHIER, POS & SCHOOL SHOP",
+    "vertical": "B",
+    "line": 4250
+  },
+  {
+    "code": "B48",
+    "title": "MARKETING & GROWTH CRM",
+    "vertical": "B",
+    "line": 4274
+  },
+  {
+    "code": "B49",
+    "title": "SCHOOL WEBSITE & PUBLIC CMS",
+    "vertical": "B",
+    "line": 4311
+  },
+  {
+    "code": "B50",
+    "title": "QUALITY ASSURANCE & ACCREDITATION",
+    "vertical": "B",
+    "line": 4335
+  },
+  {
+    "code": "B51",
+    "title": "COMPLAINTS, GRIEVANCES & APPEALS",
+    "vertical": "B",
+    "line": 4357
+  },
+  {
+    "code": "B52",
+    "title": "IT & DEVICE LIFECYCLE MANAGEMENT",
+    "vertical": "B",
+    "line": 4389
+  },
+  {
+    "code": "B53",
+    "title": "PHYSICAL SECURITY, ACCESS CONTROL & ID CARDS",
+    "vertical": "B",
+    "line": 4412
+  },
+  {
+    "code": "B54",
+    "title": "YEAR-END, PROMOTION & ROLLOVER ENGINE",
+    "vertical": "B",
+    "line": 4432
+  },
+  {
+    "code": "B55",
+    "title": "REGULATORY & GOVERNMENT REPORTING",
+    "vertical": "B",
+    "line": 4469
+  },
+  {
+    "code": "B56",
+    "title": "BUSINESS CONTINUITY & OPERATIONAL RESILIENCE",
+    "vertical": "B",
+    "line": 4487
+  },
+  {
+    "code": "C01",
+    "title": "ACADEMY ORGANIZATION & PROGRAM SETUP",
+    "vertical": "C",
+    "line": 4508
+  },
+  {
+    "code": "C02",
+    "title": "MARKETING, LEADS & ENROLLMENT",
+    "vertical": "C",
+    "line": 4526
+  },
+  {
+    "code": "C03",
+    "title": "COURSES, CLASSES & SESSIONS",
+    "vertical": "C",
+    "line": 4538
+  },
+  {
+    "code": "C04",
+    "title": "INSTRUCTORS & WORKLOAD",
+    "vertical": "C",
+    "line": 4566
+  },
+  {
+    "code": "C05",
+    "title": "BOOKING, CAPACITY & WAITLISTS",
+    "vertical": "C",
+    "line": 4579
+  },
+  {
+    "code": "C06",
+    "title": "ATTENDANCE, CHECK-IN & PICKUP",
+    "vertical": "C",
+    "line": 4592
+  },
+  {
+    "code": "C07",
+    "title": "LEARNING, PROGRESS & ASSESSMENT",
+    "vertical": "C",
+    "line": 4604
+  },
+  {
+    "code": "C08",
+    "title": "FAMILY / PARENT EXPERIENCE",
+    "vertical": "C",
+    "line": 4614
+  },
+  {
+    "code": "C09",
+    "title": "ACADEMY BILLING, PACKAGES & MEMBERSHIPS",
+    "vertical": "C",
+    "line": 4630
+  },
+  {
+    "code": "C10",
+    "title": "INSTRUCTOR COMPENSATION & PAYOUTS",
+    "vertical": "C",
+    "line": 4652
+  },
+  {
+    "code": "C11",
+    "title": "REFUNDS, CREDITS & MAKE-UP MANAGEMENT",
+    "vertical": "C",
+    "line": 4680
+  },
+  {
+    "code": "C12",
+    "title": "COMMUNICATION & NOTIFICATIONS",
+    "vertical": "C",
+    "line": 4690
+  },
+  {
+    "code": "C13",
+    "title": "FACILITIES & RESOURCE SCHEDULING",
+    "vertical": "C",
+    "line": 4702
+  },
+  {
+    "code": "C14",
+    "title": "REPORTING & ANALYTICS",
+    "vertical": "C",
+    "line": 4711
+  },
+  {
+    "code": "C15",
+    "title": "SEASON / TERM ROLLOVER",
+    "vertical": "C",
+    "line": 4723
+  },
+  {
+    "code": "D01",
+    "title": "INSTITUTION STRUCTURE",
+    "vertical": "D",
+    "line": 4737
+  },
+  {
+    "code": "D02",
+    "title": "RECRUITMENT & PROSPECT CRM",
+    "vertical": "D",
+    "line": 4754
+  },
+  {
+    "code": "D03",
+    "title": "ADMISSIONS",
+    "vertical": "D",
+    "line": 4767
+  },
+  {
+    "code": "D04",
+    "title": "ACADEMIC CATALOG",
+    "vertical": "D",
+    "line": 4783
+  },
+  {
+    "code": "D05",
+    "title": "PROGRAMMES, DEGREES & CURRICULUM",
+    "vertical": "D",
+    "line": 4796
+  },
+  {
+    "code": "D06",
+    "title": "COURSE SECTIONS & SCHEDULING",
+    "vertical": "D",
+    "line": 4815
+  },
+  {
+    "code": "D07",
+    "title": "REGISTRATION, ADD / DROP & WAITLISTS",
+    "vertical": "D",
+    "line": 4829
+  },
+  {
+    "code": "D08",
+    "title": "UNIVERSITY STUDENT 360",
+    "vertical": "D",
+    "line": 4846
+  },
+  {
+    "code": "D09",
+    "title": "ACADEMIC ADVISING & STUDY PLANNING",
+    "vertical": "D",
+    "line": 4873
+  },
+  {
+    "code": "D10",
+    "title": "DEGREE AUDIT",
+    "vertical": "D",
+    "line": 4885
+  },
+  {
+    "code": "D11",
+    "title": "TRANSFER CREDIT & PRIOR LEARNING",
+    "vertical": "D",
+    "line": 4901
+  },
+  {
+    "code": "D12",
+    "title": "GRADES, GPA & ACADEMIC RECORDS",
+    "vertical": "D",
+    "line": 4913
+  },
+  {
+    "code": "D13",
+    "title": "ACADEMIC STANDING & PROGRESSION",
+    "vertical": "D",
+    "line": 4926
+  },
+  {
+    "code": "D14",
+    "title": "EXAMS & ASSESSMENT",
+    "vertical": "D",
+    "line": 4939
+  },
+  {
+    "code": "D15",
+    "title": "TRANSCRIPTS, CREDENTIALS & VERIFICATION",
+    "vertical": "D",
+    "line": 4952
+  },
+  {
+    "code": "D16",
+    "title": "GRADUATION & CLEARANCE",
+    "vertical": "D",
+    "line": 4963
+  },
+  {
+    "code": "D17",
+    "title": "STUDENT ACCOUNTS & BILLING",
+    "vertical": "D",
+    "line": 4978
+  },
+  {
+    "code": "D18",
+    "title": "FINANCIAL AID",
+    "vertical": "D",
+    "line": 4996
+  },
+  {
+    "code": "D19",
+    "title": "SCHOLARSHIPS & SPONSORSHIPS",
+    "vertical": "D",
+    "line": 5015
+  },
+  {
+    "code": "D20",
+    "title": "FACULTY LIFECYCLE & WORKLOAD",
+    "vertical": "D",
+    "line": 5027
+  },
+  {
+    "code": "D21",
+    "title": "RESEARCH & GRANT MANAGEMENT",
+    "vertical": "D",
+    "line": 5046
+  },
+  {
+    "code": "D22",
+    "title": "RESEARCH ETHICS & COMPLIANCE",
+    "vertical": "D",
+    "line": 5062
+  },
+  {
+    "code": "D23",
+    "title": "THESIS / DISSERTATION MANAGEMENT",
+    "vertical": "D",
+    "line": 5076
+  },
+  {
+    "code": "D24",
+    "title": "INTERNSHIPS, PRACTICUM & PLACEMENTS",
+    "vertical": "D",
+    "line": 5092
+  },
+  {
+    "code": "D25",
+    "title": "CAREER SERVICES & EMPLOYER RELATIONS",
+    "vertical": "D",
+    "line": 5106
+  },
+  {
+    "code": "D26",
+    "title": "HOUSING & RESIDENTIAL LIFE",
+    "vertical": "D",
+    "line": 5120
+  },
+  {
+    "code": "D27",
+    "title": "CAMPUS SERVICES",
+    "vertical": "D",
+    "line": 5136
+  },
+  {
+    "code": "D28",
+    "title": "STUDENT AFFAIRS, CONDUCT & WELLBEING",
+    "vertical": "D",
+    "line": 5148
+  },
+  {
+    "code": "D29",
+    "title": "ACCESSIBILITY & ACCOMMODATIONS",
+    "vertical": "D",
+    "line": 5160
+  },
+  {
+    "code": "D30",
+    "title": "INTERNATIONAL STUDENT & IMMIGRATION SERVICES",
+    "vertical": "D",
+    "line": 5172
+  },
+  {
+    "code": "D31",
+    "title": "INSTITUTIONAL EFFECTIVENESS & ACCREDITATION",
+    "vertical": "D",
+    "line": 5184
+  },
+  {
+    "code": "D32",
+    "title": "CONTINUING EDUCATION & PROFESSIONAL PROGRAMMES",
+    "vertical": "D",
+    "line": 5198
+  },
+  {
+    "code": "D33",
+    "title": "UNIVERSITY ALUMNI & ADVANCEMENT",
+    "vertical": "D",
+    "line": 5211
+  }
+]

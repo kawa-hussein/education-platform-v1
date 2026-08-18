@@ -1,0 +1,5787 @@
+EDUCATION PLATFORM — MASTER ARCHITECTURE V6.0 — ONE CONTINUOUS TREE — SaaS CONTROL PLANE + MULTI-BRANCH ENTERPRISE BASELINE
+├── 00. ARCHITECTURE MODEL & DEPTH LANGUAGE
+│   ├── 00.1 UI / NAVIGATION DEPTH MODEL
+│   │   └── L0 PLATFORM
+│   │       └── L1 VERTICAL / PRODUCT PACK
+│   │           └── L2 DOMAIN
+│   │               └── L3 MODULE
+│   │                   └── L4 PAGE
+│   │                       └── L5 SUBPAGE / VIEW
+│   │                           └── L6 WORKSPACE / DETAIL PAGE
+│   │                               └── L7 TAB
+│   │                                   └── L8 SUBTAB
+│   │                                       └── L9 SECTION
+│   │                                           └── L10 CARD / PANEL / TABLE / WIDGET
+│   │                                               └── L11 RECORD / ITEM
+│   │                                                   └── L12 FIELD / ATTRIBUTE
+│   │                                                       └── L13 ACTION
+│   ├── 00.2 CROSS-CUTTING SYSTEM DEPTH LAYERS
+│   │   ├── ENTITY
+│   │   ├── RELATIONSHIP
+│   │   ├── STATE / STATUS
+│   │   ├── ACTION
+│   │   ├── VALIDATION
+│   │   ├── BUSINESS RULE
+│   │   ├── WORKFLOW
+│   │   ├── APPROVAL
+│   │   ├── PERMISSION
+│   │   ├── DATA SCOPE
+│   │   ├── EVENT
+│   │   ├── AUTOMATION
+│   │   ├── NOTIFICATION
+│   │   ├── AUDIT
+│   │   ├── CONFIGURATION
+│   │   ├── INTEGRATION
+│   │   ├── API
+│   │   ├── REPORT
+│   │   ├── KPI
+│   │   ├── DATA RETENTION
+│   │   └── PRIVACY CLASSIFICATION
+│   ├── 00.3 FEATURE DEPTH EXAMPLE — ATTENDANCE
+│   │   └── Attendance
+│   │       ├── UI Structure
+│   │       ├── Data Model
+│   │       ├── Status Model
+│   │       ├── Workflow Model
+│   │       ├── Rules
+│   │       ├── Permissions
+│   │       ├── Events
+│   │       ├── Automations
+│   │       ├── Notifications
+│   │       ├── Audit
+│   │       ├── Reports
+│   │       └── Integrations
+│   ├── 00.4 PRODUCT / VERTICAL MAP
+│   │   ├── P. PROVIDER / SaaS CONTROL PLANE — YOUR COMPANY ONLY
+│   │   ├── A. PLATFORM CORE — CUSTOMER / TENANT APPLICATION PLANE
+│   │   ├── B. SCHOOL / K-12 PACK
+│   │   ├── C. AFTER-SCHOOL / ACADEMY PACK
+│   │   ├── D. HIGHER-EDUCATION PACK
+│   │   └── E. OPTIONAL EXTENSION PACKS
+│   ├── 00.5 DOMAIN COMPLETENESS GATE
+│   │   ├── Actors / Personas
+│   │   ├── Navigation / Pages
+│   │   ├── Workspaces / Tabs / Sections
+│   │   ├── Entities
+│   │   ├── Relationships
+│   │   ├── Records
+│   │   ├── Fields
+│   │   ├── States / Statuses
+│   │   ├── Actions
+│   │   ├── Validation Rules
+│   │   ├── Business Rules
+│   │   ├── Workflows
+│   │   ├── Approvals
+│   │   ├── Permissions
+│   │   ├── Data Scope
+│   │   ├── Events
+│   │   ├── Automations
+│   │   ├── Notifications
+│   │   ├── Documents / Attachments
+│   │   ├── Imports
+│   │   ├── Exports
+│   │   ├── Integrations
+│   │   ├── APIs / Webhooks
+│   │   ├── Audit
+│   │   ├── Reports
+│   │   ├── KPIs / Analytics
+│   │   ├── Exceptions / Edge Cases
+│   │   ├── Configuration
+│   │   ├── Security
+│   │   ├── Privacy Classification
+│   │   ├── Retention / Archival
+│   │   ├── Migration
+│   │   ├── Lifecycle / Year-End
+│   │   ├── Localization / Country Rules
+│   │   ├── Accessibility
+│   │   ├── Operational Monitoring
+│   │   └── Backup / Recovery
+│   └── 00.6 MULTI-BRANCH / SCHOOL-GROUP FOUNDATION PRINCIPLES
+│       ├── Tenant Isolation
+│       │   ├── One Customer / Subscription = One Tenant
+│       │   ├── Tenant Data Isolation
+│       │   ├── Tenant-Level Encryption / Keys — Configurable
+│       │   ├── Tenant-Level Retention / Backup Scope
+│       │   └── Tenant-Level Audit Boundary
+│       ├── Administrative Hierarchy
+│       │   └── Platform
+│       │       └── Tenant / Customer
+│       │           └── Education Group / School Chain
+│       │               ├── Central / Group Office
+│       │               ├── Institution / School
+│       │               │   └── Branch / Campus
+│       │               │       └── Division
+│       │               │           └── Department
+│       │               │               └── Team / Grade / Class / Unit
+│       │               └── Shared Central Services
+│       ├── Management Principle
+│       │   ├── Platform Super Admin — Platform Operator Only
+│       │   ├── Tenant Owner — Customer / Buyer / Group Owner
+│       │   ├── Group Super Admin — Delegated Global Administrator
+│       │   ├── Central Director — Cross-Branch Functional Authority
+│       │   ├── Branch Principal / Branch Manager — Local Branch Authority
+│       │   ├── Division Manager — Division Scope
+│       │   ├── Department Manager — Department Scope
+│       │   ├── Module Owner / Supervisor — Functional Scope
+│       │   └── Operational User — Assigned Scope Only
+│       ├── Scope-First Data Principle
+│       │   ├── Tenant ID
+│       │   ├── Group ID
+│       │   ├── Institution / School ID
+│       │   ├── Branch / Campus ID
+│       │   ├── Division ID
+│       │   ├── Department ID
+│       │   ├── Team / Grade / Class ID
+│       │   └── Record-Level Scope
+│       ├── Delegated Administration Principle
+│       │   ├── A Manager May Administer Only Within Assigned Scope
+│       │   ├── A Manager May Assign Only Delegable Roles
+│       │   ├── A Manager Cannot Grant a Role Above Own Delegation Ceiling
+│       │   ├── A Manager Cannot Expand Own Scope
+│       │   ├── Sensitive Roles May Require Higher-Level Approval
+│       │   └── All Delegation Is Audited and Effective-Dated
+│       ├── Central-vs-Local Configuration Principle
+│       │   ├── Group Controlled
+│       │   ├── Group Default + Branch Override
+│       │   ├── Branch Controlled
+│       │   ├── Inherited
+│       │   ├── Overridden
+│       │   └── Locked
+│       ├── Cross-Branch Mobility Principle
+│       │   ├── One Person / One Canonical Record Across Tenant
+│       │   ├── Student Transfer Preserves Person and History
+│       │   ├── Staff May Hold Multiple Branch Assignments
+│       │   ├── Families May Have Children Across Multiple Branches
+│       │   └── Finance / Payroll Allocations Preserve Branch Dimensions
+│       └── Consolidation Principle
+│           ├── Current Branch View
+│           ├── Selected Branches View
+│           ├── All Branches View
+│           ├── Group Consolidated View
+│           └── Branch Comparison / Drill-Down
+│   ├── 00.7 SaaS PROVIDER CONTROL-PLANE FOUNDATION PRINCIPLES
+│   │   ├── Control Plane vs Application Plane
+│   │   │   ├── Provider Control Plane — Global SaaS Operations / Commercial / Provisioning
+│   │   │   ├── Customer Application Plane — School / Academy / University Functional Workloads
+│   │   │   ├── Provider Control Plane Must Not Become a Backdoor into Tenant Data
+│   │   │   ├── Tenant Functional Data Remains Isolated in Application Plane
+│   │   │   └── Cross-Plane Actions Require Explicit Contracts / APIs / Audited Workflows
+│   │   ├── SaaS Ownership Principle
+│   │   │   ├── Platform Code / Product IP Remains with Provider
+│   │   │   ├── Customer Purchases Time-Limited Right to Use
+│   │   │   ├── Subscription Controls Entitlements — Not Data Ownership
+│   │   │   ├── Customer Retains Ownership of Customer / Education Data
+│   │   │   └── Provider Retains Operational Metadata Required to Run Service
+│   │   ├── Unified Tenant Lifecycle
+│   │   │   └── Lead
+│   │   │       └── Opportunity
+│   │   │           └── Proposal / Quote
+│   │   │               └── Contract
+│   │   │                   └── Tenant Provisioning
+│   │   │                       └── Implementation
+│   │   │                           └── Go-Live
+│   │   │                               └── Active Subscription
+│   │   │                                   └── Renewal / Expansion
+│   │   │                                       └── Suspension / Cancellation
+│   │   │                                           └── Offboarding / Retention / Deletion
+│   │   ├── Unified Tenant Experience
+│   │   │   ├── Shared SaaS — Default
+│   │   │   ├── Dedicated Cloud — Enterprise Option
+│   │   │   ├── Self-Hosted / On-Premise — Exceptional Contracted Option
+│   │   │   ├── Same Product / Entitlement Model Across Deployment Types
+│   │   │   └── Same Control-Plane Governance Across Deployment Types Where Technically Possible
+│   │   ├── Entitlement-Driven Product Principle
+│   │   │   ├── Plan Defines Base Entitlements
+│   │   │   ├── Add-ons Extend Entitlements
+│   │   │   ├── Usage Limits / Quotas Are Machine-Enforced
+│   │   │   ├── Feature Availability Is Tenant / Branch / Module Aware
+│   │   │   ├── Upgrades May Provision Features Without Reinstalling Product
+│   │   │   └── Downgrades Must Preserve Data and Apply Safe Access Rules
+│   │   ├── Subscription Safety Principle
+│   │   │   ├── Expiration Does Not Immediately Delete Customer Data
+│   │   │   ├── Renewal Due
+│   │   │   ├── Grace Period
+│   │   │   ├── Restricted / Read-Only Mode — Configurable
+│   │   │   ├── Suspension
+│   │   │   └── Contractual Retention / Export / Deletion Workflow
+│   │   ├── Support Privacy Principle
+│   │   │   ├── Provider Staff Do Not Receive Standing Access to Sensitive Tenant Data
+│   │   │   ├── Support Access Requires Business Reason / Ticket
+│   │   │   ├── Customer Approval — Configurable by Contract and Incident Class
+│   │   │   ├── Scope-Limited
+│   │   │   ├── Time-Limited / Just-in-Time
+│   │   │   ├── Read-Only by Default
+│   │   │   ├── Sensitive Modules May Require Dual Approval
+│   │   │   └── Every Support Session Fully Audited
+│   │   ├── Tenant Isolation Principle
+│   │   │   ├── Authentication Context Includes Tenant
+│   │   │   ├── Authorization Enforces Tenant Boundary on Every Request
+│   │   │   ├── Storage / Cache / Search / Queue / Analytics Preserve Tenant Context
+│   │   │   ├── Background Jobs Preserve Tenant Context
+│   │   │   ├── Export / Backup / Restore Preserve Tenant Boundary
+│   │   │   └── Cross-Tenant Operations Are Provider-Privileged and Explicitly Audited
+│   │   ├── Provisioning Automation Principle
+│   │   │   ├── Tenant Is Treated as Managed Control-Plane Data
+│   │   │   ├── Automated Provisioning
+│   │   │   ├── Idempotent Provisioning Steps
+│   │   │   ├── Retry / Rollback
+│   │   │   ├── Environment Placement
+│   │   │   ├── Domain / Identity / Storage / Database Configuration
+│   │   │   └── Provisioning Audit / Correlation ID
+│   │   ├── Operability Principle
+│   │   │   ├── Global Health
+│   │   │   ├── Tenant Health
+│   │   │   ├── Branch-Level Health Where Relevant
+│   │   │   ├── SLO / SLA Measurement
+│   │   │   ├── Capacity / Cost Monitoring
+│   │   │   ├── Incident / Problem / Change Management
+│   │   │   └── Release / Rollout Governance
+│   │   └── Commercial Observability Principle
+│   │       ├── ARR / MRR
+│   │       ├── Renewals
+│   │       ├── Churn
+│   │       ├── Expansion
+│   │       ├── Usage / Adoption
+│   │       ├── Cost-to-Serve
+│   │       └── Customer Health
+├── P. PROVIDER / SaaS CONTROL PLANE — INTERNAL PLATFORM CONTROL CENTER
+│   ├── P01. PROVIDER HOME / EXECUTIVE CONTROL TOWER
+│   │   ├── Global Overview
+│   │   │   ├── Total Customers / Tenants
+│   │   │   ├── Active Tenants
+│   │   │   ├── Trial Tenants
+│   │   │   ├── Renewal-Due Tenants
+│   │   │   ├── Grace / Suspended Tenants
+│   │   │   ├── Total Institutions / Branches
+│   │   │   ├── Total Active Students / Users
+│   │   │   ├── Total Storage / API / Message Usage
+│   │   │   ├── Active Incidents
+│   │   │   ├── Platform Health
+│   │   │   └── Security Alerts
+│   │   ├── Commercial Snapshot
+│   │   │   ├── ARR
+│   │   │   ├── MRR
+│   │   │   ├── New ARR
+│   │   │   ├── Expansion ARR
+│   │   │   ├── Contraction
+│   │   │   ├── Churned ARR
+│   │   │   ├── Net Revenue Retention
+│   │   │   ├── Gross Revenue Retention
+│   │   │   ├── Renewal Pipeline
+│   │   │   ├── Outstanding Platform Invoices
+│   │   │   └── Failed Payments / Dunning
+│   │   ├── Customer Health Snapshot
+│   │   │   ├── Healthy
+│   │   │   ├── Watch
+│   │   │   ├── At Risk
+│   │   │   ├── Onboarding Delayed
+│   │   │   ├── Low Adoption
+│   │   │   ├── High Support Load
+│   │   │   └── Renewal Risk
+│   │   ├── Operations Snapshot
+│   │   │   ├── Availability
+│   │   │   ├── Error Rate
+│   │   │   ├── Latency
+│   │   │   ├── Queue Backlog
+│   │   │   ├── Background Job Failures
+│   │   │   ├── Backup Success
+│   │   │   ├── Restore-Test Status
+│   │   │   ├── Capacity Risk
+│   │   │   └── Cost Anomalies
+│   │   ├── Action Center
+│   │   │   ├── Renewals Requiring Action
+│   │   │   ├── Contracts Awaiting Signature
+│   │   │   ├── Tenants Awaiting Provisioning
+│   │   │   ├── Implementations At Risk
+│   │   │   ├── Support Escalations
+│   │   │   ├── Security Approvals
+│   │   │   ├── Restore Requests
+│   │   │   └── Release Approvals
+│   │   └── Executive Drill-Down
+│   │       ├── Customer
+│   │       ├── Region
+│   │       ├── Plan
+│   │       ├── Deployment Model
+│   │       ├── Product / Module
+│   │       └── Account Owner
+│   ├── P02. CUSTOMER / TENANT DIRECTORY & ACCOUNT 360
+│   │   ├── Customer Directory
+│   │   │   ├── Search
+│   │   │   ├── Filter by Status
+│   │   │   ├── Filter by Plan
+│   │   │   ├── Filter by Renewal Date
+│   │   │   ├── Filter by Region
+│   │   │   ├── Filter by Deployment Model
+│   │   │   ├── Saved Views
+│   │   │   └── Bulk Actions — Restricted
+│   │   └── Customer / Tenant Workspace
+│   │       ├── Header
+│   │       │   ├── Customer Name
+│   │       │   ├── Tenant ID
+│   │       │   ├── Status
+│   │       │   ├── Plan
+│   │       │   ├── Deployment Model
+│   │       │   ├── Region
+│   │       │   ├── Renewal Date
+│   │       │   ├── Account Owner
+│   │       │   └── Critical Flags
+│   │       ├── Overview
+│   │       │   ├── Institutions / Branches
+│   │       │   ├── Users / Students / Staff Counts
+│   │       │   ├── Modules
+│   │       │   ├── Usage
+│   │       │   ├── Billing Status
+│   │       │   ├── Support Health
+│   │       │   ├── Implementation Status
+│   │       │   ├── Platform Health
+│   │       │   └── Recent Activity
+│   │       ├── Legal Customer Profile
+│   │       ├── Commercial Contacts
+│   │       ├── Technical Contacts
+│   │       ├── Security / Privacy Contacts
+│   │       ├── Tenant Owners
+│   │       ├── Account Team
+│   │       │   ├── Sales Owner
+│   │       │   ├── Account Manager
+│   │       │   ├── Customer Success Manager
+│   │       │   ├── Implementation Lead
+│   │       │   └── Support Owner
+│   │       ├── Contracts
+│   │       ├── Subscriptions
+│   │       ├── Entitlements
+│   │       ├── Usage / Quotas
+│   │       ├── Invoices / Payments
+│   │       ├── Provisioning / Environments
+│   │       ├── Domains / Branding
+│   │       ├── Implementation / Migration
+│   │       ├── Adoption / Health
+│   │       ├── Support / Incidents
+│   │       ├── Releases / Feature Flags
+│   │       ├── Security / Compliance
+│   │       ├── Backups / Restore Points
+│   │       ├── Communications
+│   │       ├── Notes / Tasks
+│   │       ├── Timeline
+│   │       └── Provider Audit
+│   ├── P03. SALES CRM / LEAD-TO-CONTRACT
+│   │   ├── Leads
+│   │   │   ├── Lead Source
+│   │   │   ├── Campaign
+│   │   │   ├── Institution Type
+│   │   │   ├── Estimated Branches
+│   │   │   ├── Estimated Students / Users
+│   │   │   ├── Country / Region
+│   │   │   ├── Current System
+│   │   │   ├── Required Modules
+│   │   │   ├── Buying Timeline
+│   │   │   └── Lead Score
+│   │   ├── Opportunities
+│   │   │   ├── Qualification
+│   │   │   ├── Stakeholders
+│   │   │   ├── Requirements
+│   │   │   ├── Competitors
+│   │   │   ├── Estimated Value
+│   │   │   ├── Probability
+│   │   │   ├── Expected Close Date
+│   │   │   └── Stage History
+│   │   ├── Demo Management
+│   │   │   ├── Demo Request
+│   │   │   ├── Demo Tenant
+│   │   │   ├── Demo Data Set
+│   │   │   ├── Demo Schedule
+│   │   │   ├── Participants
+│   │   │   ├── Requirements Covered
+│   │   │   ├── Follow-up
+│   │   │   └── Demo Expiry / Reset
+│   │   ├── Proposal / Quote
+│   │   │   ├── Plan
+│   │   │   ├── Modules / Add-ons
+│   │   │   ├── Branches
+│   │   │   ├── Student / User Tier
+│   │   │   ├── Deployment Model
+│   │   │   ├── Implementation Fee
+│   │   │   ├── Migration Fee
+│   │   │   ├── Training Fee
+│   │   │   ├── Annual Subscription
+│   │   │   ├── Discounts
+│   │   │   ├── Taxes
+│   │   │   ├── Valid Until
+│   │   │   ├── Approval Workflow
+│   │   │   └── Version History
+│   │   ├── Commercial Approval
+│   │   │   ├── Discount Approval
+│   │   │   ├── Non-Standard Term Approval
+│   │   │   ├── Custom SLA Approval
+│   │   │   ├── Dedicated Deployment Approval
+│   │   │   └── Self-Hosted Exception Approval
+│   │   └── Opportunity Workflow
+│   │       └── Lead
+│   │           └── Qualified
+│   │               └── Discovery
+│   │                   └── Demo
+│   │                       └── Proposal
+│   │                           └── Negotiation
+│   │                               └── Contract
+│   │                                   ├── Won
+│   │                                   └── Lost
+│   ├── P04. CONTRACT LIFECYCLE & LEGAL COMMERCIAL TERMS
+│   │   ├── Contract Templates
+│   │   ├── Master Service Agreement
+│   │   ├── Order Form / Subscription Schedule
+│   │   ├── Data Processing Agreement
+│   │   ├── SLA / Support Schedule
+│   │   ├── Implementation Statement of Work
+│   │   ├── Security / Compliance Addendum
+│   │   ├── Dedicated Hosting Addendum
+│   │   ├── Self-Hosted License / Maintenance Addendum
+│   │   ├── Contract Workspace
+│   │   │   ├── Parties
+│   │   │   ├── Effective Date
+│   │   │   ├── Initial Term
+│   │   │   ├── Renewal Terms
+│   │   │   ├── Auto-Renewal Rule
+│   │   │   ├── Notice Period
+│   │   │   ├── Commercial Terms
+│   │   │   ├── Licensed Metrics
+│   │   │   ├── Entitlements
+│   │   │   ├── Data Residency
+│   │   │   ├── Retention / Deletion Terms
+│   │   │   ├── Support / SLA
+│   │   │   ├── Service Credits
+│   │   │   ├── Security Obligations
+│   │   │   ├── Signatories
+│   │   │   ├── E-Signature
+│   │   │   ├── Amendments
+│   │   │   └── Audit
+│   │   ├── Amendment / Change Order
+│   │   ├── Renewal Order
+│   │   ├── Termination Notice
+│   │   └── Contract Obligation Tracking
+│   ├── P05. PRODUCT CATALOG / PLANS / PRICING / ENTITLEMENTS
+│   │   ├── Product Catalog
+│   │   │   ├── Core Platform
+│   │   │   ├── K-12 Pack
+│   │   │   ├── Academy Pack
+│   │   │   ├── Higher-Education Pack
+│   │   │   ├── Add-ons
+│   │   │   ├── Usage Services
+│   │   │   └── Professional Services
+│   │   ├── Plans
+│   │   │   ├── Starter
+│   │   │   ├── Professional
+│   │   │   ├── Enterprise
+│   │   │   ├── Custom
+│   │   │   └── Legacy Plans
+│   │   ├── Pricing Dimensions
+│   │   │   ├── Base Platform Fee
+│   │   │   ├── Branch Tier
+│   │   │   ├── Student / User Tier
+│   │   │   ├── Staff Tier
+│   │   │   ├── Storage
+│   │   │   ├── SMS / Notification Volume
+│   │   │   ├── API Usage
+│   │   │   ├── AI Usage
+│   │   │   ├── Dedicated Infrastructure
+│   │   │   └── Support Tier
+│   │   ├── Entitlement Catalog
+│   │   │   ├── Module Access
+│   │   │   ├── Feature Access
+│   │   │   ├── Branch Limit
+│   │   │   ├── User / Student Limit
+│   │   │   ├── Storage Limit
+│   │   │   ├── API Limit
+│   │   │   ├── Messaging Limit
+│   │   │   ├── Integration Limit
+│   │   │   ├── Analytics Tier
+│   │   │   ├── Support Tier
+│   │   │   └── Deployment Eligibility
+│   │   ├── Add-ons
+│   │   ├── Bundles
+│   │   ├── Discounts / Promotions
+│   │   ├── Price Books by Country / Currency
+│   │   ├── Grandfathered Pricing
+│   │   ├── Effective-Dated Pricing
+│   │   └── Entitlement Versioning
+│   ├── P06. SUBSCRIPTION LIFECYCLE / RENEWALS / EXPANSION
+│   │   ├── Subscription Workspace
+│   │   │   ├── Customer
+│   │   │   ├── Plan
+│   │   │   ├── Items / Add-ons
+│   │   │   ├── Quantity / Licensed Metrics
+│   │   │   ├── Start Date
+│   │   │   ├── Billing Cycle
+│   │   │   ├── Current Period
+│   │   │   ├── Renewal Date
+│   │   │   ├── Auto-Renewal
+│   │   │   ├── Payment Terms
+│   │   │   ├── Status
+│   │   │   ├── Grace Policy
+│   │   │   ├── Cancellation Policy
+│   │   │   └── History
+│   │   ├── Subscription Status
+│   │   │   ├── Draft
+│   │   │   ├── Trial
+│   │   │   ├── Pending Activation
+│   │   │   ├── Active
+│   │   │   ├── Renewal Due
+│   │   │   ├── Past Due
+│   │   │   ├── Grace Period
+│   │   │   ├── Restricted
+│   │   │   ├── Suspended
+│   │   │   ├── Cancel Scheduled
+│   │   │   ├── Cancelled
+│   │   │   └── Archived
+│   │   ├── Trials
+│   │   │   ├── Trial Plan
+│   │   │   ├── Trial Modules
+│   │   │   ├── Trial Limits
+│   │   │   ├── Trial Data
+│   │   │   ├── Trial End Reminder
+│   │   │   ├── Convert to Paid
+│   │   │   └── Expire / Reset / Delete Trial
+│   │   ├── Upgrade
+│   │   │   ├── Plan Upgrade
+│   │   │   ├── Add Module
+│   │   │   ├── Add Branch Capacity
+│   │   │   ├── Add User / Student Capacity
+│   │   │   ├── Add Storage / Usage
+│   │   │   ├── Proration Rule
+│   │   │   ├── Commercial Approval
+│   │   │   └── Entitlement Provisioning
+│   │   ├── Downgrade
+│   │   │   ├── Future-Dated Downgrade
+│   │   │   ├── Data Preservation
+│   │   │   ├── Feature Restriction
+│   │   │   ├── Over-Limit Handling
+│   │   │   └── Customer Warning
+│   │   ├── Renewal Workflow
+│   │   │   ├── 120 / 90 / 60 / 30 Day Windows — Configurable
+│   │   │   ├── Renewal Opportunity
+│   │   │   ├── Usage / Adoption Review
+│   │   │   ├── Price Review
+│   │   │   ├── Renewal Quote
+│   │   │   ├── Negotiation
+│   │   │   ├── Approval
+│   │   │   ├── Signature
+│   │   │   ├── Invoice
+│   │   │   └── Renewed Entitlements
+│   │   ├── Cancellation / Non-Renewal
+│   │   ├── Reactivation
+│   │   └── Subscription Audit
+│   ├── P07. PROVIDER BILLING / INVOICING / PAYMENTS / COLLECTIONS
+│   │   ├── Billing Accounts
+│   │   ├── Billing Profiles
+│   │   ├── Invoice Schedules
+│   │   ├── Annual Billing
+│   │   ├── Quarterly Billing
+│   │   ├── Monthly Billing
+│   │   ├── Custom Milestone Billing
+│   │   ├── Usage-Based Billing
+│   │   ├── Invoices
+│   │   │   ├── Draft
+│   │   │   ├── Review
+│   │   │   ├── Issued
+│   │   │   ├── Partially Paid
+│   │   │   ├── Paid
+│   │   │   ├── Past Due
+│   │   │   ├── Void
+│   │   │   └── Credit / Adjustment
+│   │   ├── Payment Methods
+│   │   │   ├── Bank Transfer
+│   │   │   ├── Card / Gateway
+│   │   │   ├── Cheque
+│   │   │   └── Manual / Other
+│   │   ├── Payment Reconciliation
+│   │   ├── Credit Notes
+│   │   ├── Refunds
+│   │   ├── Taxes / VAT / Sales Tax — Country Configurable
+│   │   ├── Withholding — Country Configurable
+│   │   ├── Coupons / Discounts
+│   │   ├── Dunning / Collections
+│   │   │   ├── Reminder Sequence
+│   │   │   ├── Failed Payment Retry
+│   │   │   ├── Past-Due Alert
+│   │   │   ├── Account Manager Task
+│   │   │   ├── Grace Period Trigger
+│   │   │   └── Suspension Recommendation
+│   │   ├── Revenue Schedule / Accounting Export
+│   │   ├── Payment Gateway Webhooks
+│   │   └── Billing Audit
+│   ├── P08. USAGE METERING / QUOTAS / OVERAGES / ENTITLEMENT ENFORCEMENT
+│   │   ├── Usage Meter Catalog
+│   │   │   ├── Branch Count
+│   │   │   ├── Active Students
+│   │   │   ├── Active Users
+│   │   │   ├── Staff
+│   │   │   ├── Storage
+│   │   │   ├── SMS
+│   │   │   ├── Email
+│   │   │   ├── Push Notifications
+│   │   │   ├── API Calls
+│   │   │   ├── AI Tokens / Requests
+│   │   │   ├── Video / File Transfer
+│   │   │   └── Custom Meter
+│   │   ├── Metering Windows
+│   │   ├── Current Usage
+│   │   ├── Historical Usage
+│   │   ├── Forecast Usage
+│   │   ├── Soft Limits
+│   │   ├── Hard Limits
+│   │   ├── Warning Thresholds
+│   │   ├── Branch Allocation
+│   │   ├── Overage Pricing
+│   │   ├── Burst Allowance
+│   │   ├── Abuse / Anomaly Detection
+│   │   ├── Entitlement Check API
+│   │   ├── Feature Gate Enforcement
+│   │   ├── Upgrade Recommendation
+│   │   └── Usage Audit
+│   ├── P09. TENANT PROVISIONING / ENVIRONMENT ORCHESTRATION
+│   │   ├── Provisioning Request
+│   │   │   ├── Contract / Subscription Reference
+│   │   │   ├── Tenant Name
+│   │   │   ├── Tenant ID
+│   │   │   ├── Deployment Model
+│   │   │   ├── Region
+│   │   │   ├── Data Residency
+│   │   │   ├── Plan / Entitlements
+│   │   │   ├── Initial Owner
+│   │   │   └── Branding / Domain Inputs
+│   │   ├── Provisioning Pipeline
+│   │   │   ├── Validate Commercial State
+│   │   │   ├── Reserve Tenant Identifier
+│   │   │   ├── Allocate Environment / Placement
+│   │   │   ├── Create Tenant Metadata
+│   │   │   ├── Configure Database / Schema / Partition
+│   │   │   ├── Configure Object Storage
+│   │   │   ├── Configure Cache / Queue Context
+│   │   │   ├── Configure Search / Analytics Context
+│   │   │   ├── Configure Identity / SSO Baseline
+│   │   │   ├── Apply Entitlements
+│   │   │   ├── Create Tenant Owner
+│   │   │   ├── Configure Domain / Certificate
+│   │   │   ├── Configure Backup Policy
+│   │   │   ├── Apply Regional / Country Defaults
+│   │   │   ├── Seed Required System Data
+│   │   │   ├── Health Verification
+│   │   │   └── Mark Ready for Implementation
+│   │   ├── Idempotency / Retry
+│   │   ├── Partial Failure Recovery
+│   │   ├── Rollback
+│   │   ├── Re-Provision
+│   │   ├── Tenant Move / Re-Placement
+│   │   └── Provisioning Audit
+│   ├── P10. IMPLEMENTATION / ONBOARDING / DATA MIGRATION DELIVERY
+│   │   ├── Implementation Project
+│   │   │   ├── Project Owner
+│   │   │   ├── Customer Project Owner
+│   │   │   ├── Scope
+│   │   │   ├── Modules
+│   │   │   ├── Branches
+│   │   │   ├── Milestones
+│   │   │   ├── Dependencies
+│   │   │   ├── Risks
+│   │   │   └── Go-Live Date
+│   │   ├── Discovery
+│   │   │   ├── Current Systems
+│   │   │   ├── Data Sources
+│   │   │   ├── Business Processes
+│   │   │   ├── Required Integrations
+│   │   │   ├── Reporting Requirements
+│   │   │   └── Country / Compliance Needs
+│   │   ├── Configuration Workstreams
+│   │   │   ├── Organization / Branches
+│   │   │   ├── Academic
+│   │   │   ├── Users / Roles
+│   │   │   ├── Finance
+│   │   │   ├── HR / Payroll
+│   │   │   ├── Notifications
+│   │   │   ├── Branding / Domains
+│   │   │   └── Integrations
+│   │   ├── Data Migration
+│   │   │   ├── Source Inventory
+│   │   │   ├── Excel / CSV Templates
+│   │   │   ├── Mapping
+│   │   │   ├── Cleansing
+│   │   │   ├── Duplicate Resolution
+│   │   │   ├── Test Import
+│   │   │   ├── Reconciliation
+│   │   │   ├── Customer Sign-off
+│   │   │   ├── Final Migration
+│   │   │   └── Migration Archive
+│   │   ├── Training
+│   │   │   ├── Group Owners
+│   │   │   ├── Branch Managers
+│   │   │   ├── Department Managers
+│   │   │   ├── Teachers / Staff
+│   │   │   ├── Finance / HR
+│   │   │   ├── Parent / Student Guides
+│   │   │   └── Train-the-Trainer
+│   │   ├── UAT
+│   │   ├── Cutover Plan
+│   │   ├── Go-Live Checklist
+│   │   ├── Hypercare
+│   │   ├── Handover to Customer Success / Support
+│   │   └── Implementation Closure
+│   ├── P11. CUSTOMER COMMERCIAL SELF-SERVICE PORTAL
+│   │   ├── Tenant Owner Home
+│   │   ├── Subscription
+│   │   │   ├── Current Plan
+│   │   │   ├── Renewal Date
+│   │   │   ├── Add-ons
+│   │   │   ├── Contract Term
+│   │   │   └── Status
+│   │   ├── Usage / Limits
+│   │   ├── Billing Information
+│   │   ├── Payment Methods — Where Supported
+│   │   ├── Invoices / Receipts
+│   │   ├── Upgrade / Add-on Request
+│   │   ├── Branch / Capacity Request
+│   │   ├── Renewal Actions
+│   │   ├── Commercial Contacts
+│   │   ├── Contracts / Documents
+│   │   ├── Support Plan / SLA
+│   │   ├── Data Export / Offboarding Request
+│   │   └── Portal Audit
+│   ├── P12. CUSTOMER SUCCESS / ADOPTION / ACCOUNT HEALTH
+│   │   ├── Customer Health Score
+│   │   │   ├── Login Adoption
+│   │   │   ├── Admin Adoption
+│   │   │   ├── Module Adoption
+│   │   │   ├── Active Branches
+│   │   │   ├── Usage Depth
+│   │   │   ├── Support Volume
+│   │   │   ├── Incident Impact
+│   │   │   ├── Payment Health
+│   │   │   ├── Stakeholder Engagement
+│   │   │   └── Renewal Risk
+│   │   ├── Success Plan
+│   │   ├── Success Milestones
+│   │   ├── Business Outcomes
+│   │   ├── Training / Enablement
+│   │   ├── Quarterly / Periodic Reviews
+│   │   ├── Adoption Campaigns
+│   │   ├── Risk Playbooks
+│   │   ├── Expansion Opportunities
+│   │   ├── Customer Satisfaction
+│   │   │   ├── CSAT
+│   │   │   ├── NPS — Optional
+│   │   │   └── Feedback
+│   │   ├── Churn Reason
+│   │   └── Customer Success Timeline
+│   ├── P13. PROVIDER SUPPORT / SERVICE DESK / KNOWLEDGE
+│   │   ├── Support Portal
+│   │   ├── Tickets
+│   │   │   ├── Customer / Tenant
+│   │   │   ├── Requester
+│   │   │   ├── Module
+│   │   │   ├── Branch / Scope
+│   │   │   ├── Category
+│   │   │   ├── Severity
+│   │   │   ├── Priority
+│   │   │   ├── SLA
+│   │   │   ├── Assignee
+│   │   │   ├── Status
+│   │   │   ├── Reproduction
+│   │   │   ├── Attachments
+│   │   │   ├── Support Access Request
+│   │   │   ├── Resolution
+│   │   │   └── Customer Confirmation
+│   │   ├── Support Queue
+│   │   ├── SLA Timers
+│   │   ├── Escalations
+│   │   ├── Major Incident Link
+│   │   ├── Known Errors
+│   │   ├── Knowledge Base
+│   │   ├── Customer-Facing Articles
+│   │   ├── Internal Runbooks
+│   │   ├── Canned Responses
+│   │   ├── Remote / Screen-Share Session Record
+│   │   ├── Support Analytics
+│   │   └── Ticket Audit
+│   ├── P14. PRIVILEGED SUPPORT ACCESS / IMPERSONATION GOVERNANCE
+│   │   ├── Access Request
+│   │   │   ├── Ticket / Incident
+│   │   │   ├── Business Reason
+│   │   │   ├── Requested Tenant
+│   │   │   ├── Requested Branch / Scope
+│   │   │   ├── Requested Modules
+│   │   │   ├── Requested Permission Level
+│   │   │   └── Requested Duration
+│   │   ├── Approval
+│   │   │   ├── Customer Owner / Security Approver
+│   │   │   ├── Provider Manager Approval — Sensitive Cases
+│   │   │   ├── Dual Approval — Safeguarding / Medical / Payroll / Highly Sensitive
+│   │   │   └── Emergency Break-Glass Rule
+│   │   ├── Session Controls
+│   │   │   ├── Just-in-Time Role
+│   │   │   ├── Automatic Expiry
+│   │   │   ├── Read-Only Default
+│   │   │   ├── Download / Export Disabled by Default
+│   │   │   ├── Sensitive Fields Masked Where Possible
+│   │   │   ├── Watermark / Support Banner
+│   │   │   └── Session Kill / Revoke
+│   │   ├── Impersonation
+│   │   │   ├── Explicitly Marked as Support Session
+│   │   │   ├── Never Share Customer Password
+│   │   │   ├── Actions Attributed to Provider Actor
+│   │   │   └── Customer Can Review Session
+│   │   ├── Audit
+│   │   │   ├── Viewed Records
+│   │   │   ├── Changed Records
+│   │   │   ├── Downloads / Exports
+│   │   │   ├── Queries
+│   │   │   ├── Start / End
+│   │   │   └── Reason / Ticket
+│   │   └── Access Review / Abuse Detection
+│   ├── P15. SaaS OPERATIONS / OBSERVABILITY / SRE
+│   │   ├── Global Health
+│   │   ├── Service Health
+│   │   │   ├── Web / API
+│   │   │   ├── Authentication
+│   │   │   ├── Database
+│   │   │   ├── Cache
+│   │   │   ├── Queue
+│   │   │   ├── Search
+│   │   │   ├── Storage
+│   │   │   ├── Notifications
+│   │   │   ├── Integrations
+│   │   │   ├── Background Jobs
+│   │   │   └── Analytics
+│   │   ├── Tenant Health
+│   │   │   ├── Availability
+│   │   │   ├── Error Rate
+│   │   │   ├── Latency
+│   │   │   ├── Resource Saturation
+│   │   │   ├── Failed Jobs
+│   │   │   ├── Integration Failures
+│   │   │   └── Notification Failures
+│   │   ├── SLI / SLO
+│   │   ├── SLA Measurement
+│   │   ├── Alerting
+│   │   ├── On-Call
+│   │   ├── Runbooks
+│   │   ├── Synthetic Monitoring
+│   │   ├── Log Search
+│   │   ├── Distributed Trace / Correlation
+│   │   ├── Capacity Forecasting
+│   │   ├── Dependency Health
+│   │   └── Operational Audit
+│   ├── P16. INCIDENT / PROBLEM / CHANGE / MAINTENANCE MANAGEMENT
+│   │   ├── Incident
+│   │   │   ├── Severity
+│   │   │   ├── Impacted Services
+│   │   │   ├── Impacted Tenants
+│   │   │   ├── Start / Detect / Resolve Time
+│   │   │   ├── Incident Commander
+│   │   │   ├── Timeline
+│   │   │   ├── Communications
+│   │   │   └── Resolution
+│   │   ├── Major Incident
+│   │   ├── Security Incident
+│   │   ├── Problem Management
+│   │   │   ├── Root Cause
+│   │   │   ├── Known Error
+│   │   │   ├── Permanent Fix
+│   │   │   └── Prevention Actions
+│   │   ├── Post-Incident Review
+│   │   ├── Change Request
+│   │   │   ├── Risk
+│   │   │   ├── Impact
+│   │   │   ├── Rollback Plan
+│   │   │   ├── Approval
+│   │   │   └── Change Window
+│   │   ├── Maintenance Window
+│   │   ├── Customer Notification
+│   │   └── Service Credit Evaluation
+│   ├── P17. RELEASE / VERSION / DEPLOYMENT / FEATURE ROLLOUT
+│   │   ├── Product Version
+│   │   ├── Release Train
+│   │   ├── Release Candidate
+│   │   ├── Release Notes
+│   │   ├── Database Migration
+│   │   ├── Backward Compatibility
+│   │   ├── API Versioning
+│   │   ├── Feature Flags
+│   │   ├── Rollout Rings
+│   │   │   ├── Internal
+│   │   │   ├── Pilot Tenants
+│   │   │   ├── Beta
+│   │   │   ├── Selected Tenants
+│   │   │   └── General Availability
+│   │   ├── Tenant-Specific Feature Enablement
+│   │   ├── Dedicated Environment Release Scheduling
+│   │   ├── Maintenance Mode
+│   │   ├── Rollback
+│   │   ├── Release Health
+│   │   └── Release Audit
+│   ├── P18. PROVIDER SECURITY / PRIVACY / COMPLIANCE
+│   │   ├── Provider Identity
+│   │   ├── Internal MFA / SSO
+│   │   ├── Least Privilege
+│   │   ├── Privileged Access Management
+│   │   ├── Secrets / Key Management
+│   │   ├── Tenant Isolation Controls
+│   │   ├── Security Monitoring
+│   │   ├── Vulnerability Management
+│   │   ├── Patch Management
+│   │   ├── Secure Development Lifecycle
+│   │   ├── Dependency / Supply Chain Security
+│   │   ├── Penetration Testing
+│   │   ├── Security Incident Response
+│   │   ├── Data Classification
+│   │   ├── Data Residency
+│   │   ├── Privacy Requests Coordination
+│   │   ├── Subprocessor Register
+│   │   ├── Vendor Risk
+│   │   ├── Compliance Evidence
+│   │   ├── Security Questionnaires
+│   │   ├── Customer Security Documents
+│   │   └── Compliance Audit Trail
+│   ├── P19. BACKUP / RESTORE / DISASTER RECOVERY / BUSINESS CONTINUITY
+│   │   ├── Global Backup Policies
+│   │   ├── Tenant Backup Policies
+│   │   ├── Dedicated Tenant Backup Policies
+│   │   ├── Backup Encryption
+│   │   ├── Backup Retention
+│   │   ├── Backup Success / Failure
+│   │   ├── Restore Points
+│   │   ├── Tenant-Level Restore
+│   │   ├── Record / Object Restore — Where Supported
+│   │   ├── Restore Request Approval
+│   │   ├── Restore Sandbox / Verification
+│   │   ├── RPO / RTO
+│   │   ├── Disaster Recovery Region
+│   │   ├── Failover
+│   │   ├── Failback
+│   │   ├── DR Test Schedule
+│   │   ├── Business Continuity Plan
+│   │   └── DR Audit
+│   ├── P20. DEPLOYMENT MODELS / TENANT PLACEMENT / ISOLATION TIERS
+│   │   ├── Shared SaaS
+│   │   │   ├── Shared Application Services
+│   │   │   ├── Tenant-Isolated Data Context
+│   │   │   ├── Shared Infrastructure Controls
+│   │   │   └── Standard SLA
+│   │   ├── Dedicated Cloud
+│   │   │   ├── Dedicated Application — Optional
+│   │   │   ├── Dedicated Database
+│   │   │   ├── Dedicated Storage
+│   │   │   ├── Dedicated Backup
+│   │   │   ├── Dedicated Domain / Network Options
+│   │   │   ├── Custom Maintenance Window
+│   │   │   └── Premium SLA
+│   │   ├── Self-Hosted / On-Premise
+│   │   │   ├── Licensed Deployment
+│   │   │   ├── Customer Infrastructure Requirements
+│   │   │   ├── Deployment Package / Automation
+│   │   │   ├── Version Compatibility
+│   │   │   ├── Update / Maintenance Contract
+│   │   │   ├── Remote Support Terms
+│   │   │   └── Health / Telemetry — Contractual
+│   │   ├── Isolation Tier
+│   │   ├── Placement Rules
+│   │   ├── Migration Between Deployment Models
+│   │   └── Deployment Audit
+│   ├── P21. REGION / DATA RESIDENCY / TENANT PLACEMENT
+│   │   ├── Regions
+│   │   ├── Availability Zones / Data Centers
+│   │   ├── Country Restrictions
+│   │   ├── Residency Requirement
+│   │   ├── Customer Preference
+│   │   ├── Capacity
+│   │   ├── Cost
+│   │   ├── Latency
+│   │   ├── Compliance
+│   │   ├── Placement Policy
+│   │   ├── Re-Placement / Region Migration
+│   │   └── Placement History
+│   ├── P22. DOMAINS / WHITE-LABEL / CUSTOMER BRANDING
+│   │   ├── Platform Domain
+│   │   ├── Customer Subdomain
+│   │   ├── Custom Domain
+│   │   ├── Branch Domain / Subdomain
+│   │   ├── Domain Verification
+│   │   ├── DNS Instructions
+│   │   ├── TLS / Certificate
+│   │   ├── Renewal / Expiry Monitoring
+│   │   ├── Login Branding
+│   │   ├── Email Branding
+│   │   ├── Mobile Branding — Plan Dependent
+│   │   ├── Document Branding
+│   │   └── White-Label Entitlement
+│   ├── P23. PROVIDER INTEGRATION / DEVELOPER / PARTNER PLATFORM
+│   │   ├── Integration Catalog
+│   │   ├── Partner Directory
+│   │   ├── OAuth Applications
+│   │   ├── API Clients
+│   │   ├── API Plans / Quotas
+│   │   ├── Developer Keys
+│   │   ├── Webhooks
+│   │   ├── Sandbox
+│   │   ├── Developer Documentation
+│   │   ├── API Versioning
+│   │   ├── Third-Party App Approval
+│   │   ├── Tenant-Scoped App Consent
+│   │   ├── Partner Certification
+│   │   ├── Integration Health
+│   │   ├── Deprecation Notices
+│   │   └── Integration Audit
+│   ├── P24. CUSTOMER COMMUNICATION / STATUS / OPERATIONAL NOTICES
+│   │   ├── Customer Broadcasts
+│   │   ├── Segment by Plan / Region / Module / Tenant
+│   │   ├── Release Announcements
+│   │   ├── Maintenance Notices
+│   │   ├── Incident Notices
+│   │   ├── Security Notices
+│   │   ├── Renewal Notices
+│   │   ├── Usage / Quota Warnings
+│   │   ├── Product Education
+│   │   ├── Status Page
+│   │   ├── Service Health Subscriptions
+│   │   ├── Delivery / Read Tracking
+│   │   └── Communication Audit
+│   ├── P25. OFFBOARDING / TERMINATION / DATA EXPORT / RETENTION / DELETION
+│   │   ├── Offboarding Request
+│   │   ├── Contract / Subscription Validation
+│   │   ├── Cancellation Effective Date
+│   │   ├── Final Invoice / Credit
+│   │   ├── Customer Data Export
+│   │   │   ├── Structured Data
+│   │   │   ├── Documents / Files
+│   │   │   ├── Audit / Reports — Contract Dependent
+│   │   │   └── Export Verification
+│   │   ├── Integration Shutdown
+│   │   ├── User Access Disablement
+│   │   ├── Read-Only Period — Optional
+│   │   ├── Retention Period
+│   │   ├── Legal Hold
+│   │   ├── Backup Expiry Rules
+│   │   ├── Scheduled Deletion
+│   │   ├── Deletion Approval
+│   │   ├── Deletion Execution
+│   │   ├── Deletion Evidence / Certificate
+│   │   ├── Anonymized Provider Metrics Retention — Policy Controlled
+│   │   └── Re-Activation Before Deletion — If Contract Allows
+│   ├── P26. PROVIDER FINANCE / REVENUE OPERATIONS
+│   │   ├── Customer Receivables
+│   │   ├── Subscription Revenue
+│   │   ├── Professional Services Revenue
+│   │   ├── Usage Revenue
+│   │   ├── Credits / Refunds
+│   │   ├── Deferred Revenue / Revenue Schedule — If Required
+│   │   ├── Tax Reporting
+│   │   ├── Payment Reconciliation
+│   │   ├── Collections
+│   │   ├── Revenue by Product
+│   │   ├── Revenue by Region
+│   │   ├── Revenue by Customer
+│   │   ├── Accounting Export / Integration
+│   │   └── Revenue Operations Audit
+│   ├── P27. SaaS BUSINESS ANALYTICS / COMMERCIAL KPIs
+│   │   ├── Customers
+│   │   │   ├── New
+│   │   │   ├── Active
+│   │   │   ├── Expanded
+│   │   │   ├── Contracted
+│   │   │   └── Churned
+│   │   ├── ARR / MRR
+│   │   ├── New ARR
+│   │   ├── Expansion ARR
+│   │   ├── Contraction ARR
+│   │   ├── Churn ARR
+│   │   ├── NRR / GRR
+│   │   ├── ARPU / ACV
+│   │   ├── Renewal Rate
+│   │   ├── Logo Churn
+│   │   ├── Revenue Churn
+│   │   ├── Trial Conversion
+│   │   ├── Sales Funnel Conversion
+│   │   ├── Sales Cycle
+│   │   ├── Time to Provision
+│   │   ├── Time to Go-Live
+│   │   ├── Adoption
+│   │   ├── Module Penetration
+│   │   ├── Support Tickets per Tenant
+│   │   ├── SLA Attainment
+│   │   ├── Uptime / Reliability
+│   │   ├── Customer Health
+│   │   └── Cohort Analysis
+│   ├── P28. FinOps / COST-TO-SERVE / CAPACITY ECONOMICS
+│   │   ├── Infrastructure Cost
+│   │   ├── Cost by Tenant
+│   │   ├── Cost by Region
+│   │   ├── Cost by Product / Module
+│   │   ├── Storage Cost
+│   │   ├── Database Cost
+│   │   ├── Compute Cost
+│   │   ├── Messaging Cost
+│   │   ├── AI Cost
+│   │   ├── Third-Party Integration Cost
+│   │   ├── Support Cost
+│   │   ├── Gross Margin Estimate
+│   │   ├── Unit Economics per Student / User / Branch
+│   │   ├── Cost Anomaly
+│   │   ├── Capacity Forecast
+│   │   └── Optimization Actions
+│   ├── P29. PROVIDER INTERNAL ROLES / SEGREGATION OF DUTIES
+│   │   ├── Provider Owner
+│   │   ├── Platform Super Admin
+│   │   ├── SaaS Operations Admin
+│   │   ├── Security Admin
+│   │   ├── Support Engineer
+│   │   ├── Support Manager
+│   │   ├── Implementation Consultant
+│   │   ├── Customer Success Manager
+│   │   ├── Account Manager
+│   │   ├── Sales User
+│   │   ├── Billing / Revenue Ops
+│   │   ├── Product Manager
+│   │   ├── Release Manager
+│   │   ├── Auditor
+│   │   ├── Read-Only Executive
+│   │   ├── Role Separation
+│   │   │   ├── Sales Cannot Grant Production Access
+│   │   │   ├── Support Cannot Change Subscription Pricing
+│   │   │   ├── Billing Cannot Access Sensitive Education Data
+│   │   │   ├── Developers Do Not Receive Standing Production Data Access
+│   │   │   └── Security Can Revoke Privileged Access
+│   │   ├── Temporary Elevation
+│   │   ├── Break-Glass
+│   │   └── Provider Access Review
+│   ├── P30. PROVIDER AUDIT / ADMIN ACTIVITY HISTORY
+│   │   ├── Login / Authentication
+│   │   ├── Customer / Tenant Changes
+│   │   ├── Contract Changes
+│   │   ├── Subscription / Entitlement Changes
+│   │   ├── Pricing / Discount Changes
+│   │   ├── Provisioning Actions
+│   │   ├── Support Access
+│   │   ├── Tenant Data Access
+│   │   ├── Backup / Restore
+│   │   ├── Release / Feature Flag Changes
+│   │   ├── Security / Key Changes
+│   │   ├── Billing Changes
+│   │   ├── Export / Deletion
+│   │   ├── Actor / IP / Device / Session
+│   │   ├── Before / After
+│   │   ├── Reason / Ticket / Approval
+│   │   └── Tamper-Evident Retention
+│   ├── P31. ABUSE / FRAUD / RATE-LIMIT / PLATFORM PROTECTION
+│   │   ├── Login Abuse
+│   │   ├── API Abuse
+│   │   ├── Messaging Abuse
+│   │   ├── Storage Abuse
+│   │   ├── Automated Scraping
+│   │   ├── Export Abuse
+│   │   ├── Suspicious Tenant Activity
+│   │   ├── Suspicious Provider-Admin Activity
+│   │   ├── Rate Limits
+│   │   ├── Tenant Throttling
+│   │   ├── IP / Device Controls
+│   │   ├── Temporary Blocks
+│   │   ├── Manual Review
+│   │   └── Abuse Audit
+│   ├── P32. PRODUCT FEEDBACK / FEATURE REQUEST / BETA PROGRAM
+│   │   ├── Feature Requests
+│   │   ├── Customer Feedback
+│   │   ├── Votes / Demand
+│   │   ├── Revenue / Strategic Impact
+│   │   ├── Roadmap Candidate
+│   │   ├── Discovery
+│   │   ├── Beta Tenants
+│   │   ├── Beta Agreement
+│   │   ├── Feature Flag
+│   │   ├── Feedback Loop
+│   │   ├── General Availability
+│   │   └── Deprecation / Retirement
+│   ├── P33. CHANNEL / PARTNER / RESELLER MANAGEMENT — OPTIONAL
+│   │   ├── Partners
+│   │   ├── Resellers
+│   │   ├── Referral Partners
+│   │   ├── Territories
+│   │   ├── Discount / Margin Rules
+│   │   ├── Deal Registration
+│   │   ├── Partner Customers
+│   │   ├── Commission
+│   │   ├── Partner Portal
+│   │   ├── Certification / Training
+│   │   └── Partner Audit
+│   ├── P34. PLATFORM LEGAL / POLICY / CUSTOMER ASSURANCE
+│   │   ├── Terms of Service
+│   │   ├── Privacy Policy
+│   │   ├── Acceptable Use Policy
+│   │   ├── Subprocessor List
+│   │   ├── Security Overview
+│   │   ├── Data Processing Terms
+│   │   ├── Data Retention Policy
+│   │   ├── Backup / DR Policy Summary
+│   │   ├── SLA Documents
+│   │   ├── Support Policy
+│   │   ├── Deprecation Policy
+│   │   ├── Customer Assurance Pack
+│   │   ├── Version / Acceptance History
+│   │   └── Policy Notification / Re-Acceptance
+│   └── P35. PROVIDER CONTROL-PLANE API / AUTOMATION EVENTS
+│       ├── CustomerCreated
+│       ├── ContractSigned
+│       ├── SubscriptionCreated
+│       ├── TrialWillEnd
+│       ├── SubscriptionRenewalDue
+│       ├── SubscriptionChanged
+│       ├── SubscriptionPastDue
+│       ├── SubscriptionSuspended
+│       ├── EntitlementChanged
+│       ├── UsageThresholdReached
+│       ├── TenantProvisioningRequested
+│       ├── TenantProvisioned
+│       ├── TenantProvisioningFailed
+│       ├── ImplementationStarted
+│       ├── GoLiveCompleted
+│       ├── SupportAccessRequested
+│       ├── SupportAccessApproved
+│       ├── SupportAccessExpired
+│       ├── IncidentCreated
+│       ├── TenantHealthDegraded
+│       ├── ReleaseScheduled
+│       ├── BackupFailed
+│       ├── RestoreCompleted
+│       ├── CancellationScheduled
+│       ├── OffboardingStarted
+│       ├── DataExportReady
+│       ├── TenantDeletionScheduled
+│       └── TenantDeleted
+├── A. PLATFORM CORE
+│   ├── A01. PLATFORM, TENANT & CUSTOMER MANAGEMENT
+│   │   ├── Platform
+│   │   │   ├── Tenant Directory
+│   │   │   ├── Tenant Creation
+│   │   │   ├── Tenant Activation / Suspension / Closure
+│   │   │   ├── Subscription & Entitlements
+│   │   │   ├── Platform Super Admins
+│   │   │   └── Tenant Workspace
+│   │   └── Tenant / Customer Workspace
+│   │       ├── Overview
+│   │       │   ├── Customer / Group Summary
+│   │       │   ├── Active Institutions / Schools
+│   │       │   ├── Active Branches / Campuses
+│   │       │   ├── Active Students
+│   │       │   ├── Active Staff / Teachers
+│   │       │   ├── Active Admins / Managers
+│   │       │   ├── Storage Usage
+│   │       │   ├── API / Integration Usage
+│   │       │   ├── Notification Usage
+│   │       │   └── System Health
+│   │       ├── Ownership & Global Administration
+│   │       │   ├── Tenant Owner
+│   │       │   ├── Co-Owners — Optional
+│   │       │   ├── Group Super Admins
+│   │       │   ├── Central Directors
+│   │       │   ├── Emergency / Break-Glass Admin
+│   │       │   ├── Ownership Transfer
+│   │       │   └── Ownership History
+│   │       ├── Customer Profile
+│   │       │   ├── Legal Information
+│   │       │   ├── Trading / Display Name
+│   │       │   ├── Organization Type
+│   │       │   ├── Registration Information
+│   │       │   ├── Contact Information
+│   │       │   └── Addresses
+│   │       ├── Education Group / School Chain
+│   │       │   ├── Group Profile
+│   │       │   ├── Central Office
+│   │       │   ├── Institutions / Schools
+│   │       │   ├── Branches / Campuses
+│   │       │   ├── Shared Services
+│   │       │   ├── Group Leadership
+│   │       │   └── Group Hierarchy
+│   │       ├── Branding
+│   │       │   ├── Group Brand
+│   │       │   ├── Branch Brand Overrides
+│   │       │   ├── Logo
+│   │       │   ├── Favicon
+│   │       │   ├── Colors
+│   │       │   ├── Email Branding
+│   │       │   ├── Document Branding
+│   │       │   └── Login Branding
+│   │       ├── Domains
+│   │       │   ├── Group Custom Domain
+│   │       │   ├── Branch Subdomains / Domains
+│   │       │   ├── Domain Verification
+│   │       │   └── Email Domains
+│   │       ├── Locale
+│   │       │   ├── Group Defaults
+│   │       │   ├── Branch Overrides
+│   │       │   ├── Language
+│   │       │   ├── Timezone
+│   │       │   ├── Calendar
+│   │       │   ├── Date / Time Format
+│   │       │   ├── Currency
+│   │       │   └── Number Format
+│   │       ├── Features & Entitlements
+│   │       │   ├── Enabled Modules
+│   │       │   ├── Disabled Modules
+│   │       │   ├── Branch Module Allocation
+│   │       │   ├── Beta Features
+│   │       │   └── Feature Flags
+│   │       ├── Tenant Limits & Quotas
+│   │       │   ├── Maximum Institutions
+│   │       │   ├── Maximum Branches / Campuses
+│   │       │   ├── User Limit
+│   │       │   ├── Student Limit
+│   │       │   ├── Staff Limit
+│   │       │   ├── Admin / Manager Limit
+│   │       │   ├── Storage Limit
+│   │       │   ├── API Limit
+│   │       │   ├── Notification / SMS Limit
+│   │       │   └── Quota Alerts
+│   │       ├── Branch Allocation of Quotas
+│   │       │   ├── Branch Student Allocation
+│   │       │   ├── Branch Staff Allocation
+│   │       │   ├── Branch Admin Allocation
+│   │       │   ├── Branch Storage Allocation
+│   │       │   ├── Branch Notification Allocation
+│   │       │   ├── Current Usage
+│   │       │   ├── Remaining Capacity
+│   │       │   └── Reallocate Capacity
+│   │       ├── Subscription / Entitlement Snapshot — Synced from Provider Control Plane
+│   │       │   ├── Current Plan
+│   │       │   ├── Active Add-ons
+│   │       │   ├── Licensed Branches
+│   │       │   ├── Licensed Students / Users
+│   │       │   ├── Usage vs Limits
+│   │       │   ├── Contract / Subscription Start
+│   │       │   ├── Renewal / Expiry Date
+│   │       │   ├── Subscription Status
+│   │       │   ├── Grace / Restriction Status
+│   │       │   ├── Upgrade / Add-on Request
+│   │       │   ├── Billing Portal Link — Tenant Owner Only
+│   │       │   ├── Commercial Support Contact
+│   │       │   └── Subscription History — Customer-Visible
+│   │       └── Tenant Audit
+│   ├── A02. ORGANIZATION, SCHOOL-CHAIN & BRANCH STRUCTURE
+│   │   ├── Organization Hierarchy
+│   │   │   └── Tenant / Customer
+│   │   │       └── Education Group / School Chain
+│   │   │           ├── Central / Group Office
+│   │   │           ├── Institution / School
+│   │   │           │   └── Branch / Campus
+│   │   │           │       ├── Division
+│   │   │           │       ├── Department
+│   │   │           │       ├── Building
+│   │   │           │       ├── Room
+│   │   │           │       ├── Team / Unit
+│   │   │           │       └── Academic / Operational Structures
+│   │   │           └── Shared Central Services
+│   │   │               ├── Central HR
+│   │   │               ├── Central Finance
+│   │   │               ├── Central Academic Office
+│   │   │               ├── Central Admissions
+│   │   │               ├── Central IT
+│   │   │               ├── Central Procurement
+│   │   │               └── Other Shared Services
+│   │   ├── Group Workspace
+│   │   │   ├── Overview
+│   │   │   ├── Leadership
+│   │   │   ├── Institutions / Schools
+│   │   │   ├── Branches / Campuses
+│   │   │   ├── Shared Departments
+│   │   │   ├── Group Policies
+│   │   │   ├── Group Calendar
+│   │   │   ├── Consolidated Finance
+│   │   │   ├── Consolidated HR
+│   │   │   ├── Consolidated Admissions
+│   │   │   ├── Consolidated Academics
+│   │   │   ├── Consolidated Analytics
+│   │   │   └── Audit
+│   │   ├── Institution / School Workspace
+│   │   │   ├── Overview
+│   │   │   ├── Profile
+│   │   │   ├── Branches / Campuses
+│   │   │   ├── Leadership
+│   │   │   ├── Academic Structure
+│   │   │   ├── Operational Structure
+│   │   │   ├── Shared Services
+│   │   │   ├── Policies
+│   │   │   ├── Documents
+│   │   │   └── Audit
+│   │   ├── Branch / Campus Workspace
+│   │   │   ├── Overview
+│   │   │   ├── Profile
+│   │   │   ├── Address & Location
+│   │   │   ├── Branch Manager / Principal
+│   │   │   ├── Deputy / Acting Manager
+│   │   │   ├── Local Administrators
+│   │   │   ├── Divisions
+│   │   │   ├── Departments
+│   │   │   ├── Buildings
+│   │   │   ├── Rooms
+│   │   │   ├── Resources
+│   │   │   ├── Academic Setup
+│   │   │   ├── Staff
+│   │   │   ├── Teachers
+│   │   │   ├── Students
+│   │   │   ├── Families
+│   │   │   ├── Admissions
+│   │   │   ├── Finance
+│   │   │   ├── HR
+│   │   │   ├── Calendar
+│   │   │   ├── Services
+│   │   │   ├── Local Policies
+│   │   │   ├── Local Documents
+│   │   │   ├── Branch KPIs
+│   │   │   └── Audit
+│   │   ├── Branch Lifecycle
+│   │   │   ├── Draft
+│   │   │   ├── Setup
+│   │   │   ├── Active
+│   │   │   ├── Temporarily Suspended
+│   │   │   ├── Closing
+│   │   │   ├── Closed
+│   │   │   └── Archived
+│   │   ├── Branch Creation Wizard
+│   │   │   ├── Profile
+│   │   │   ├── Leadership
+│   │   │   ├── Academic Structure
+│   │   │   ├── Departments
+│   │   │   ├── Default Roles
+│   │   │   ├── Module Enablement
+│   │   │   ├── Configuration Inheritance
+│   │   │   ├── Quotas
+│   │   │   ├── Finance Dimensions
+│   │   │   ├── Branding
+│   │   │   ├── Validation
+│   │   │   └── Activate
+│   │   └── Hierarchy History
+│   │       ├── Effective Dates
+│   │       ├── Reorganizations
+│   │       ├── Branch Rename
+│   │       ├── Merge / Split
+│   │       ├── Parent-Unit Changes
+│   │       └── Audit
+│   ├── A03. PEOPLE & IDENTITY MASTER
+│   │   ├── PEOPLE
+│   │   │   ├── Person Directory
+│   │   │   ├── Person Workspace
+│   │   │   ├── Relationships
+│   │   │   ├── Households
+│   │   │   ├── Contact Directory
+│   │   │   └── Duplicate Management
+│   │   └── Person
+│   │       ├── Overview
+│   │       ├── Identity
+│   │       │   ├── Legal Identity
+│   │       │   ├── Preferred Identity
+│   │       │   ├── IDs
+│   │       │   ├── Photo
+│   │       │   ├── Birth Information
+│   │       │   ├── Nationality
+│   │       │   └── Languages
+│   │       ├── Roles
+│   │       │   ├── Student
+│   │       │   ├── Applicant
+│   │       │   ├── Parent
+│   │       │   ├── Guardian
+│   │       │   ├── Employee
+│   │       │   ├── Teacher
+│   │       │   ├── Instructor
+│   │       │   ├── Alumni
+│   │       │   ├── Donor
+│   │       │   └── Other
+│   │       ├── Contact
+│   │       │   ├── Email
+│   │       │   ├── Phone
+│   │       │   ├── Address
+│   │       │   ├── Preferred Channel
+│   │       │   └── Communication Restrictions
+│   │       ├── Relationships
+│   │       │   ├── Parents
+│   │       │   ├── Children
+│   │       │   ├── Guardians
+│   │       │   ├── Siblings
+│   │       │   ├── Spouse
+│   │       │   ├── Emergency Contacts
+│   │       │   └── Institutional Relationships
+│   │       ├── Household
+│   │       ├── Accounts
+│   │       ├── Documents
+│   │       ├── Communications
+│   │       ├── Consents
+│   │       ├── Tasks
+│   │       ├── Notes
+│   │       ├── Flags
+│   │       ├── Timeline
+│   │       └── Audit
+│   ├── A04. HOUSEHOLD & FAMILY
+│   │   ├── Households
+│   │   │   ├── Household Directory
+│   │   │   ├── Household Workspace
+│   │   │   ├── Members
+│   │   │   ├── Addresses
+│   │   │   ├── Communication
+│   │   │   ├── Financial Responsibility
+│   │   │   └── Relationships
+│   │   └── Member Relationship Record
+│   │       ├── Student
+│   │       ├── Guardian
+│   │       ├── Relationship Type
+│   │       ├── Legal Guardian?
+│   │       ├── Lives With?
+│   │       ├── Emergency Contact?
+│   │       ├── Pickup Authorized?
+│   │       ├── Academic Reports?
+│   │       ├── Attendance Alerts?
+│   │       ├── Medical Information Access?
+│   │       ├── Finance Access?
+│   │       ├── Communication Priority
+│   │       ├── Start Date
+│   │       ├── End Date
+│   │       ├── Court / Legal Restriction
+│   │       └── Notes
+│   ├── A05. IDENTITY & AUTHENTICATION
+│   │   └── Security
+│   │       └── Identity
+│   │           ├── User Accounts
+│   │           ├── Authentication
+│   │           ├── Password Policies
+│   │           ├── MFA
+│   │           ├── SSO
+│   │           ├── Account Recovery
+│   │           ├── Trusted Devices
+│   │           ├── Sessions
+│   │           ├── Account Lifecycle
+│   │           └── Login Audit
+│   ├── A06. ROLES, PERMISSIONS & DELEGATED ADMINISTRATION
+│   │   ├── Administrative Hierarchy
+│   │   │   ├── Platform Super Admin — Provider Control Plane Only / Never Tenant-Assignable
+│   │   │   ├── Tenant Owner / Group Owner
+│   │   │   ├── Group Super Admin
+│   │   │   ├── Central Functional Director
+│   │   │   ├── Institution / School Admin
+│   │   │   ├── Branch Principal / Branch Manager
+│   │   │   ├── Deputy / Acting Branch Manager
+│   │   │   ├── Division Director
+│   │   │   ├── Department Manager
+│   │   │   ├── Module Owner / Supervisor
+│   │   │   ├── Operator / Officer
+│   │   │   ├── Reviewer / Approver
+│   │   │   ├── Auditor / Viewer
+│   │   │   └── End User
+│   │   ├── Role Catalog
+│   │   │   ├── System Roles
+│   │   │   ├── Tenant Custom Roles
+│   │   │   ├── Group Role Templates
+│   │   │   ├── Branch Role Templates
+│   │   │   ├── Functional Roles
+│   │   │   ├── Approval Roles
+│   │   │   └── Read-Only / Audit Roles
+│   │   ├── Role Assignment Record
+│   │   │   ├── User / Person
+│   │   │   ├── Role
+│   │   │   ├── Scope Type
+│   │   │   ├── Scope ID
+│   │   │   ├── Parent Scope
+│   │   │   ├── Start Date
+│   │   │   ├── End Date
+│   │   │   ├── Status
+│   │   │   ├── Assigned By
+│   │   │   ├── Assignment Reason
+│   │   │   ├── Delegation Rights
+│   │   │   └── Assignment Audit
+│   │   ├── Multi-Role / Multi-Scope Assignment
+│   │   │   ├── Multiple Roles per Person
+│   │   │   ├── Same Role Across Multiple Branches
+│   │   │   ├── Different Roles Across Branches
+│   │   │   ├── Central + Local Role Combination
+│   │   │   └── Conflict Resolution / Most-Restrictive Rules
+│   │   ├── Permission Catalog
+│   │   │   ├── Module
+│   │   │   ├── Page
+│   │   │   ├── Workspace
+│   │   │   ├── Tab / Section
+│   │   │   ├── Record
+│   │   │   ├── Field
+│   │   │   ├── Action
+│   │   │   ├── Bulk Action
+│   │   │   ├── Export / Import
+│   │   │   ├── Approve / Reject / Publish
+│   │   │   └── Administrative Action
+│   │   ├── Data Scope
+│   │   │   ├── Entire Tenant
+│   │   │   ├── Entire Education Group
+│   │   │   ├── Selected Institutions
+│   │   │   ├── Institution / School
+│   │   │   ├── Selected Branches
+│   │   │   ├── Branch / Campus
+│   │   │   ├── Division
+│   │   │   ├── Department
+│   │   │   ├── Grade / Year
+│   │   │   ├── Class / Homeroom
+│   │   │   ├── Course / Section
+│   │   │   ├── Assigned People
+│   │   │   ├── Own Children
+│   │   │   ├── Own Record
+│   │   │   └── Specific Records
+│   │   ├── Delegated Administration
+│   │   │   ├── Can Create Users
+│   │   │   ├── Can Invite Users
+│   │   │   ├── Can Activate / Suspend Users
+│   │   │   ├── Can Reset Authentication
+│   │   │   ├── Can Create Students
+│   │   │   ├── Can Create Parents / Guardians
+│   │   │   ├── Can Create Teachers / Staff
+│   │   │   ├── Can Create Local Managers
+│   │   │   ├── Can Assign Roles
+│   │   │   ├── Delegable Role List
+│   │   │   ├── Forbidden Role List
+│   │   │   ├── Maximum Delegation Level / Ceiling
+│   │   │   ├── Delegation Scope
+│   │   │   ├── User / Manager Creation Quotas
+│   │   │   ├── Temporary Delegation
+│   │   │   └── Delegation Audit
+│   │   ├── Privilege Escalation Protection
+│   │   │   ├── Cannot Grant Higher Role Than Delegation Ceiling
+│   │   │   ├── Cannot Expand Own Scope
+│   │   │   ├── Cannot Change Tenant Ownership Without Owner Workflow
+│   │   │   ├── Cannot Remove Last Tenant Owner
+│   │   │   ├── Sensitive Role Dual Approval
+│   │   │   ├── Separation of Duties
+│   │   │   ├── Self-Approval Restrictions — Configurable
+│   │   │   ├── Break-Glass Access Controls
+│   │   │   └── Privilege Change Alerts
+│   │   ├── Management & Module Ownership
+│   │   │   ├── Branch Manager
+│   │   │   ├── Academic Manager
+│   │   │   ├── Finance Manager
+│   │   │   ├── HR Manager
+│   │   │   ├── Admissions Manager
+│   │   │   ├── IT Manager
+│   │   │   ├── Transport Manager
+│   │   │   ├── Safeguarding Lead
+│   │   │   ├── Medical Lead
+│   │   │   ├── Facilities Manager
+│   │   │   ├── Activities Manager
+│   │   │   ├── Library Manager
+│   │   │   ├── Module Owner
+│   │   │   └── Backup Owner / Deputy
+│   │   ├── Approval Authority
+│   │   │   ├── Reviewer
+│   │   │   ├── Approver
+│   │   │   ├── Final Approver
+│   │   │   ├── Monetary Approval Limits
+│   │   │   ├── Record / Workflow Approval Limits
+│   │   │   ├── Branch-Level Approval Matrix
+│   │   │   ├── Group-Level Approval Matrix
+│   │   │   └── Escalation Authority
+│   │   ├── Acting / Temporary Management
+│   │   │   ├── Acting Manager
+│   │   │   ├── Delegate To
+│   │   │   ├── Effective From / To
+│   │   │   ├── Delegated Actions
+│   │   │   ├── Delegated Scope
+│   │   │   ├── Auto-Expiry
+│   │   │   └── Delegation History
+│   │   ├── Conditional Access
+│   │   │   ├── Location
+│   │   │   ├── Network
+│   │   │   ├── Device
+│   │   │   ├── Time
+│   │   │   ├── Authentication Strength
+│   │   │   └── Data Sensitivity
+│   │   ├── Privileged Access
+│   │   ├── Provider Support Access Gate
+│   │   │   ├── Support Ticket / Incident Reference Required
+│   │   │   ├── Customer Approval Policy
+│   │   │   ├── Requested Scope
+│   │   │   ├── Allowed Modules / Records
+│   │   │   ├── Read-Only Default
+│   │   │   ├── Write Elevation — Explicit Approval
+│   │   │   ├── Time-To-Live / Automatic Expiry
+│   │   │   ├── Session Recording / Detailed Audit
+│   │   │   ├── Sensitive Module Exclusions
+│   │   │   ├── Emergency Break-Glass Workflow
+│   │   │   └── Customer Review of Support Access History
+│   │   ├── Access Review
+│   │   │   ├── Tenant-Level Review
+│   │   │   ├── Branch-Level Review
+│   │   │   ├── Dormant Accounts
+│   │   │   ├── Expired Assignments
+│   │   │   ├── Excessive Privileges
+│   │   │   └── Certification / Sign-off
+│   │   └── Permission Decision Example
+│   │       ├── Actor: Branch Finance Manager
+│   │       ├── Resource: Student / Family Billing
+│   │       ├── Action: View / Edit / Approve
+│   │       ├── Scope: Assigned Branch Only
+│   │       ├── Cross-Branch Access: DENY Unless Explicitly Assigned
+│   │       └── Result: ALLOW Within Scope
+│   ├── A07. CONFIGURATION CENTER
+│   │   ├── Configuration
+│   │   │   ├── General Settings
+│   │   │   ├── Configuration Ownership & Inheritance
+│   │   │   │   ├── Group Controlled
+│   │   │   │   ├── Group Default + Branch Override
+│   │   │   │   ├── Branch Controlled
+│   │   │   │   ├── Inherited
+│   │   │   │   ├── Overridden
+│   │   │   │   ├── Locked
+│   │   │   │   ├── Override Approval Required
+│   │   │   │   └── Configuration Provenance
+│   │   │   ├── Branch Configuration Profiles
+│   │   │   ├── Central Policy Templates
+│   │   │   ├── Terminology
+│   │   │   ├── Custom Fields
+│   │   │   ├── Statuses
+│   │   │   ├── Codes
+│   │   │   ├── Numbering Schemes
+│   │   │   ├── Required Fields
+│   │   │   ├── Validation Rules
+│   │   │   ├── Templates
+│   │   │   ├── Feature Settings
+│   │   │   ├── Module Settings
+│   │   │   ├── Default Values
+│   │   │   ├── Tenant Overrides
+│   │   │   └── Environment Settings
+│   │   └── Custom Field Definition
+│   │       ├── Entity
+│   │       ├── Field Name
+│   │       ├── Label
+│   │       ├── Description
+│   │       ├── Type
+│   │       ├── Required
+│   │       ├── Default Value
+│   │       ├── Allowed Values
+│   │       ├── Visibility
+│   │       ├── Edit Permission
+│   │       ├── Searchable?
+│   │       ├── Filterable?
+│   │       ├── Reportable?
+│   │       ├── API Exposed?
+│   │       ├── Sensitive?
+│   │       └── Retention Policy
+│   ├── A08. WORKFLOW ENGINE
+│   │   ├── Workflow
+│   │   │   ├── Workflow Definitions
+│   │   │   ├── Workflow Builder
+│   │   │   ├── Workflow Instances
+│   │   │   ├── Approvals
+│   │   │   ├── Tasks
+│   │   │   ├── Escalations
+│   │   │   ├── SLAs
+│   │   │   ├── Delegation
+│   │   │   ├── Workflow History
+│   │   │   └── Exceptions
+│   │   └── Workflow Definition Flow
+│   │       └── Trigger
+│   │           └── Initial State
+│   │               └── Validation
+│   │                   └── Routing
+│   │                       └── Assigned Actor
+│   │                           └── Task
+│   │                               └── Decision
+│   │                                   └── Approve / Reject / Return
+│   │                                       └── Next State
+│   │                                           └── Actions
+│   │                                               └── Notifications
+│   │                                                   └── Audit
+│   │                                                       └── Completion
+│   ├── A09. BUSINESS RULE ENGINE
+│   │   ├── Rules
+│   │   │   ├── Rule Catalog
+│   │   │   ├── Rule Builder
+│   │   │   ├── Conditions
+│   │   │   ├── Actions
+│   │   │   ├── Priority
+│   │   │   ├── Effective Dates
+│   │   │   ├── Exceptions
+│   │   │   ├── Testing
+│   │   │   ├── Versioning
+│   │   │   └── Execution History
+│   │   └── Business Rule Example — Attendance Risk
+│   │       ├── Rule:
+│   │       │   └── Attendance Risk
+│   │       ├── IF
+│   │       │   └── AttendanceRate < 90%
+│   │       ├── AND
+│   │       │   └── Student.Status = Active
+│   │       └── THEN
+│   │           ├── Add Risk Flag
+│   │           ├── Notify Attendance Officer
+│   │           └── Create Follow-up Task
+│   ├── A10. EVENT & AUTOMATION ENGINE
+│   │   ├── Automation
+│   │   │   ├── Events
+│   │   │   ├── Triggers
+│   │   │   ├── Conditions
+│   │   │   ├── Scheduled Automations
+│   │   │   ├── Event Automations
+│   │   │   ├── Actions
+│   │   │   ├── Delays
+│   │   │   ├── Escalations
+│   │   │   ├── Retry Policies
+│   │   │   ├── Failure Queue
+│   │   │   └── Execution History
+│   │   └── Event Example — StudentAbsent
+│   │       ├── Event:
+│   │       │   └── StudentAbsent
+│   │       └── Consumers:
+│   │           ├── Attendance
+│   │           ├── Parent Notification
+│   │           ├── Analytics
+│   │           ├── Student Risk
+│   │           └── Audit
+│   ├── A11. COMMUNICATION CENTER
+│   │   ├── Communication
+│   │   │   ├── Inbox
+│   │   │   ├── Messages
+│   │   │   ├── Announcements
+│   │   │   ├── Email
+│   │   │   ├── SMS
+│   │   │   ├── Push
+│   │   │   ├── Emergency Broadcast
+│   │   │   ├── Groups
+│   │   │   ├── Hierarchical Audience Scope
+│   │   │   │   ├── Entire Tenant / Group
+│   │   │   │   ├── All Branches
+│   │   │   │   ├── Selected Branches
+│   │   │   │   ├── Current Branch
+│   │   │   │   ├── Division / Department
+│   │   │   │   ├── Grade / Class
+│   │   │   │   └── Assigned Recipients
+│   │   │   ├── Sender Scope Validation
+│   │   │   ├── Templates
+│   │   │   ├── Scheduled Messages
+│   │   │   ├── Campaigns
+│   │   │   ├── Delivery Status
+│   │   │   ├── Replies
+│   │   │   ├── Preferences
+│   │   │   └── Communication Audit
+│   │   └── Message Workspace
+│   │       ├── Overview
+│   │       ├── Recipients
+│   │       ├── Audience Rules
+│   │       ├── Content
+│   │       ├── Attachments
+│   │       ├── Channels
+│   │       ├── Schedule
+│   │       ├── Delivery
+│   │       ├── Read Status
+│   │       ├── Failures
+│   │       ├── Replies
+│   │       ├── Related Records
+│   │       └── Audit
+│   ├── A12. NOTIFICATION CENTER
+│   │   └── Notifications
+│   │       ├── In-App
+│   │       ├── Push
+│   │       ├── Email
+│   │       ├── SMS
+│   │       ├── Notification Rules
+│   │       ├── Hierarchy-Aware Recipient Resolution
+│   │       │   ├── Tenant Owner
+│   │       │   ├── Group Manager
+│   │       │   ├── Branch Manager
+│   │       │   ├── Department / Module Manager
+│   │       │   └── Record Owner / Assigned User
+│   │       ├── Branch-Specific Notification Rules
+│   │       ├── Group-Wide Notification Rules
+│   │       ├── User Preferences
+│   │       ├── Quiet Hours
+│   │       ├── Priority
+│   │       ├── Digest
+│   │       ├── Retry
+│   │       └── Delivery Logs
+│   ├── A13. DOCUMENT MANAGEMENT
+│   │   └── Documents
+│   │       ├── Document Library
+│   │       ├── Person Documents
+│   │       ├── Student Documents
+│   │       ├── Employee Documents
+│   │       ├── Academic Documents
+│   │       ├── Financial Documents
+│   │       ├── Templates
+│   │       ├── Generated Documents
+│   │       ├── Version Control
+│   │       ├── Access Control
+│   │       ├── Expiry
+│   │       ├── Electronic Signature
+│   │       └── Audit
+│   ├── A14. FORMS & CONSENTS
+│   │   ├── Forms
+│   │   │   ├── Form Builder
+│   │   │   ├── Form Templates
+│   │   │   ├── Published Forms
+│   │   │   ├── Submissions
+│   │   │   ├── Approvals
+│   │   │   ├── Signatures
+│   │   │   ├── Attachments
+│   │   │   └── Analytics
+│   │   └── Consents
+│   │       ├── Consent Types
+│   │       ├── Consent Requests
+│   │       ├── Responses
+│   │       ├── Validity
+│   │       ├── Withdrawal
+│   │       └── History
+│   ├── A15. TASK & CASE MANAGEMENT
+│   │   └── Work Management
+│   │       ├── My Tasks
+│   │       ├── Team Tasks
+│   │       ├── Cases
+│   │       ├── Assignments
+│   │       ├── Priority
+│   │       ├── Due Dates
+│   │       ├── Watchers
+│   │       ├── Comments
+│   │       ├── Attachments
+│   │       ├── SLA
+│   │       ├── Escalation
+│   │       └── History
+│   ├── A16. AUDIT & SYSTEM HISTORY
+│   │   ├── Audit
+│   │   │   ├── Authentication Audit
+│   │   │   ├── Data Access Audit
+│   │   │   ├── Record Change Audit
+│   │   │   ├── Permission Audit
+│   │   │   ├── Configuration Audit
+│   │   │   ├── Financial Audit
+│   │   │   ├── Sensitive Data Audit
+│   │   │   ├── Export Audit
+│   │   │   ├── API Audit
+│   │   │   └── Administrator Audit
+│   │   └── Audit Record Schema
+│   │       ├── Timestamp
+│   │       ├── Actor
+│   │       ├── Role
+│   │       ├── Organization
+│   │       ├── Campus
+│   │       ├── Action
+│   │       ├── Entity
+│   │       ├── Record
+│   │       ├── Field
+│   │       ├── Old Value
+│   │       ├── New Value
+│   │       ├── Reason
+│   │       ├── Device
+│   │       ├── IP
+│   │       ├── Session
+│   │       ├── Source
+│   │       └── Result
+│   ├── A17. PRIVACY, COMPLIANCE & GOVERNANCE
+│   │   └── Governance
+│   │       ├── Privacy
+│   │       ├── Consent Management
+│   │       ├── Retention Policies
+│   │       ├── Data Classification
+│   │       ├── Data Access Requests
+│   │       ├── Data Correction Requests
+│   │       ├── Export Requests
+│   │       ├── Deletion / Anonymization
+│   │       ├── Legal Holds
+│   │       ├── Policy Acceptance
+│   │       ├── Compliance Reporting
+│   │       └── Governance Audit
+│   ├── A18. DATA QUALITY
+│   │   └── Data Quality
+│   │       ├── Missing Data
+│   │       ├── Invalid Data
+│   │       ├── Duplicate People
+│   │       ├── Duplicate Students
+│   │       ├── Relationship Errors
+│   │       ├── Conflicting Enrollments
+│   │       ├── Expired Documents
+│   │       ├── Invalid Contacts
+│   │       ├── Orphan Records
+│   │       ├── Referential Errors
+│   │       ├── Data Quality Score
+│   │       └── Resolution Tasks
+│   ├── A19. IMPORT / EXPORT / MIGRATION
+│   │   └── Data Management
+│   │       ├── Import Center
+│   │       │   ├── New Import
+│   │       │   ├── Import Templates
+│   │       │   ├── Import Types
+│   │       │   │   ├── Students
+│   │       │   │   ├── Parents / Guardians
+│   │       │   │   ├── Households / Families
+│   │       │   │   ├── Applicants
+│   │       │   │   ├── Employees
+│   │       │   │   ├── Teachers / Instructors
+│   │       │   │   ├── Organization Structure
+│   │       │   │   ├── Grades / Year Groups / Homerooms
+│   │       │   │   ├── Courses / Classes / Sections
+│   │       │   │   ├── Enrollments
+│   │       │   │   ├── Attendance
+│   │       │   │   ├── Assessments / Grades
+│   │       │   │   ├── Student Billing
+│   │       │   │   ├── Payments
+│   │       │   │   ├── Opening Balances
+│   │       │   │   ├── General Ledger / Accounting
+│   │       │   │   ├── Suppliers / Vendors
+│   │       │   │   ├── Inventory / Assets
+│   │       │   │   ├── Historical Data
+│   │       │   │   └── Custom Entity Import
+│   │       │   ├── Branch / Scope Assignment
+│   │       │   │   ├── Single-Branch Import
+│   │       │   │   ├── Multi-Branch Import
+│   │       │   │   ├── Source Branch Column Mapping
+│   │       │   │   ├── Institution / Branch Lookup
+│   │       │   │   ├── Default Branch
+│   │       │   │   ├── Reject Unknown Branch
+│   │       │   │   ├── Create Branch — Privileged Only
+│   │       │   │   └── Importer Scope Validation
+│   │       │   ├── Source Type
+│   │       │   │   ├── Excel XLSX / XLS
+│   │       │   │   ├── CSV
+│   │       │   │   ├── JSON
+│   │       │   │   ├── XML
+│   │       │   │   ├── API Source
+│   │       │   │   ├── SFTP / Secure File
+│   │       │   │   └── Previous School / ERP System
+│   │       │   ├── File & Workbook
+│   │       │   │   ├── Upload File
+│   │       │   │   ├── Virus / File Safety Check
+│   │       │   │   ├── Workbook Detection
+│   │       │   │   ├── Sheet Selection
+│   │       │   │   ├── Header Row Selection
+│   │       │   │   └── Encoding / Locale Detection
+│   │       │   ├── Data Profiling
+│   │       │   │   ├── Row Count
+│   │       │   │   ├── Column Detection
+│   │       │   │   ├── Data Type Detection
+│   │       │   │   ├── Null / Missing Analysis
+│   │       │   │   ├── Unique Value Analysis
+│   │       │   │   ├── Pattern Detection
+│   │       │   │   └── Potential ID Detection
+│   │       │   ├── Column Mapping
+│   │       │   │   ├── Source Column
+│   │       │   │   ├── Target Entity
+│   │       │   │   ├── Target Field
+│   │       │   │   ├── Ignore Column
+│   │       │   │   ├── Save Mapping Template
+│   │       │   │   └── Reuse Mapping Template
+│   │       │   ├── Transformation
+│   │       │   │   ├── Date Conversion
+│   │       │   │   ├── Time Conversion
+│   │       │   │   ├── Number Conversion
+│   │       │   │   ├── Currency Conversion
+│   │       │   │   ├── Text Normalization
+│   │       │   │   ├── Whitespace Cleanup
+│   │       │   │   ├── Phone Normalization
+│   │       │   │   ├── Email Normalization
+│   │       │   │   ├── Country / Nationality Mapping
+│   │       │   │   ├── Gender / Status Mapping
+│   │       │   │   ├── Custom Value Mapping
+│   │       │   │   └── Formula / Derived Value
+│   │       │   ├── Reference / Lookup Mapping
+│   │       │   │   ├── Tenant / Group Mapping
+│   │       │   │   ├── Institution / School Mapping
+│   │       │   │   ├── Branch / Campus Mapping
+│   │       │   │   ├── Division / Department Mapping
+│   │       │   │   ├── Grade Mapping
+│   │       │   │   ├── Class Mapping
+│   │       │   │   ├── Course Mapping
+│   │       │   │   ├── Department Mapping
+│   │       │   │   ├── Fee Mapping
+│   │       │   │   ├── Account Mapping
+│   │       │   │   └── Status / Code Mapping
+│   │       │   ├── Relationship Mapping
+│   │       │   │   ├── Student → Parent / Guardian
+│   │       │   │   ├── Student → Household
+│   │       │   │   ├── Student → Grade / Class
+│   │       │   │   ├── Student → Enrollment
+│   │       │   │   ├── Teacher → Course / Class
+│   │       │   │   ├── Employee → Department / Position
+│   │       │   │   ├── Invoice → Student / Family
+│   │       │   │   ├── Payment → Invoice / Account
+│   │       │   │   └── Asset → Person / Location
+│   │       │   ├── Duplicate Detection
+│   │       │   │   ├── Exact ID Match
+│   │       │   │   ├── Name + DOB Match
+│   │       │   │   ├── Email Match
+│   │       │   │   ├── Phone Match
+│   │       │   │   ├── Configurable Match Rules
+│   │       │   │   ├── Similarity Score
+│   │       │   │   ├── Duplicate Review Queue
+│   │       │   │   └── Merge / Skip / Create Decision
+│   │       │   ├── Validation
+│   │       │   │   ├── Required Fields
+│   │       │   │   ├── Invalid Values
+│   │       │   │   ├── Data Type Errors
+│   │       │   │   ├── Duplicate IDs
+│   │       │   │   ├── Broken Relationships
+│   │       │   │   ├── Invalid References
+│   │       │   │   ├── Date Conflicts
+│   │       │   │   ├── Enrollment Conflicts
+│   │       │   │   ├── Branch Scope Conflicts
+│   │       │   │   ├── Cross-Branch Duplicate Person
+│   │       │   │   ├── Cross-Branch Active Enrollment Conflict
+│   │       │   │   ├── Financial Imbalance
+│   │       │   │   └── Permission / Scope Validation
+│   │       │   ├── Preview
+│   │       │   │   ├── Mapped Preview
+│   │       │   │   ├── Valid Rows
+│   │       │   │   ├── Warnings
+│   │       │   │   ├── Errors
+│   │       │   │   ├── Skipped Rows
+│   │       │   │   ├── Potential Duplicates
+│   │       │   │   └── Relationship Preview
+│   │       │   ├── Dry Run
+│   │       │   │   ├── Simulate Creation
+│   │       │   │   ├── Simulate Updates
+│   │       │   │   ├── Simulate Financial Posting
+│   │       │   │   ├── Simulate Relationships
+│   │       │   │   └── Dry-Run Report
+│   │       │   ├── Approval
+│   │       │   │   ├── Submit Import for Approval
+│   │       │   │   ├── Reviewer
+│   │       │   │   ├── Approve
+│   │       │   │   ├── Reject
+│   │       │   │   └── Return for Correction
+│   │       │   ├── Execution
+│   │       │   │   ├── Start Import
+│   │       │   │   ├── Background Job
+│   │       │   │   ├── Progress
+│   │       │   │   ├── Batch Processing
+│   │       │   │   ├── Partial Failure Handling
+│   │       │   │   └── Retry Failed Rows
+│   │       │   ├── Error / Quarantine
+│   │       │   │   ├── Error Queue
+│   │       │   │   ├── Row-Level Error
+│   │       │   │   ├── Field-Level Error
+│   │       │   │   ├── Download Error File
+│   │       │   │   ├── Correct & Re-upload
+│   │       │   │   └── Reprocess Failed Rows
+│   │       │   ├── Rollback
+│   │       │   │   ├── Rollback Import Batch
+│   │       │   │   ├── Rollback Created Records
+│   │       │   │   ├── Rollback Updated Fields
+│   │       │   │   ├── Rollback Financial Posting
+│   │       │   │   ├── Rollback Relationships
+│   │       │   │   └── Rollback Audit
+│   │       │   ├── Reconciliation
+│   │       │   │   ├── Expected Count
+│   │       │   │   ├── Imported Count
+│   │       │   │   ├── Financial Totals
+│   │       │   │   ├── Relationship Totals
+│   │       │   │   ├── Exceptions
+│   │       │   │   └── Reconciliation Sign-off
+│   │       │   └── Import History
+│   │       │       ├── Import ID
+│   │       │       ├── Source File
+│   │       │       ├── Importer
+│   │       │       ├── Timestamp
+│   │       │       ├── Mapping Version
+│   │       │       ├── Row Counts
+│   │       │       ├── Result
+│   │       │       ├── Rollback Status
+│   │       │       └── Audit
+│   │       ├── Export Center
+│   │       │   ├── Export Scope
+│   │       │   │   ├── Current View
+│   │       │   │   ├── Current Branch
+│   │       │   │   ├── Selected Branches
+│   │       │   │   ├── All Authorized Branches
+│   │       │   │   ├── Group Consolidated Dataset
+│   │       │   │   ├── Selected Records
+│   │       │   │   ├── All Matching Records
+│   │       │   │   ├── Saved Query
+│   │       │   │   └── Custom Dataset
+│   │       │   ├── Formats
+│   │       │   │   ├── Excel XLSX
+│   │       │   │   ├── CSV
+│   │       │   │   ├── PDF
+│   │       │   │   ├── JSON
+│   │       │   │   ├── XML
+│   │       │   │   └── API / Feed
+│   │       │   ├── Field Selection
+│   │       │   │   ├── Standard Fields
+│   │       │   │   ├── Custom Fields
+│   │       │   │   ├── Related Fields
+│   │       │   │   ├── Calculated Fields
+│   │       │   │   └── Sensitive Field Warning
+│   │       │   ├── Security
+│   │       │   │   ├── Export Permission Check
+│   │       │   │   ├── Record Scope Check
+│   │       │   │   ├── Field-Level Access Check
+│   │       │   │   ├── Data Masking
+│   │       │   │   ├── Anonymization / Pseudonymization
+│   │       │   │   ├── Password Protection
+│   │       │   │   ├── Encryption
+│   │       │   │   └── Download Expiry
+│   │       │   ├── Scheduled Export
+│   │       │   │   ├── Schedule
+│   │       │   │   ├── Recipients
+│   │       │   │   ├── Secure Delivery
+│   │       │   │   ├── SFTP Destination
+│   │       │   │   ├── Retention
+│   │       │   │   └── Failure Notification
+│   │       │   └── Export Audit
+│   │       │       ├── Who Exported
+│   │       │       ├── What Was Exported
+│   │       │       ├── Record Count
+│   │       │       ├── Sensitive Data Included
+│   │       │       ├── Destination
+│   │       │       ├── Timestamp
+│   │       │       └── Reason
+│   │       ├── Bulk Data Operations
+│   │       │   ├── Bulk Create
+│   │       │   ├── Bulk Update
+│   │       │   ├── Bulk Status Change
+│   │       │   ├── Bulk Assign / Reassign
+│   │       │   ├── Bulk Archive
+│   │       │   ├── Bulk Restore
+│   │       │   ├── Bulk Merge
+│   │       │   ├── Bulk Delete — Restricted
+│   │       │   ├── Bulk Validation
+│   │       │   └── Bulk Operation Audit
+│   │       ├── Migration Projects
+│   │       │   ├── Migration Project Workspace
+│   │       │   │   ├── Source System
+│   │       │   │   ├── Target Tenant
+│   │       │   │   ├── Migration Scope
+│   │       │   │   ├── Owners
+│   │       │   │   ├── Timeline
+│   │       │   │   ├── Status
+│   │       │   │   ├── Risks
+│   │       │   │   └── Documents
+│   │       │   ├── Data Inventory
+│   │       │   │   ├── Source Tables / Files
+│   │       │   │   ├── Data Volumes
+│   │       │   │   ├── Historical Years
+│   │       │   │   ├── Custom Fields
+│   │       │   │   ├── Attachments
+│   │       │   │   └── Unsupported Data
+│   │       │   ├── Mapping Workbook
+│   │       │   ├── Data Cleansing
+│   │       │   ├── Test Migration
+│   │       │   ├── Validation / UAT
+│   │       │   ├── Stakeholder Sign-off
+│   │       │   ├── Cutover Plan
+│   │       │   ├── Data Freeze Window
+│   │       │   ├── Final Migration
+│   │       │   ├── Financial Reconciliation
+│   │       │   ├── Source Archive
+│   │       │   ├── Post-Go-Live Validation
+│   │       │   ├── Migration Report
+│   │       │   └── Migration Audit
+│   │       ├── Historical Data
+│   │       │   ├── Historical Student Records
+│   │       │   ├── Historical Academic Records
+│   │       │   ├── Historical Attendance
+│   │       │   ├── Historical Finance
+│   │       │   ├── Historical HR
+│   │       │   ├── Read-Only Archive
+│   │       │   └── Legacy Source Reference
+│   │       ├── Data Reconciliation
+│   │       │   ├── Record Counts
+│   │       │   ├── Control Totals
+│   │       │   ├── Financial Control Totals
+│   │       │   ├── Relationship Checks
+│   │       │   ├── Missing / Extra Records
+│   │       │   ├── Mismatch Queue
+│   │       │   ├── Resolution
+│   │       │   └── Sign-off
+│   │       └── Mapping & Template Library
+│   │           ├── School Templates
+│   │           ├── Country Templates
+│   │           ├── Vendor Templates
+│   │           ├── Saved Mappings
+│   │           ├── Mapping Versions
+│   │           └── Template Permissions
+│   ├── A20. INTEGRATIONS & API
+│   │   └── Integrations
+│   │       ├── Integration Directory
+│   │       ├── API Clients
+│   │       ├── OAuth Apps
+│   │       ├── Service Accounts
+│   │       ├── Webhooks
+│   │       ├── API Keys
+│   │       ├── SSO Connections
+│   │       ├── Google
+│   │       ├── Microsoft
+│   │       ├── Payment Providers
+│   │       ├── SMS Providers
+│   │       ├── Email Providers
+│   │       ├── LMS
+│   │       ├── Accounting
+│   │       ├── Government Systems
+│   │       └── Integration Logs
+│   ├── A21. SEARCH
+│   │   └── Search
+│   │       ├── Global Search
+│   │       ├── Search Scope Selector
+│   │       │   ├── Current Branch
+│   │       │   ├── Selected Branches
+│   │       │   ├── All Authorized Branches
+│   │       │   └── Entire Tenant — Authorized Only
+│   │       ├── Person Search
+│   │       ├── Student Search
+│   │       ├── Staff Search
+│   │       ├── Record Search
+│   │       ├── Advanced Search
+│   │       ├── Saved Searches
+│   │       ├── Search Filters
+│   │       └── Recent Searches
+│   ├── A22. ANALYTICS & REPORTING PLATFORM
+│   │   └── Analytics
+│   │       ├── Dashboards
+│   │       ├── Executive Group Dashboard
+│   │       ├── Branch Dashboard
+│   │       ├── Department Dashboard
+│   │       ├── Branch Comparison
+│   │       ├── Consolidated KPIs
+│   │       ├── Drill-Down: Group → Branch → Department → Record
+│   │       ├── Scope Selector: Current / Selected / All Branches
+│   │       ├── KPI Library
+│   │       ├── Report Library
+│   │       ├── Report Builder
+│   │       ├── Query Builder
+│   │       ├── Charts
+│   │       ├── Cohorts
+│   │       ├── Filters
+│   │       ├── Drill-down
+│   │       ├── Comparisons
+│   │       ├── Scheduled Reports
+│   │       ├── Distribution
+│   │       ├── Export
+│   │       └── Data Warehouse
+│   ├── A23. SYSTEM OPERATIONS
+│   │   └── System
+│   │       ├── System Health
+│   │       ├── Background Jobs
+│   │       ├── Job Failures
+│   │       ├── Queues
+│   │       ├── Storage
+│   │       ├── Cache
+│   │       ├── Database Health
+│   │       ├── Maintenance Mode
+│   │       ├── Feature Flags
+│   │       ├── Release Information
+│   │       ├── Error Logs
+│   │       └── Diagnostics
+│   ├── A24. BACKUP & DISASTER RECOVERY
+│   │   └── Backup
+│   │       ├── Backup Policies
+│   │       ├── Backup History
+│   │       ├── Restore Points
+│   │       ├── Restore
+│   │       ├── Data Recovery
+│   │       ├── Disaster Recovery
+│   │       ├── Recovery Tests
+│   │       └── Recovery Audit
+│   ├── A25. MASTER DATA GOVERNANCE & RECORD LIFECYCLE
+│   │   └── Master Data Governance
+│   │       ├── Master Data Catalog
+│   │       │   ├── People
+│   │       │   ├── Organizations
+│   │       │   ├── Academic Structures
+│   │       │   ├── Finance Codes
+│   │       │   ├── Reference Data
+│   │       │   └── Custom Master Data
+│   │       ├── Data Ownership
+│   │       │   ├── Data Owner
+│   │       │   ├── Data Steward
+│   │       │   ├── System Owner
+│   │       │   └── Approval Owner
+│   │       ├── Canonical Record Management
+│   │       │   ├── Golden Record
+│   │       │   ├── Source Priority
+│   │       │   ├── Conflict Resolution
+│   │       │   └── Survivorship Rules
+│   │       ├── Duplicate Management
+│   │       │   ├── Duplicate Detection Rules
+│   │       │   ├── Tenant-Wide Person Duplicate Detection
+│   │       │   ├── Cross-Branch Student Duplicate Detection
+│   │       │   ├── Cross-Branch Employee Duplicate Detection
+│   │       │   ├── Potential Duplicate Queue
+│   │       │   ├── Compare Records
+│   │       │   ├── Merge Records
+│   │       │   ├── Re-link Relationships
+│   │       │   ├── Preserve Source IDs
+│   │       │   └── Merge Audit
+│   │       ├── Critical Field Governance
+│   │       │   ├── Critical Fields
+│   │       │   ├── Change Request
+│   │       │   ├── Approval
+│   │       │   ├── Reason Required
+│   │       │   ├── Effective Date
+│   │       │   └── Change History
+│   │       ├── Reference Data Management
+│   │       │   ├── Codes
+│   │       │   ├── Statuses
+│   │       │   ├── Lookups
+│   │       │   ├── Controlled Vocabularies
+│   │       │   ├── Effective Dates
+│   │       │   └── Deprecation
+│   │       ├── Record Lifecycle
+│   │       │   ├── Draft
+│   │       │   ├── Active
+│   │       │   ├── Inactive
+│   │       │   ├── Suspended
+│   │       │   ├── Closed
+│   │       │   ├── Archived
+│   │       │   ├── Anonymized
+│   │       │   └── Disposed
+│   │       ├── Cross-Branch Identity Continuity
+│   │       │   ├── One Person / One Canonical Record
+│   │       │   ├── Multiple Branch Assignments
+│   │       │   ├── Historical Branch Membership
+│   │       │   └── No Duplicate Person on Transfer
+│   │       ├── Record Merge / Split
+│   │       ├── Data Lineage
+│   │       ├── Data Provenance
+│   │       ├── Governance Dashboard
+│   │       └── Governance Audit
+│   ├── A26. CONTRACT & AGREEMENT MANAGEMENT
+│   │   └── Contracts
+│   │       ├── Contract Types
+│   │       │   ├── Student Enrollment Contract
+│   │       │   ├── Staff Contract
+│   │       │   ├── Instructor Contract
+│   │       │   ├── Vendor Contract
+│   │       │   ├── Lease
+│   │       │   ├── Partnership / MOU
+│   │       │   ├── Grant Agreement
+│   │       │   ├── Service Agreement
+│   │       │   └── Other
+│   │       ├── Contract Templates
+│   │       │   ├── Template Builder
+│   │       │   ├── Clauses
+│   │       │   ├── Variables
+│   │       │   ├── Conditional Clauses
+│   │       │   ├── Language Versions
+│   │       │   └── Versioning
+│   │       ├── Contract Workspace
+│   │       │   ├── Overview
+│   │       │   ├── Parties
+│   │       │   ├── Terms
+│   │       │   ├── Financial Terms
+│   │       │   ├── Dates
+│   │       │   ├── Obligations
+│   │       │   ├── Documents
+│   │       │   ├── Approvals
+│   │       │   ├── Signatures
+│   │       │   ├── Amendments
+│   │       │   ├── Renewals
+│   │       │   ├── Termination
+│   │       │   ├── Timeline
+│   │       │   └── Audit
+│   │       ├── Approval Workflow
+│   │       ├── Electronic Signature
+│   │       ├── Obligation Tracking
+│   │       ├── Expiry / Renewal Alerts
+│   │       ├── Amendments
+│   │       ├── Termination
+│   │       ├── Contract Register
+│   │       └── Contract Reports
+│   ├── A27. SERVICE DESK & INTERNAL REQUESTS
+│   │   └── Service Desk
+│   │       ├── Service Catalog
+│   │       │   ├── IT
+│   │       │   ├── HR
+│   │       │   ├── Finance
+│   │       │   ├── Facilities
+│   │       │   ├── Academic
+│   │       │   ├── Procurement
+│   │       │   └── General
+│   │       ├── My Requests
+│   │       ├── Team Queue
+│   │       ├── Ticket Workspace
+│   │       │   ├── Ticket ID
+│   │       │   ├── Requester
+│   │       │   ├── Category
+│   │       │   ├── Subcategory
+│   │       │   ├── Priority
+│   │       │   ├── Impact
+│   │       │   ├── Urgency
+│   │       │   ├── Status
+│   │       │   ├── Assigned Team
+│   │       │   ├── Assigned Agent
+│   │       │   ├── SLA
+│   │       │   ├── Description
+│   │       │   ├── Comments
+│   │       │   ├── Attachments
+│   │       │   ├── Linked Person
+│   │       │   ├── Linked Student
+│   │       │   ├── Linked Asset
+│   │       │   ├── Linked Location
+│   │       │   ├── Approvals
+│   │       │   ├── Tasks
+│   │       │   ├── Timeline
+│   │       │   └── Audit
+│   │       ├── SLA Management
+│   │       ├── Assignment Rules
+│   │       ├── Escalations
+│   │       ├── Approvals
+│   │       ├── Knowledge Base
+│   │       ├── Canned Responses
+│   │       └── Service Analytics
+│   ├── A28. INTERNATIONALIZATION, LOCALIZATION & COUNTRY PACKS
+│   │   └── Localization
+│   │       ├── Language Packs
+│   │       ├── Multi-Language Content
+│   │       ├── Translation Fields
+│   │       ├── RTL / LTR Layout
+│   │       ├── Fallback Languages
+│   │       ├── Locale Formats
+│   │       │   ├── Date
+│   │       │   ├── Time
+│   │       │   ├── Number
+│   │       │   ├── Currency
+│   │       │   ├── Name Format
+│   │       │   └── Address Format
+│   │       ├── Multi-Currency
+│   │       ├── Exchange Rates
+│   │       ├── Terminology Packs
+│   │       ├── Country Configuration Packs
+│   │       ├── Country Academic Calendars
+│   │       ├── Localized Document Templates
+│   │       ├── Localized Notification Templates
+│   │       ├── Country-Specific Validation Rules
+│   │       └── Localization Audit
+│   ├── A29. RECORDS MANAGEMENT & ARCHIVAL
+│   │   └── Records Management
+│   │       ├── Record Classes
+│   │       ├── File Plans
+│   │       ├── Retention Schedules
+│   │       ├── Official Record Declaration
+│   │       ├── Immutable / Locked Records
+│   │       ├── Archive
+│   │       ├── Legal Hold
+│   │       ├── Disposition Review
+│   │       ├── Secure Disposal
+│   │       ├── Anonymization
+│   │       ├── Archive Search
+│   │       ├── Archive Export
+│   │       ├── Disposition Certificate
+│   │       └── Records Audit
+│   └── A30. MULTI-BRANCH / SCHOOL-GROUP ADMINISTRATION
+│       ├── Group Administration Console
+│       │   ├── Group Overview
+│       │   ├── Branch Directory
+│       │   ├── Add Branch / Campus
+│       │   ├── Branch Status
+│       │   ├── Branch Managers
+│       │   ├── Central Managers
+│       │   ├── Branch Quotas
+│       │   ├── Central Policies
+│       │   ├── Branch Overrides
+│       │   ├── Consolidated Reports
+│       │   └── Group Audit
+│       ├── Branch Administration Console
+│       │   ├── Branch Overview
+│       │   ├── Local Managers
+│       │   ├── Department Managers
+│       │   ├── Module Owners
+│       │   ├── Teachers
+│       │   ├── Employees
+│       │   ├── Students
+│       │   ├── Parents / Guardians
+│       │   ├── Local Roles
+│       │   ├── Local Configuration
+│       │   ├── Branch Usage / Limits
+│       │   └── Branch Audit
+│       ├── Manager Creation & Delegation
+│       │   ├── Create Local Manager
+│       │   ├── Select Functional Area
+│       │   ├── Select Role Template
+│       │   ├── Define Scope
+│       │   ├── Define Delegable Roles
+│       │   ├── Define Approval Authority
+│       │   ├── Effective Dates
+│       │   ├── Higher-Level Approval — If Required
+│       │   ├── Activate
+│       │   └── Audit
+│       ├── User / Student / Staff Provisioning by Branch
+│       │   ├── Manual Create
+│       │   ├── Bulk Create
+│       │   ├── Excel Import
+│       │   ├── Invite
+│       │   ├── Assign Branch
+│       │   ├── Assign Division / Department / Class
+│       │   ├── Assign Role
+│       │   ├── Assign Fees / Compensation — Where Applicable
+│       │   ├── Activate Account
+│       │   └── Provisioning Audit
+│       ├── Central-vs-Local Administration Matrix
+│       │   ├── Admissions
+│       │   ├── Academic Calendar
+│       │   ├── Curriculum
+│       │   ├── Grading
+│       │   ├── Attendance Policies
+│       │   ├── Tuition / Fees
+│       │   ├── Payroll Rules
+│       │   ├── HR Policies
+│       │   ├── Branding
+│       │   ├── Communication
+│       │   ├── Procurement
+│       │   ├── Finance / Accounting
+│       │   └── Country / Regulatory Rules
+│       ├── Configuration Inheritance
+│       │   ├── Group Default
+│       │   ├── Branch Inherited
+│       │   ├── Branch Override Allowed
+│       │   ├── Branch Override Approval Required
+│       │   ├── Group Locked
+│       │   ├── Effective-Dated Changes
+│       │   └── Inheritance Audit
+│       ├── Branch Quotas & Capacity
+│       │   ├── Students
+│       │   ├── Teachers
+│       │   ├── Employees
+│       │   ├── Managers / Admins
+│       │   ├── Storage
+│       │   ├── API Usage
+│       │   ├── SMS / Notification Usage
+│       │   ├── Current Usage
+│       │   ├── Warning Threshold
+│       │   └── Reallocation
+│       ├── Student Cross-Branch Transfer
+│       │   ├── Transfer Request
+│       │   ├── Source Branch
+│       │   ├── Destination Branch
+│       │   ├── Eligibility / Capacity Check
+│       │   ├── Source Approval
+│       │   ├── Destination Approval
+│       │   ├── Close Source Enrollment
+│       │   ├── Create Destination Enrollment
+│       │   ├── Preserve Student ID / Canonical Person
+│       │   ├── Transfer Academic History
+│       │   ├── Transfer / Resolve Financial Balance
+│       │   ├── Transfer Medical / Safeguarding Access Rules
+│       │   ├── Update Parent Portal
+│       │   ├── Notifications
+│       │   └── Transfer Audit
+│       ├── Shared Staff / Cross-Branch Assignment
+│       │   ├── Single Employee Master Record
+│       │   ├── Multiple Employment Assignments
+│       │   ├── Branch Assignment
+│       │   ├── Department / Position
+│       │   ├── Timetable / Workload Allocation
+│       │   ├── Cost Center Allocation
+│       │   ├── Compensation Allocation
+│       │   ├── Approval
+│       │   ├── Effective Dates
+│       │   └── Assignment History
+│       ├── Family Across Branches
+│       │   ├── One Household Record
+│       │   ├── Children in Different Branches
+│       │   ├── Consolidated Parent Portal
+│       │   ├── Branch-Specific Academic Access
+│       │   ├── Consolidated / Branch-Specific Billing View
+│       │   └── Communication Scope
+│       ├── Shared Central Departments
+│       │   ├── Group HR
+│       │   ├── Group Finance
+│       │   ├── Group Academic
+│       │   ├── Group Admissions
+│       │   ├── Group IT
+│       │   ├── Group Procurement
+│       │   ├── Group Compliance
+│       │   └── Scope-Based Access to All / Selected Branches
+│       ├── Cross-Branch Workflows
+│       │   ├── Local Approval
+│       │   ├── Central Review
+│       │   ├── Group Final Approval
+│       │   ├── Branch-Specific Approval Matrix
+│       │   ├── Central Escalation
+│       │   └── Delegation / Absence Cover
+│       ├── Consolidated Group Reporting
+│       │   ├── All Branches
+│       │   ├── Selected Branches
+│       │   ├── Branch Comparison
+│       │   ├── Enrollment
+│       │   ├── Attendance
+│       │   ├── Academics
+│       │   ├── Admissions
+│       │   ├── Student Billing / Collection
+│       │   ├── Expenses
+│       │   ├── Payroll
+│       │   ├── Staffing
+│       │   ├── Safeguarding / Risk — Permission Restricted
+│       │   ├── Operational KPIs
+│       │   └── Drill-Down
+│       ├── Branch Closure / Merge / Split
+│       │   ├── Closure Plan
+│       │   ├── Freeze New Activity
+│       │   ├── Student Transfer Plan
+│       │   ├── Staff Reassignment
+│       │   ├── Financial Close
+│       │   ├── Asset Transfer
+│       │   ├── Record Retention
+│       │   ├── Merge / Split Mapping
+│       │   └── Audit
+│       └── Multi-Branch Audit & Monitoring
+│           ├── Cross-Branch Access Events
+│           ├── Manager / Role Changes
+│           ├── Configuration Overrides
+│           ├── Transfers
+│           ├── Shared Staff Changes
+│           ├── Consolidation Jobs
+│           ├── Quota Breaches
+│           ├── Privilege Escalation Attempts
+│           └── Security Alerts
+├── B. SCHOOL / K-12 PACK
+│   ├── B01. ACADEMIC YEAR & SCHOOL STRUCTURE
+│   │   └── Academic Setup
+│   │       ├── Academic Years
+│   │       │   └── Academic Year Workspace
+│   │       │       ├── Overview
+│   │       │       ├── Terms
+│   │       │       ├── Holidays
+│   │       │       ├── Instructional Days
+│   │       │       ├── Calendar
+│   │       │       ├── Rollover
+│   │       │       └── Audit
+│   │       ├── Terms / Semesters
+│   │       ├── Branch Academic Configuration
+│   │       │   ├── Inherit Group Academic Year
+│   │       │   ├── Branch-Specific Terms — If Allowed
+│   │       │   ├── Branch Calendar Override
+│   │       │   └── Group Lock / Override Rules
+│   │       ├── Grade / Year Groups
+│   │       ├── Homerooms
+│   │       ├── Tutor Groups
+│   │       ├── Houses
+│   │       ├── Cohorts
+│   │       └── Divisions
+│   ├── B02. ADMISSIONS CRM
+│   │   ├── Admissions
+│   │   │   ├── Dashboard
+│   │   │   ├── Leads / Inquiries
+│   │   │   ├── Applicants
+│   │   │   ├── Branch / Campus Preferences
+│   │   │   ├── Central Admissions Queue
+│   │   │   ├── Branch Admissions Queues
+│   │   │   ├── Application Routing by Branch / Capacity
+│   │   │   ├── Cross-Branch Applicant Reassignment
+│   │   │   ├── Applications
+│   │   │   ├── Pipelines
+│   │   │   ├── Events
+│   │   │   ├── Interviews
+│   │   │   ├── Assessments
+│   │   │   ├── Decisions
+│   │   │   ├── Offers
+│   │   │   ├── Waitlists
+│   │   │   └── Analytics
+│   │   └── Applicant
+│   │       ├── Overview
+│   │       ├── Identity
+│   │       ├── Family
+│   │       ├── Contact
+│   │       ├── Application
+│   │       │   ├── Programme
+│   │       │   ├── Grade
+│   │       │   ├── Campus
+│   │       │   ├── Entry Year
+│   │       │   └── Status
+│   │       ├── Checklist
+│   │       ├── Documents
+│   │       ├── Forms
+│   │       ├── Fees
+│   │       ├── Assessment
+│   │       ├── Interview
+│   │       ├── Notes
+│   │       ├── Communications
+│   │       ├── Decision
+│   │       ├── Offer
+│   │       ├── Enrollment
+│   │       ├── Timeline
+│   │       └── Audit
+│   ├── B03. ENROLLMENT & RE-ENROLLMENT
+│   │   ├── Enrollment
+│   │   │   ├── Enrollment Dashboard
+│   │   │   ├── New Enrollment
+│   │   │   ├── Enrollment Contracts
+│   │   │   ├── Deposits
+│   │   │   ├── Enrollment Checklist
+│   │   │   ├── Placement
+│   │   │   ├── Re-enrollment
+│   │   │   ├── Withdrawal
+│   │   │   ├── Transfer
+│   │   │   │   ├── Internal Cross-Branch Transfer
+│   │   │   │   ├── External Transfer In / Out
+│   │   │   │   ├── Source Branch Approval
+│   │   │   │   ├── Destination Branch Approval
+│   │   │   │   ├── Enrollment Continuity
+│   │   │   │   ├── Financial Balance Handling
+│   │   │   │   └── Transfer History
+│   │   │   └── Enrollment History
+│   │   └── Enrollment State Machine
+│   │       └── Pending
+│   │           └── Documents Required
+│   │               └── Ready for Review
+│   │                   └── Approved
+│   │                       └── Contract Issued
+│   │                           └── Contract Signed
+│   │                               └── Deposit Pending
+│   │                                   └── Deposit Paid
+│   │                                       └── Placement Pending
+│   │                                           └── Enrolled
+│   ├── B04. STUDENT DIRECTORY
+│   │   └── Students
+│   │       ├── All Students
+│   │       ├── Active
+│   │       ├── Future
+│   │       ├── On Leave
+│   │       ├── Withdrawn
+│   │       ├── Graduated
+│   │       ├── Alumni
+│   │       ├── Archived
+│   │       ├── Saved Groups
+│   │       └── Advanced Search
+│   ├── B05. STUDENT 360 WORKSPACE
+│   │   └── Student Workspace
+│   │       ├── HEADER
+│   │       │   ├── Photo
+│   │       │   ├── Name
+│   │       │   ├── Student ID
+│   │       │   ├── Grade
+│   │       │   ├── Homeroom
+│   │       │   ├── Status
+│   │       │   ├── Attendance %
+│   │       │   ├── Important Flags
+│   │       │   └── Quick Actions
+│   │       ├── Overview
+│   │       │   ├── Summary
+│   │       │   ├── Today's Schedule
+│   │       │   ├── Attendance
+│   │       │   ├── Academic Snapshot
+│   │       │   ├── Alerts
+│   │       │   ├── Upcoming Tasks
+│   │       │   └── Recent Activity
+│   │       ├── Profile
+│   │       │   ├── Personal
+│   │       │   ├── Contact
+│   │       │   ├── Demographics
+│   │       │   ├── Languages
+│   │       │   ├── Identifiers
+│   │       │   └── Status
+│   │       ├── Family
+│   │       │   ├── Household
+│   │       │   ├── Guardians
+│   │       │   ├── Siblings
+│   │       │   ├── Emergency Contacts
+│   │       │   ├── Pickup
+│   │       │   └── Restrictions
+│   │       ├── Enrollment
+│   │       │   ├── Current
+│   │       │   ├── Placement
+│   │       │   ├── History
+│   │       │   ├── Transfers
+│   │       │   └── Withdrawals
+│   │       ├── Academic
+│   │       │   ├── Curriculum
+│   │       │   ├── Courses
+│   │       │   ├── Subjects
+│   │       │   ├── Classes
+│   │       │   ├── Teachers
+│   │       │   └── History
+│   │       ├── Timetable
+│   │       ├── Attendance
+│   │       │   ├── Summary
+│   │       │   ├── Daily
+│   │       │   ├── Lesson
+│   │       │   ├── Absence
+│   │       │   ├── Late
+│   │       │   ├── Early Leave
+│   │       │   └── History
+│   │       ├── Assessment
+│   │       │   ├── Gradebooks
+│   │       │   ├── Assessments
+│   │       │   ├── Results
+│   │       │   ├── Trends
+│   │       │   └── Predictions
+│   │       ├── Exams
+│   │       ├── Reports
+│   │       │   ├── Monthly
+│   │       │   ├── Term
+│   │       │   ├── Annual
+│   │       │   ├── Transcript
+│   │       │   └── Certificates
+│   │       ├── Learning
+│   │       │   ├── Homework
+│   │       │   ├── Assignments
+│   │       │   ├── Submissions
+│   │       │   ├── Feedback
+│   │       │   └── Resources
+│   │       ├── Behaviour
+│   │       ├── Rewards
+│   │       ├── Discipline
+│   │       ├── Wellbeing
+│   │       ├── Safeguarding
+│   │       ├── Learning Support
+│   │       ├── Medical
+│   │       ├── Activities
+│   │       ├── Trips
+│   │       ├── Transport
+│   │       ├── Meals
+│   │       ├── Finance
+│   │       ├── Documents
+│   │       ├── Consents
+│   │       ├── Communications
+│   │       ├── Requests
+│   │       ├── Notes
+│   │       ├── Tasks
+│   │       ├── Flags
+│   │       ├── Timeline
+│   │       └── Audit
+│   ├── B06. CURRICULUM MANAGEMENT
+│   │   ├── Curriculum
+│   │   │   ├── Curricula
+│   │   │   ├── Programmes
+│   │   │   ├── Subjects
+│   │   │   ├── Courses
+│   │   │   ├── Course Offerings
+│   │   │   ├── Teaching Groups
+│   │   │   ├── Sets
+│   │   │   ├── Standards
+│   │   │   ├── Learning Objectives
+│   │   │   ├── Certifications
+│   │   │   └── Curriculum Mapping
+│   │   └── Course Workspace
+│   │       ├── Overview
+│   │       ├── Course Identity
+│   │       ├── Curriculum
+│   │       ├── Subject
+│   │       ├── Grade Level
+│   │       ├── Description
+│   │       ├── Objectives
+│   │       ├── Standards
+│   │       ├── Prerequisites
+│   │       ├── Teachers
+│   │       ├── Course Offerings
+│   │       ├── Sections
+│   │       ├── Assessments
+│   │       ├── Resources
+│   │       ├── Grading Scheme
+│   │       ├── Calendar
+│   │       ├── Students
+│   │       ├── Reports
+│   │       └── History
+│   ├── B07. TIMETABLE & SCHEDULING
+│   │   ├── Scheduling
+│   │   │   ├── Timetable
+│   │   │   ├── Timetable Builder
+│   │   │   ├── Periods
+│   │   │   ├── Bell Schedules
+│   │   │   ├── Teacher Availability
+│   │   │   ├── Rooms
+│   │   │   ├── Resources
+│   │   │   ├── Constraints
+│   │   │   ├── Conflict Detection
+│   │   │   ├── Substitutions
+│   │   │   ├── Cover
+│   │   │   └── Schedule Changes
+│   │   └── Timetable Builder Flow
+│   │       └── Setup
+│   │           └── Courses
+│   │               └── Teaching Requirements
+│   │                   └── Teachers
+│   │                       └── Rooms
+│   │                           └── Periods
+│   │                               └── Constraints
+│   │                                   └── Generate
+│   │                                       └── Conflict Review
+│   │                                           └── Manual Adjustment
+│   │                                               └── Publish
+│   │                                                   └── Notify
+│   ├── B08. CALENDAR & EVENTS
+│   │   └── Calendar
+│   │       ├── School Calendar
+│   │       ├── Academic Calendar
+│   │       ├── Exams
+│   │       ├── Activities
+│   │       ├── Trips
+│   │       ├── Staff Events
+│   │       ├── Parent Events
+│   │       ├── Holidays
+│   │       ├── Recurring Events
+│   │       └── Calendar Sharing
+│   ├── B09. TEACHING & LEARNING
+│   │   ├── Teaching
+│   │   │   ├── Teacher Dashboard
+│   │   │   ├── Classes
+│   │   │   ├── Lessons
+│   │   │   ├── Lesson Plans
+│   │   │   ├── Learning Resources
+│   │   │   ├── Homework
+│   │   │   ├── Assignments
+│   │   │   ├── Submissions
+│   │   │   ├── Feedback
+│   │   │   └── Learning Progress
+│   │   └── Class
+│   │       ├── Overview
+│   │       ├── Roster
+│   │       ├── Timetable
+│   │       ├── Attendance
+│   │       ├── Lessons
+│   │       ├── Resources
+│   │       ├── Homework
+│   │       ├── Assignments
+│   │       ├── Gradebook
+│   │       ├── Assessments
+│   │       ├── Behaviour
+│   │       ├── Messages
+│   │       ├── Reports
+│   │       └── Analytics
+│   ├── B10. ATTENDANCE
+│   │   ├── Attendance
+│   │   │   ├── Dashboard
+│   │   │   ├── Daily Registers
+│   │   │   ├── Lesson Registers
+│   │   │   ├── Activity Registers
+│   │   │   ├── Missing Registers
+│   │   │   ├── Absence Requests
+│   │   │   ├── Future Absences
+│   │   │   ├── Late Arrivals
+│   │   │   ├── Early Departures
+│   │   │   ├── Attendance Codes
+│   │   │   ├── Attendance Corrections
+│   │   │   ├── Attendance Intervention
+│   │   │   └── Analytics
+│   │   └── Register Workspace
+│   │       ├── Class
+│   │       ├── Date
+│   │       ├── Period
+│   │       ├── Teacher
+│   │       └── Student Row
+│   │           ├── Present
+│   │           ├── Absent
+│   │           ├── Late
+│   │           ├── Excused
+│   │           ├── Medical
+│   │           ├── Authorized
+│   │           ├── School Activity
+│   │           ├── Left Early
+│   │           ├── Minutes Late
+│   │           ├── Reason
+│   │           ├── Comment
+│   │           └── Evidence
+│   ├── B11. ASSESSMENT
+│   │   └── Assessment
+│   │       ├── Assessment Library
+│   │       ├── Assessment Cycles
+│   │       ├── Assessment Types
+│   │       ├── Rubrics
+│   │       ├── Learning Objectives
+│   │       ├── Marks
+│   │       ├── Moderation
+│   │       └── Analytics
+│   ├── B12. GRADEBOOK
+│   │   ├── Gradebook
+│   │   │   ├── Gradebook Templates
+│   │   │   ├── Teacher Gradebooks
+│   │   │   ├── Categories
+│   │   │   ├── Weightings
+│   │   │   ├── Scores
+│   │   │   ├── Rubrics
+│   │   │   ├── Comments
+│   │   │   ├── Predicted Grades
+│   │   │   ├── Final Grades
+│   │   │   ├── Grade Calculations
+│   │   │   ├── Grade Approval
+│   │   │   └── Grade Publishing
+│   │   └── Gradebook Workspace
+│   │       ├── Course
+│   │       ├── Term
+│   │       ├── Teacher
+│   │       ├── Columns
+│   │       │   ├── Homework
+│   │       │   ├── Quiz
+│   │       │   ├── Assignment
+│   │       │   ├── Project
+│   │       │   ├── Midterm
+│   │       │   └── Final
+│   │       └── Student Row
+│   │           ├── Raw Score
+│   │           ├── Percentage
+│   │           ├── Grade
+│   │           ├── Comment
+│   │           ├── Missing
+│   │           ├── Excused
+│   │           └── Override
+│   ├── B13. EXAM MANAGEMENT
+│   │   └── Exams
+│   │       ├── Exam Cycles
+│   │       ├── Exams
+│   │       ├── Papers
+│   │       ├── Candidates
+│   │       ├── Entries
+│   │       ├── Rooms
+│   │       ├── Seating
+│   │       ├── Invigilators
+│   │       ├── Special Arrangements
+│   │       ├── Exam Timetable
+│   │       ├── Attendance
+│   │       ├── Results
+│   │       └── Publication
+│   ├── B14. REPORT CARDS & TRANSCRIPTS
+│   │   ├── Reporting
+│   │   │   ├── Report Cycles
+│   │   │   ├── Report Templates
+│   │   │   ├── Monthly Reports
+│   │   │   ├── Term Reports
+│   │   │   ├── Annual Reports
+│   │   │   ├── Progress Reports
+│   │   │   ├── Transcripts
+│   │   │   ├── Certificates
+│   │   │   ├── Teacher Comments
+│   │   │   ├── Approval
+│   │   │   ├── Publication
+│   │   │   └── Archive
+│   │   └── Report Cycle Workflow
+│   │       └── Open
+│   │           └── Teacher Entry
+│   │               └── Incomplete Check
+│   │                   └── Head Review
+│   │                       └── Correction
+│   │                           └── Principal Approval
+│   │                               └── Generate
+│   │                                   └── Publish
+│   │                                       └── Parent Notification
+│   │                                           └── Archive
+│   ├── B15. BEHAVIOUR & CONDUCT
+│   │   └── Behaviour
+│   │       ├── Behaviour Dashboard
+│   │       ├── Events
+│   │       ├── Positive Behaviour
+│   │       ├── Negative Behaviour
+│   │       ├── Rewards
+│   │       ├── Points
+│   │       ├── Sanctions
+│   │       ├── Detentions
+│   │       ├── Incidents
+│   │       ├── Behaviour Plans
+│   │       └── Analytics
+│   ├── B16. SAFEGUARDING
+│   │   ├── Safeguarding
+│   │   │   ├── Dashboard
+│   │   │   ├── Concerns
+│   │   │   ├── Cases
+│   │   │   ├── Chronology
+│   │   │   ├── Incident Recording
+│   │   │   ├── People Involved
+│   │   │   ├── Actions
+│   │   │   ├── Referrals
+│   │   │   ├── External Agencies
+│   │   │   ├── Documents
+│   │   │   ├── Restricted Notes
+│   │   │   ├── Review
+│   │   │   └── Reporting
+│   │   └── Safeguarding Case
+│   │       ├── Overview
+│   │       ├── Concern
+│   │       ├── Risk Level
+│   │       ├── Category
+│   │       ├── Student
+│   │       ├── People Involved
+│   │       ├── Chronology
+│   │       ├── Actions
+│   │       ├── Assigned Lead
+│   │       ├── Meetings
+│   │       ├── Referrals
+│   │       ├── Documents
+│   │       ├── Restricted Notes
+│   │       ├── Review Dates
+│   │       ├── Status
+│   │       ├── Closure
+│   │       └── Audit
+│   ├── B17. WELLBEING & COUNSELLING
+│   │   └── Wellbeing
+│   │       ├── Concerns
+│   │       ├── Check-ins
+│   │       ├── Counselling
+│   │       ├── Appointments
+│   │       ├── Wellbeing Plans
+│   │       ├── Referrals
+│   │       ├── Follow-ups
+│   │       ├── Student Voice
+│   │       └── Analytics
+│   ├── B18. SEN / LEARNING SUPPORT
+│   │   └── Learning Support
+│   │       ├── Needs Register
+│   │       ├── Student Needs
+│   │       ├── Assessments
+│   │       ├── Support Plans
+│   │       ├── Accommodations
+│   │       ├── Interventions
+│   │       ├── Assigned Specialists
+│   │       ├── Reviews
+│   │       ├── Meetings
+│   │       ├── Documents
+│   │       └── Progress
+│   ├── B19. MEDICAL & HEALTH
+│   │   └── Medical
+│   │       ├── Medical Dashboard
+│   │       ├── Student Health Profiles
+│   │       ├── Conditions
+│   │       ├── Allergies
+│   │       ├── Medications
+│   │       ├── Vaccinations
+│   │       ├── Health Visits
+│   │       ├── Treatments
+│   │       ├── Injuries
+│   │       ├── Medical Documents
+│   │       ├── Emergency Health Info
+│   │       ├── Health Consents
+│   │       └── Medical Audit
+│   ├── B20. PARENT PORTAL / APP
+│   │   └── Parent
+│   │       ├── Home
+│   │       │   ├── Children Switcher
+│   │       │   ├── Branch / School Label per Child
+│   │       │   ├── Cross-Branch Family Summary
+│   │       │   ├── Today's Status
+│   │       │   ├── Alerts
+│   │       │   ├── Upcoming Events
+│   │       │   ├── Tasks
+│   │       │   └── Balance
+│   │       ├── Child
+│   │       │   ├── Overview
+│   │       │   ├── Attendance
+│   │       │   ├── Timetable
+│   │       │   ├── Homework
+│   │       │   ├── Grades
+│   │       │   ├── Reports
+│   │       │   ├── Behaviour
+│   │       │   ├── Activities
+│   │       │   └── Documents
+│   │       ├── Messages
+│   │       ├── Announcements
+│   │       ├── Absence
+│   │       ├── Forms
+│   │       ├── Consents
+│   │       ├── Parent Meetings
+│   │       ├── Clubs
+│   │       ├── Trips
+│   │       ├── Payments
+│   │       ├── Profile
+│   │       └── Settings
+│   ├── B21. STUDENT PORTAL
+│   │   └── Student
+│   │       ├── Home
+│   │       ├── Timetable
+│   │       ├── Classes
+│   │       ├── Homework
+│   │       ├── Assignments
+│   │       ├── Submissions
+│   │       ├── Grades
+│   │       ├── Attendance
+│   │       ├── Reports
+│   │       ├── Exams
+│   │       ├── Calendar
+│   │       ├── Activities
+│   │       ├── Messages
+│   │       ├── Resources
+│   │       ├── Documents
+│   │       └── Profile
+│   ├── B22. TEACHER PORTAL
+│   │   └── Teacher
+│   │       ├── Today
+│   │       ├── Timetable
+│   │       ├── My Classes
+│   │       ├── Registers
+│   │       ├── Lessons
+│   │       ├── Homework
+│   │       ├── Assignments
+│   │       ├── Gradebooks
+│   │       ├── Assessments
+│   │       ├── Student Notes
+│   │       ├── Behaviour
+│   │       ├── Reports
+│   │       ├── Messages
+│   │       ├── Cover
+│   │       └── Tasks
+│   ├── B23. PARENT MEETINGS
+│   │   └── Parent Meetings
+│   │       ├── Events
+│   │       ├── Teacher Availability
+│   │       ├── Time Slots
+│   │       ├── Booking
+│   │       ├── Parent Invitations
+│   │       ├── Meetings
+│   │       ├── Attendance
+│   │       ├── Notes
+│   │       └── Follow-up
+│   ├── B24. CLUBS & ACTIVITIES
+│   │   └── Activities
+│   │       ├── Clubs
+│   │       ├── Sports
+│   │       ├── Teams
+│   │       ├── Music
+│   │       ├── Arts
+│   │       ├── Competitions
+│   │       ├── Activity Groups
+│   │       ├── Sessions
+│   │       ├── Enrollment
+│   │       ├── Capacity
+│   │       ├── Attendance
+│   │       ├── Fees
+│   │       ├── Results
+│   │       └── Communication
+│   ├── B25. TRIPS & EDUCATIONAL VISITS
+│   │   └── Trips
+│   │       ├── Trip Planning
+│   │       ├── Participants
+│   │       ├── Staff
+│   │       ├── Consent
+│   │       ├── Medical Review
+│   │       ├── Risk Assessment
+│   │       ├── Transport
+│   │       ├── Accommodation
+│   │       ├── Itinerary
+│   │       ├── Payments
+│   │       ├── Attendance
+│   │       ├── Emergency Contacts
+│   │       └── Trip Closure
+│   ├── B26. TRANSPORT
+│   │   └── Transport
+│   │       ├── Routes
+│   │       ├── Stops
+│   │       ├── Vehicles
+│   │       ├── Drivers
+│   │       ├── Student Assignment
+│   │       ├── Morning Runs
+│   │       ├── Afternoon Runs
+│   │       ├── Boarding
+│   │       ├── Drop-off
+│   │       ├── GPS
+│   │       ├── Exceptions
+│   │       └── Parent Notifications
+│   ├── B27. DISMISSAL & PICKUP
+│   │   └── Dismissal
+│   │       ├── Pickup Plans
+│   │       ├── Authorized Persons
+│   │       ├── Daily Changes
+│   │       ├── Pickup Queue
+│   │       ├── Check-out
+│   │       ├── Late Pickup
+│   │       ├── Bus
+│   │       ├── Walk Home
+│   │       ├── Restrictions
+│   │       └── History
+│   ├── B28. MEALS / CAFETERIA
+│   │   └── Meals
+│   │       ├── Menus
+│   │       ├── Meal Plans
+│   │       ├── Dietary Requirements
+│   │       ├── Allergies
+│   │       ├── Meal Selection
+│   │       ├── Meal Registers
+│   │       ├── Accounts
+│   │       ├── Charges
+│   │       ├── Payments
+│   │       └── Reports
+│   ├── B29. LIBRARY & MEDIA CENTER
+│   │   └── Library
+│   │       ├── Catalog
+│   │       ├── Books
+│   │       ├── Digital Resources
+│   │       ├── Copies
+│   │       ├── Borrowers
+│   │       ├── Loans
+│   │       ├── Returns
+│   │       ├── Reservations
+│   │       ├── Renewals
+│   │       ├── Overdue
+│   │       ├── Fines
+│   │       ├── Inventory
+│   │       └── Reports
+│   ├── B30. STUDENT BILLING & TUITION
+│   │   └── Student & Family Billing
+│   │       ├── Billing Dashboard
+│   │       │   ├── Billed
+│   │       │   ├── Collected
+│   │       │   ├── Outstanding
+│   │       │   ├── Overdue
+│   │       │   ├── Upcoming Due
+│   │       │   ├── Collection Rate
+│   │       │   ├── Refunds
+│   │       │   ├── Financial Aid
+│   │       │   └── Aging
+│   │       ├── Student Accounts
+│   │       ├── Branch Billing Dimension
+│   │       │   ├── Billing Institution / Branch
+│   │       │   ├── Revenue Branch / Cost Center
+│   │       │   ├── Branch Fee Structure
+│   │       │   ├── Cross-Branch Family Balance View
+│   │       │   ├── Branch-Specific Statements
+│   │       │   ├── Consolidated Family Statement
+│   │       │   ├── Transfer Balance Rules
+│   │       │   └── Branch Billing Audit
+│   │       ├── Family / Household Accounts
+│   │       │   ├── Family Account Workspace
+│   │       │   │   ├── Responsible Payers
+│   │       │   │   ├── Linked Students
+│   │       │   │   ├── Current Balance
+│   │       │   │   ├── Total Outstanding
+│   │       │   │   ├── Credit Balance
+│   │       │   │   ├── Invoices
+│   │       │   │   ├── Payments
+│   │       │   │   ├── Shared Discounts
+│   │       │   │   ├── Payment Plans
+│   │       │   │   ├── Statements
+│   │       │   │   ├── Communication
+│   │       │   │   ├── Collections
+│   │       │   │   └── Audit
+│   │       │   ├── Financial Responsibility Rules
+│   │       │   └── Split Billing Between Guardians / Sponsors
+│   │       ├── Fee Catalog
+│   │       │   ├── Tuition
+│   │       │   ├── Registration
+│   │       │   ├── Deposit
+│   │       │   ├── Transport
+│   │       │   ├── Meals
+│   │       │   ├── Clubs
+│   │       │   ├── Trips
+│   │       │   ├── Books / Resources
+│   │       │   ├── Exam Fees
+│   │       │   ├── Technology Fees
+│   │       │   ├── Boarding
+│   │       │   └── Custom Fees
+│   │       ├── Fee Structures
+│   │       │   ├── School / Campus
+│   │       │   ├── Academic Year
+│   │       │   ├── Grade / Programme
+│   │       │   ├── Resident / International
+│   │       │   ├── Fee Frequency
+│   │       │   ├── Effective Dates
+│   │       │   └── Currency
+│   │       ├── Billing Cycles
+│   │       │   ├── Annual
+│   │       │   ├── Term
+│   │       │   ├── Monthly
+│   │       │   └── Custom
+│   │       ├── Tuition
+│   │       ├── Registration Fees
+│   │       ├── Deposits
+│   │       ├── Installment Plans
+│   │       │   ├── Plan Templates
+│   │       │   ├── Due Dates
+│   │       │   ├── Amounts / Percentages
+│   │       │   ├── Grace Period
+│   │       │   ├── Late Fees
+│   │       │   └── Auto-Schedule
+│   │       ├── Invoices
+│   │       │   ├── Invoice Workspace
+│   │       │   │   ├── Invoice Number
+│   │       │   │   ├── Student / Family
+│   │       │   │   ├── Payer
+│   │       │   │   ├── Lines
+│   │       │   │   ├── Taxes
+│   │       │   │   ├── Discounts
+│   │       │   │   ├── Financial Aid
+│   │       │   │   ├── Due Date
+│   │       │   │   ├── Status
+│   │       │   │   ├── Payments
+│   │       │   │   ├── Balance
+│   │       │   │   ├── Documents
+│   │       │   │   ├── Communications
+│   │       │   │   └── Audit
+│   │       │   ├── Invoice States
+│   │       │   │   ├── Draft
+│   │       │   │   ├── Pending Approval
+│   │       │   │   ├── Issued
+│   │       │   │   ├── Partially Paid
+│   │       │   │   ├── Paid
+│   │       │   │   ├── Overdue
+│   │       │   │   ├── Cancelled
+│   │       │   │   └── Written Off
+│   │       │   ├── Invoice Approval
+│   │       │   └── Invoice Issue / Publish
+│   │       ├── Payments
+│   │       │   ├── Payment Methods
+│   │       │   │   ├── Cash
+│   │       │   │   ├── Bank Transfer
+│   │       │   │   ├── Card / POS
+│   │       │   │   ├── Online Gateway
+│   │       │   │   ├── Cheque
+│   │       │   │   ├── Wallet
+│   │       │   │   └── Other
+│   │       │   ├── Payment Allocation
+│   │       │   │   ├── Specific Invoice
+│   │       │   │   ├── Oldest Balance
+│   │       │   │   ├── Selected Charges
+│   │       │   │   └── Unapplied Credit
+│   │       │   ├── Payment Status
+│   │       │   │   ├── Pending
+│   │       │   │   ├── Authorized
+│   │       │   │   ├── Successful
+│   │       │   │   ├── Failed
+│   │       │   │   ├── Reversed
+│   │       │   │   ├── Refunded
+│   │       │   │   └── Chargeback
+│   │       │   └── Online Payment Flow
+│   │       │       ├── Invoice / Balance
+│   │       │       ├── Pay Now
+│   │       │       ├── Payment Gateway
+│   │       │       ├── Success / Failure / Pending
+│   │       │       ├── Webhook Verification
+│   │       │       ├── Create Payment Record
+│   │       │       ├── Allocate Payment
+│   │       │       ├── Create Receipt
+│   │       │       ├── Update Student / Family Balance
+│   │       │       ├── Post Accounting Entry
+│   │       │       ├── Notify Payer
+│   │       │       └── Audit
+│   │       ├── Receipts
+│   │       ├── Credit Notes
+│   │       ├── Refunds
+│   │       ├── Deposits & Prepayments
+│   │       ├── Discounts
+│   │       │   ├── Sibling
+│   │       │   ├── Staff Child
+│   │       │   ├── Early Payment
+│   │       │   ├── Promotional
+│   │       │   ├── Manual
+│   │       │   └── Rule-Based
+│   │       ├── Scholarships
+│   │       ├── Financial Aid Link
+│   │       ├── Sponsorship / Third-Party Payer
+│   │       ├── Opening Balances
+│   │       │   ├── Student Receivable
+│   │       │   ├── Family Receivable
+│   │       │   ├── Credit Balance
+│   │       │   └── Migration Reference
+│   │       ├── Outstanding Balances
+│   │       ├── Aging
+│   │       │   ├── Current
+│   │       │   ├── 1–30 Days
+│   │       │   ├── 31–60 Days
+│   │       │   ├── 61–90 Days
+│   │       │   ├── 90+ Days
+│   │       │   └── Custom Buckets
+│   │       ├── Collections
+│   │       │   ├── Collection Rules
+│   │       │   ├── Reminder Schedule
+│   │       │   ├── Promises to Pay
+│   │       │   ├── Collection Tasks
+│   │       │   ├── Escalations
+│   │       │   ├── Write-off Requests
+│   │       │   ├── Collection Notes
+│   │       │   └── Collection History
+│   │       ├── Financial Notifications & Automations
+│   │       │   ├── Invoice Issued → Notify Payer
+│   │       │   ├── Due Soon → Reminder
+│   │       │   ├── Due Date → Reminder
+│   │       │   ├── Overdue → Escalating Reminder
+│   │       │   ├── High Balance → Finance Alert
+│   │       │   ├── Payment Received → Receipt + Confirmation
+│   │       │   ├── Payment Failed → Retry / Alert
+│   │       │   ├── Refund Issued → Confirmation
+│   │       │   ├── Configurable Channels
+│   │       │   │   ├── In-App
+│   │       │   │   ├── Push
+│   │       │   │   ├── Email
+│   │       │   │   └── SMS
+│   │       │   └── Configurable Audience
+│   │       │       ├── Parent / Payer
+│   │       │       ├── Student — Optional
+│   │       │       ├── Finance
+│   │       │       └── School Admin
+│   │       ├── Statements
+│   │       ├── Payment Plans
+│   │       ├── Write-offs
+│   │       ├── Billing Adjustments
+│   │       ├── Billing Reports
+│   │       └── Billing Audit
+│   ├── B31. SCHOOL ACCOUNTING
+│   │   └── Accounting
+│   │       ├── Financial Setup
+│   │       │   ├── Legal Entity
+│   │       │   ├── Fiscal Year
+│   │       │   ├── Accounting Periods
+│   │       │   ├── Base Currency
+│   │       │   ├── Additional Currencies
+│   │       │   ├── Exchange Rates
+│   │       │   ├── Posting Rules
+│   │       │   ├── Document Numbering
+│   │       │   └── Approval Thresholds
+│   │       ├── Chart of Accounts
+│   │       │   ├── Assets
+│   │       │   ├── Liabilities
+│   │       │   ├── Equity / Fund Balance
+│   │       │   ├── Income
+│   │       │   ├── Expenses
+│   │       │   ├── Account Groups
+│   │       │   ├── Control Accounts
+│   │       │   └── Inactive Accounts
+│   │       ├── General Ledger
+│   │       │   ├── Account Activity
+│   │       │   ├── Posting
+│   │       │   ├── Dimensions
+│   │       │   ├── Period Balances
+│   │       │   ├── Drill-down
+│   │       │   └── Ledger Audit
+│   │       ├── Journal Entries
+│   │       │   ├── Manual Journal
+│   │       │   ├── Recurring Journal
+│   │       │   ├── Auto Journal
+│   │       │   ├── Accrual
+│   │       │   ├── Deferral
+│   │       │   ├── Correction
+│   │       │   ├── Reversal
+│   │       │   ├── Approval
+│   │       │   └── Posting
+│   │       ├── Accounts Receivable
+│   │       │   ├── Student / Family AR
+│   │       │   ├── Other Receivables
+│   │       │   ├── Aging
+│   │       │   ├── Receipts
+│   │       │   ├── Credit Notes
+│   │       │   ├── Bad Debt
+│   │       │   └── Write-off
+│   │       ├── Accounts Payable
+│   │       │   ├── Supplier Invoices
+│   │       │   ├── Payment Terms
+│   │       │   ├── Due Dates
+│   │       │   ├── Approval
+│   │       │   ├── Payment Runs
+│   │       │   ├── Credit Notes
+│   │       │   └── Aging
+│   │       ├── Cash & Bank
+│   │       │   ├── Cash Accounts
+│   │       │   ├── Bank Accounts
+│   │       │   ├── Deposits
+│   │       │   ├── Withdrawals
+│   │       │   ├── Transfers
+│   │       │   ├── Bank Fees
+│   │       │   └── Interest
+│   │       ├── Bank Reconciliation
+│   │       │   ├── Statement Import
+│   │       │   ├── Auto Match
+│   │       │   ├── Manual Match
+│   │       │   ├── Unmatched Items
+│   │       │   ├── Reconciliation Approval
+│   │       │   └── Reconciliation Report
+│   │       ├── Expenses
+│   │       ├── Organizational Finance Dimensions
+│   │       │   ├── Tenant / Group
+│   │       │   ├── Legal Entity
+│   │       │   ├── Institution / School
+│   │       │   ├── Branch / Campus
+│   │       │   ├── Division
+│   │       │   ├── Department
+│   │       │   └── Programme / Project
+│   │       ├── Cost Centers / Dimensions
+│   │       │   ├── School
+│   │       │   ├── Campus
+│   │       │   ├── Division
+│   │       │   ├── Department
+│   │       │   ├── Programme
+│   │       │   ├── Project
+│   │       │   ├── Fund
+│   │       │   ├── Grant
+│   │       │   └── Custom Dimension
+│   │       ├── Budgeting
+│   │       │   ├── Budget Versions
+│   │       │   ├── Department Budget
+│   │       │   ├── Programme Budget
+│   │       │   ├── Capital Budget
+│   │       │   ├── Budget Transfer
+│   │       │   ├── Budget Approval
+│   │       │   ├── Committed vs Actual
+│   │       │   └── Variance
+│   │       ├── Funds / Grants Link
+│   │       ├── Fixed Assets Link
+│   │       ├── Payroll Posting Link
+│   │       ├── Billing Posting Link
+│   │       ├── Procurement Posting Link
+│   │       ├── Tax
+│   │       │   ├── Tax Codes
+│   │       │   ├── Withholding
+│   │       │   ├── Tax Reports
+│   │       │   └── Country Rules
+│   │       ├── Period Close
+│   │       │   ├── Pre-close Checklist
+│   │       │   ├── Lock Subledgers
+│   │       │   ├── Reconciliations
+│   │       │   ├── Adjustments
+│   │       │   ├── Close Period
+│   │       │   ├── Reopen — Restricted
+│   │       │   └── Year-End Close
+│   │       ├── Opening Balances
+│   │       │   ├── GL Opening Balance
+│   │       │   ├── Bank Opening Balance
+│   │       │   ├── AR Opening Balance
+│   │       │   ├── AP Opening Balance
+│   │       │   ├── Fund Opening Balance
+│   │       │   └── Migration Reconciliation
+│   │       ├── Financial Statements
+│   │       │   ├── Trial Balance
+│   │       │   ├── Income Statement
+│   │       │   ├── Balance Sheet
+│   │       │   ├── Cash Flow
+│   │       │   ├── Fund Statement
+│   │       │   ├── Budget vs Actual
+│   │       │   └── Custom Financial Report
+│   │       ├── Finance Approvals
+│   │       └── Accounting Audit
+│   ├── B32. PROCUREMENT
+│   │   └── Procurement & Supplier Management
+│   │       ├── Purchase Requests
+│   │       │   ├── Requester
+│   │       │   ├── Department
+│   │       │   ├── Need Date
+│   │       │   ├── Items / Services
+│   │       │   ├── Budget Check
+│   │       │   ├── Attachments
+│   │       │   ├── Approval
+│   │       │   └── Status
+│   │       ├── Approval Matrix
+│   │       ├── Suppliers / Vendors
+│   │       │   ├── Supplier Directory
+│   │       │   ├── Onboarding
+│   │       │   ├── Qualification
+│   │       │   ├── Tax / Legal Documents
+│   │       │   ├── Bank Details
+│   │       │   ├── Categories
+│   │       │   ├── Contacts
+│   │       │   ├── Price Lists
+│   │       │   ├── Contracts
+│   │       │   ├── Performance
+│   │       │   ├── Risk
+│   │       │   ├── Blacklist / Suspension
+│   │       │   └── Audit
+│   │       ├── RFQ / RFP
+│   │       ├── Supplier Invitations
+│   │       ├── Bid / Quote Comparison
+│   │       ├── Award Decision
+│   │       ├── Purchase Orders
+│   │       │   ├── PO Number
+│   │       │   ├── Supplier
+│   │       │   ├── Lines
+│   │       │   ├── Price
+│   │       │   ├── Tax
+│   │       │   ├── Delivery
+│   │       │   ├── Terms
+│   │       │   ├── Budget Commitment
+│   │       │   ├── Approval
+│   │       │   ├── Status
+│   │       │   └── Change Order
+│   │       ├── Goods / Service Receipt
+│   │       │   ├── Full Receipt
+│   │       │   ├── Partial Receipt
+│   │       │   ├── Rejected Quantity
+│   │       │   ├── Quality Check
+│   │       │   ├── Delivery Note
+│   │       │   └── Receiver
+│   │       ├── Three-Way Match
+│   │       │   ├── Purchase Order
+│   │       │   ├── Goods Receipt
+│   │       │   ├── Supplier Invoice
+│   │       │   ├── Tolerance Rules
+│   │       │   ├── Match Exceptions
+│   │       │   └── Exception Approval
+│   │       ├── Supplier Invoices
+│   │       ├── Returns to Supplier
+│   │       ├── Credit Notes
+│   │       ├── Payment Handoff to AP
+│   │       ├── Procurement Contracts Link
+│   │       ├── Budget Commitments
+│   │       ├── Vendor Performance
+│   │       ├── Procurement Analytics
+│   │       └── Procurement Audit
+│   ├── B33. INVENTORY & ASSETS
+│   │   └── Assets
+│   │       ├── Asset Register
+│   │       ├── Equipment
+│   │       ├── IT Devices
+│   │       ├── Furniture
+│   │       ├── Assignment
+│   │       ├── Locations
+│   │       ├── Maintenance
+│   │       ├── Warranty
+│   │       ├── Depreciation
+│   │       ├── Disposal
+│   │       └── Audit
+│   ├── B34. FACILITIES
+│   │   └── Facilities
+│   │       ├── Buildings
+│   │       ├── Rooms
+│   │       ├── Spaces
+│   │       ├── Bookings
+│   │       ├── Maintenance Requests
+│   │       ├── Work Orders
+│   │       ├── Inspections
+│   │       ├── Vendors
+│   │       ├── Utilities
+│   │       └── Maintenance History
+│   ├── B35. HR / WORKFORCE
+│   │   └── HR / Workforce
+│   │       ├── Employee Directory
+│   │       ├── Employee Workspace
+│   │       │   ├── Overview
+│   │       │   ├── Identity
+│   │       │   ├── Contact
+│   │       │   ├── Employment
+│   │       │   ├── Assignments
+│   │       │   ├── Contracts
+│   │       │   ├── Qualifications
+│   │       │   ├── Documents
+│   │       │   ├── Attendance
+│   │       │   ├── Timesheets
+│   │       │   ├── Leave
+│   │       │   ├── Absence
+│   │       │   ├── Workload
+│   │       │   ├── Compensation
+│   │       │   ├── Payroll
+│   │       │   ├── Training
+│   │       │   ├── Performance
+│   │       │   ├── Disciplinary
+│   │       │   ├── Tasks
+│   │       │   ├── Timeline
+│   │       │   └── Audit
+│   │       ├── Positions / Jobs
+│   │       ├── Departments
+│   │       ├── Multiple Assignments
+│   │       │   ├── Primary Assignment
+│   │       │   ├── Secondary Assignment
+│   │       │   ├── Teaching Assignment
+│   │       │   ├── Administrative Assignment
+│   │       │   ├── After-School Assignment
+│   │       │   └── Effective Dates
+│   │       ├── Contracts
+│   │       ├── Recruitment
+│   │       ├── Applicant Tracking
+│   │       ├── Onboarding
+│   │       ├── Qualifications
+│   │       ├── Background / Vetting Checks
+│   │       ├── Staff Attendance
+│   │       ├── Timesheets
+│   │       ├── Shifts / Work Schedules
+│   │       ├── Leave
+│   │       ├── Absence
+│   │       ├── Overtime
+│   │       ├── Extra Classes / Sessions
+│   │       ├── Staff Workload
+│   │       │   ├── Contract Hours
+│   │       │   ├── Teaching Hours
+│   │       │   ├── Non-Teaching Hours
+│   │       │   ├── Homeroom / Tutor Duties
+│   │       │   ├── Cover Hours
+│   │       │   ├── Clubs / Activities
+│   │       │   ├── Meetings
+│   │       │   ├── Administrative Duties
+│   │       │   ├── Research — Higher-Ed
+│   │       │   ├── Overtime
+│   │       │   ├── Available Capacity
+│   │       │   ├── Workload Alerts
+│   │       │   └── Workload Analytics
+│   │       ├── Compensation Profile Link
+│   │       ├── Payroll Link
+│   │       ├── Training / CPD
+│   │       ├── Performance
+│   │       ├── Disciplinary
+│   │       ├── Grievance Link
+│   │       ├── Documents
+│   │       ├── Offboarding
+│   │       ├── Employee Self-Service
+│   │       ├── Workforce Analytics
+│   │       └── HR Audit
+│   ├── B36. STAFF COVER / SUBSTITUTE MANAGEMENT
+│   │   └── Cover
+│   │       ├── Staff Absences
+│   │       ├── Cover Requirements
+│   │       ├── Available Staff
+│   │       ├── Substitute Pool
+│   │       ├── Assignment
+│   │       ├── Conflict Check
+│   │       ├── Timetable Update
+│   │       ├── Notification
+│   │       └── Cover History
+│   ├── B37. FRONT DESK / RECEPTION
+│   │   └── Reception
+│   │       ├── Dashboard
+│   │       ├── Student Arrivals
+│   │       ├── Student Departures
+│   │       ├── Late Arrivals
+│   │       ├── Visitors
+│   │       ├── Appointments
+│   │       ├── Deliveries
+│   │       ├── Calls
+│   │       ├── Lost & Found
+│   │       ├── Emergency Contacts
+│   │       └── Daily Log
+│   ├── B38. VISITOR MANAGEMENT
+│   │   └── Visitors
+│   │       ├── Pre-Registration
+│   │       ├── Check-in
+│   │       ├── ID Verification
+│   │       ├── Host
+│   │       ├── Badge
+│   │       ├── Restricted Areas
+│   │       ├── Check-out
+│   │       ├── Blacklist
+│   │       └── Visitor History
+│   ├── B39. INCIDENT & EMERGENCY MANAGEMENT
+│   │   └── Safety & Emergency
+│   │       ├── Incidents
+│   │       ├── Emergencies
+│   │       ├── Emergency Types
+│   │       ├── Crisis Roles / Command Structure
+│   │       ├── Emergency Contacts
+│   │       ├── Emergency Plans
+│   │       ├── Fire Drills
+│   │       ├── Lockdown Drills
+│   │       ├── Evacuation
+│   │       ├── Muster / Accountability Register
+│   │       ├── Missing Person Escalation
+│   │       ├── Crisis Communication
+│   │       ├── Emergency Broadcast
+│   │       ├── Parent / Staff Confirmation
+│   │       ├── Emergency Documents
+│   │       ├── Action Plans
+│   │       ├── Drill History
+│   │       ├── Post-Incident Review
+│   │       ├── Corrective Actions
+│   │       └── Emergency Audit
+│   ├── B40. ALUMNI & DEVELOPMENT
+│   │   ├── Alumni
+│   │   │   ├── Alumni Directory
+│   │   │   ├── Graduation Cohorts
+│   │   │   ├── Contact Updates
+│   │   │   ├── Employment / Education Updates
+│   │   │   ├── Events
+│   │   │   ├── Communications
+│   │   │   ├── Mentoring
+│   │   │   ├── Volunteer Engagement
+│   │   │   ├── Engagement Score
+│   │   │   └── Alumni Analytics
+│   │   └── Advancement / Development
+│   │       ├── Constituents
+│   │       ├── Prospects
+│   │       ├── Donors
+│   │       ├── Households / Relationships
+│   │       ├── Prospect Research
+│   │       ├── Moves Management
+│   │       ├── Funds
+│   │       ├── Appeals
+│   │       ├── Campaigns
+│   │       ├── Gifts / Donations
+│   │       ├── Pledges
+│   │       ├── Recurring Gifts
+│   │       ├── Matching Gifts
+│   │       ├── Soft Credits
+│   │       ├── Tributes
+│   │       ├── Restricted Gifts
+│   │       ├── Gift Receipts
+│   │       ├── Stewardship
+│   │       ├── Recognition
+│   │       ├── Fundraising Events
+│   │       ├── Donor Communication
+│   │       ├── Development Reports
+│   │       └── Development Audit
+│   ├── B41. BOARDING / RESIDENTIAL LIFE — OPTIONAL
+│   │   └── Boarding
+│   │       ├── Houses
+│   │       ├── Rooms
+│   │       ├── Beds
+│   │       ├── Student Assignment
+│   │       ├── House Staff
+│   │       ├── Roll Calls
+│   │       ├── Leave
+│   │       ├── Overnight Permissions
+│   │       ├── Visitors
+│   │       ├── Incidents
+│   │       ├── Pastoral Notes
+│   │       └── Boarding Reports
+│   ├── B42. PAYROLL & COMPENSATION
+│   │   └── Payroll & Compensation
+│   │       ├── Compensation Profiles
+│   │       ├── Compensation Assignments
+│   │       │   ├── Employee / Instructor
+│   │       │   ├── Job / Assignment
+│   │       │   ├── Effective Date
+│   │       │   ├── End Date
+│   │       │   ├── Currency
+│   │       │   ├── Pay Group
+│   │       │   └── Compensation Method
+│   │       ├── Multi-Branch Compensation Assignment
+│   │       │   ├── Employee Master Record
+│   │       │   ├── Assignment Branch
+│   │       │   ├── Department / Position
+│   │       │   ├── Compensation Method per Assignment
+│   │       │   ├── Hours / Workload Share
+│   │       │   ├── Cost Allocation Percentage
+│   │       │   ├── Revenue Share Source Branch
+│   │       │   ├── Central-vs-Branch Payroll Ownership
+│   │       │   ├── Effective Dates
+│   │       │   └── Allocation Validation
+│   │       ├── Compensation Methods
+│   │       │   ├── Fixed Monthly Salary
+│   │       │   ├── Hourly Rate
+│   │       │   ├── Per Lesson
+│   │       │   ├── Per Session
+│   │       │   ├── Per Course
+│   │       │   ├── Per Student
+│   │       │   ├── Percentage / Commission
+│   │       │   ├── Revenue Share
+│   │       │   ├── Hybrid Salary + Percentage
+│   │       │   └── Custom Formula
+│   │       ├── Percentage / Revenue Share Rules
+│   │       │   ├── Percentage Rate
+│   │       │   ├── Based on Billed Revenue
+│   │       │   ├── Based on Collected Revenue
+│   │       │   ├── Based on Net Revenue
+│   │       │   ├── Eligible Students
+│   │       │   ├── Eligible Fees
+│   │       │   ├── Refund Treatment
+│   │       │   ├── Discount Treatment
+│   │       │   ├── Minimum / Maximum
+│   │       │   └── Effective Dates
+│   │       ├── Multiple Compensation Assignments
+│   │       │   ├── Primary Job Salary
+│   │       │   ├── After-School Commission
+│   │       │   ├── Substitute Rate
+│   │       │   ├── Extra Course Rate
+│   │       │   └── Administrative Allowance
+│   │       ├── Earnings
+│   │       │   ├── Basic Salary
+│   │       │   ├── Teaching Hours
+│   │       │   ├── Extra Classes
+│   │       │   ├── Cover / Substitute
+│   │       │   ├── Overtime
+│   │       │   ├── Commission
+│   │       │   ├── Bonus
+│   │       │   ├── Performance Incentive
+│   │       │   ├── Allowances
+│   │       │   └── Retroactive Pay
+│   │       ├── Allowances
+│   │       │   ├── Transport
+│   │       │   ├── Housing
+│   │       │   ├── Communication
+│   │       │   ├── Meal
+│   │       │   ├── Responsibility
+│   │       │   └── Other
+│   │       ├── Deductions
+│   │       │   ├── Absence
+│   │       │   ├── Late Attendance
+│   │       │   ├── Unpaid Leave
+│   │       │   ├── Advance Recovery
+│   │       │   ├── Loan
+│   │       │   ├── Penalty
+│   │       │   ├── Tax
+│   │       │   ├── Social Contribution
+│   │       │   └── Other
+│   │       ├── Advances & Loans
+│   │       │   ├── Request
+│   │       │   ├── Approval
+│   │       │   ├── Disbursement
+│   │       │   ├── Repayment Schedule
+│   │       │   ├── Payroll Deduction
+│   │       │   └── Outstanding
+│   │       ├── Payroll Periods
+│   │       │   ├── Monthly
+│   │       │   ├── Biweekly
+│   │       │   ├── Weekly
+│   │       │   └── Custom
+│   │       ├── Payroll Inputs
+│   │       │   ├── HR Assignment
+│   │       │   ├── Attendance
+│   │       │   ├── Timesheets
+│   │       │   ├── Approved Leave
+│   │       │   ├── Approved Overtime
+│   │       │   ├── Teaching Load
+│   │       │   ├── Extra Classes
+│   │       │   ├── Course Revenue
+│   │       │   └── Manual Adjustments
+│   │       ├── Payroll Run
+│   │       │   ├── Open Period
+│   │       │   ├── Load Inputs
+│   │       │   ├── Calculate
+│   │       │   ├── Exception Detection
+│   │       │   ├── Manual Adjustments
+│   │       │   ├── Review
+│   │       │   ├── Approval
+│   │       │   ├── Lock Payroll
+│   │       │   ├── Generate Payslips
+│   │       │   ├── Generate Bank / Payment File
+│   │       │   ├── Process Payment
+│   │       │   ├── Post to General Ledger
+│   │       │   ├── Notify Employee
+│   │       │   ├── Close Payroll
+│   │       │   └── Audit
+│   │       ├── Payroll Exceptions
+│   │       ├── Payroll Reversal
+│   │       ├── Payroll Adjustment
+│   │       ├── Retroactive Payroll
+│   │       ├── Final Settlement
+│   │       ├── Payslips
+│   │       ├── Payroll History
+│   │       ├── Payroll Reports
+│   │       └── Payroll Audit
+│   ├── B43. FINANCIAL AID & TUITION ASSISTANCE
+│   │   └── Financial Aid
+│   │       ├── Aid Years
+│   │       ├── Aid Programs
+│   │       ├── Eligibility Rules
+│   │       ├── Applications
+│   │       │   ├── Household
+│   │       │   ├── Income
+│   │       │   ├── Expenses
+│   │       │   ├── Dependents
+│   │       │   ├── Assets
+│   │       │   ├── Liabilities
+│   │       │   ├── Documents
+│   │       │   ├── Declaration
+│   │       │   └── Consent
+│   │       ├── Confidential Financial Documents
+│   │       ├── Assessment
+│   │       ├── Need Calculation
+│   │       ├── Eligibility
+│   │       ├── Award Recommendation
+│   │       ├── Committee Review
+│   │       ├── Approval
+│   │       ├── Award
+│   │       ├── Parent / Payer Acceptance
+│   │       ├── Enrollment Contract Integration
+│   │       ├── Billing Adjustment
+│   │       ├── Disbursement / Credit
+│   │       ├── Renewal
+│   │       ├── Appeal
+│   │       ├── Withdrawal / Cancellation
+│   │       ├── Aid Analytics
+│   │       └── Aid Audit
+│   ├── B44. EXPENSES, REIMBURSEMENTS & PETTY CASH
+│   │   └── Expense Management
+│   │       ├── Expense Policies
+│   │       ├── Expense Categories
+│   │       ├── Expense Claims
+│   │       │   ├── Employee
+│   │       │   ├── Date
+│   │       │   ├── Category
+│   │       │   ├── Amount
+│   │       │   ├── Currency
+│   │       │   ├── Receipt
+│   │       │   ├── Cost Center
+│   │       │   ├── Project / Fund
+│   │       │   ├── Business Purpose
+│   │       │   ├── Tax
+│   │       │   └── Status
+│   │       ├── Mileage / Travel Claims
+│   │       ├── Travel Requests
+│   │       ├── Travel Advances
+│   │       ├── Receipt Capture
+│   │       ├── Policy Validation
+│   │       ├── Manager Approval
+│   │       ├── Finance Review
+│   │       ├── Reimbursement
+│   │       ├── Payroll / Payment Handoff
+│   │       ├── GL Posting
+│   │       ├── Petty Cash
+│   │       │   ├── Petty Cash Fund
+│   │       │   ├── Custodian
+│   │       │   ├── Opening Float
+│   │       │   ├── Cash Payment
+│   │       │   ├── Receipt
+│   │       │   ├── Replenishment
+│   │       │   ├── Cash Count
+│   │       │   ├── Reconciliation
+│   │       │   ├── Variance
+│   │       │   └── Closure
+│   │       ├── Expense Reports
+│   │       └── Expense Audit
+│   ├── B45. FUND & GRANT ACCOUNTING
+│   │   └── Funds & Grants
+│   │       ├── Fund Directory
+│   │       ├── Fund Types
+│   │       │   ├── Unrestricted
+│   │       │   ├── Restricted
+│   │       │   ├── Endowment
+│   │       │   └── Project / Grant
+│   │       ├── Grant Directory
+│   │       ├── Sponsors / Donors
+│   │       ├── Grant Agreements
+│   │       ├── Restrictions
+│   │       ├── Eligible Expenditures
+│   │       ├── Project Budgets
+│   │       ├── Budget Control
+│   │       ├── Commitments
+│   │       ├── Expenditures
+│   │       ├── Grant Income
+│   │       ├── Cost Allocation
+│   │       ├── Available Balance
+│   │       ├── Grant Milestones
+│   │       ├── Compliance Documents
+│   │       ├── Grant Reporting
+│   │       ├── Closeout
+│   │       └── Fund / Grant Audit
+│   ├── B46. MULTI-ENTITY / MULTI-BRANCH FINANCE & CONSOLIDATION
+│   │   └── Multi-Entity Finance
+│   │       ├── Legal Entities
+│   │       ├── Education Groups
+│   │       ├── Schools / Institutions
+│   │       ├── Branches / Campuses
+│   │       ├── Finance Dimension Hierarchy
+│   │       │   ├── Group
+│   │       │   ├── Entity
+│   │       │   ├── Branch
+│   │       │   ├── Division
+│   │       │   ├── Department
+│   │       │   └── Cost Center / Project
+│   │       ├── Entity / Branch-Specific Ledgers
+│   │       ├── Centralized Ledger Option
+│   │       ├── Branch Sub-Ledger Option
+│   │       ├── Intercompany / Inter-Branch Transactions
+│   │       ├── Due To / Due From
+│   │       ├── Cross-Branch Student Balance Transfer
+│   │       ├── Shared Services
+│   │       ├── Central Cost Allocation
+│   │       ├── Shared Staff Payroll Allocation
+│   │       ├── Allocation Rules
+│   │       ├── Multi-Currency
+│   │       ├── Branch Budgets
+│   │       ├── Group Budget
+│   │       ├── Branch Cash / Bank Accounts
+│   │       ├── Central Treasury
+│   │       ├── Consolidation
+│   │       ├── Elimination Entries
+│   │       ├── Consolidated Trial Balance
+│   │       ├── Consolidated Financial Statements
+│   │       ├── Branch Financial Statements
+│   │       ├── Entity / Branch Comparison
+│   │       ├── Drill-Down to Source Branch
+│   │       ├── Period Close by Branch
+│   │       ├── Group Close Status
+│   │       └── Consolidation Audit
+│   ├── B47. CASHIER, POS & SCHOOL SHOP
+│   │   └── Cashier / POS
+│   │       ├── POS Terminals
+│   │       ├── Cashier Users
+│   │       ├── Shift Open
+│   │       ├── Cash Float
+│   │       ├── Student / Family Account Lookup
+│   │       ├── Products / Services
+│   │       ├── Price Lists
+│   │       ├── Discounts
+│   │       ├── Sales
+│   │       ├── Receipts
+│   │       ├── Payment Methods
+│   │       ├── Refunds
+│   │       ├── Returns
+│   │       ├── Credit to Student Account
+│   │       ├── Cash Count
+│   │       ├── Shift Close
+│   │       ├── Cash Variance
+│   │       ├── Deposit Preparation
+│   │       ├── Inventory Integration
+│   │       ├── GL Posting
+│   │       ├── POS Reports
+│   │       └── POS Audit
+│   ├── B48. MARKETING & GROWTH CRM
+│   │   └── Marketing CRM
+│   │       ├── Marketing Dashboard
+│   │       ├── Campaigns
+│   │       ├── Channels
+│   │       ├── Source / Medium
+│   │       ├── UTM / Referral Tracking
+│   │       ├── Prospects
+│   │       ├── Leads / Inquiries
+│   │       ├── Website Forms
+│   │       ├── Landing Pages
+│   │       ├── Open Days
+│   │       ├── Campus Visits
+│   │       ├── Events
+│   │       ├── Audience Segments
+│   │       ├── Lead Scoring
+│   │       ├── Nurture Sequences
+│   │       ├── Email / SMS Campaigns
+│   │       ├── Follow-up Tasks
+│   │       ├── Conversion Funnel
+│   │       │   ├── Lead
+│   │       │   ├── Inquiry
+│   │       │   ├── Visit
+│   │       │   ├── Application
+│   │       │   ├── Offer
+│   │       │   └── Enrollment
+│   │       ├── Source Attribution
+│   │       ├── Branch / Campus Attribution
+│   │       ├── Branch Preference
+│   │       ├── Branch Conversion Funnel
+│   │       ├── Cross-Branch Lead Reassignment
+│   │       ├── Cost per Lead
+│   │       ├── Cost per Enrollment
+│   │       ├── Campaign ROI
+│   │       ├── Admissions Handoff
+│   │       ├── Marketing Analytics
+│   │       └── Marketing Audit
+│   ├── B49. SCHOOL WEBSITE & PUBLIC CMS
+│   │   └── Public Website / CMS
+│   │       ├── Sites
+│   │       ├── Pages
+│   │       ├── Navigation
+│   │       ├── Content Blocks
+│   │       ├── News
+│   │       ├── Events
+│   │       ├── Staff Directory
+│   │       ├── Academic Programme Pages
+│   │       ├── Admissions Pages
+│   │       ├── Landing Pages
+│   │       ├── Public Forms
+│   │       ├── Media Library
+│   │       ├── Documents
+│   │       ├── Multi-Language Content
+│   │       ├── SEO
+│   │       ├── Redirects
+│   │       ├── Accessibility
+│   │       ├── Content Approval Workflow
+│   │       ├── Publishing Schedule
+│   │       ├── Emergency Banner
+│   │       ├── Analytics
+│   │       └── Admissions CRM Integration
+│   ├── B50. QUALITY ASSURANCE & ACCREDITATION
+│   │   └── Quality & Accreditation
+│   │       ├── Frameworks
+│   │       ├── Standards
+│   │       ├── Requirements
+│   │       ├── Evidence Library
+│   │       ├── Self-Evaluation
+│   │       ├── Surveys / Feedback
+│   │       ├── Observations
+│   │       ├── Findings
+│   │       ├── Non-Conformities
+│   │       ├── Improvement Plans
+│   │       ├── Actions
+│   │       ├── Owners
+│   │       ├── Deadlines
+│   │       ├── Reviews
+│   │       ├── Inspection Visits
+│   │       ├── Accreditation Cycles
+│   │       ├── Accreditation Status
+│   │       ├── Evidence Export
+│   │       ├── Quality Dashboard
+│   │       └── Quality Audit
+│   ├── B51. COMPLAINTS, GRIEVANCES & APPEALS
+│   │   └── Complaints & Appeals
+│   │       ├── Case Types
+│   │       │   ├── Parent Complaint
+│   │       │   ├── Student Complaint
+│   │       │   ├── Staff Grievance
+│   │       │   ├── Bullying Complaint
+│   │       │   ├── Service Complaint
+│   │       │   ├── Academic Appeal
+│   │       │   ├── Disciplinary Appeal
+│   │       │   ├── Finance Complaint
+│   │       │   └── Other
+│   │       ├── Intake Channels
+│   │       ├── Confidentiality Level
+│   │       ├── Acknowledgement
+│   │       ├── Assignment
+│   │       ├── SLA
+│   │       ├── Investigation
+│   │       ├── Evidence
+│   │       ├── People Involved
+│   │       ├── Meetings
+│   │       ├── Findings
+│   │       ├── Response
+│   │       ├── Remedy / Action
+│   │       ├── Appeal
+│   │       ├── Escalation
+│   │       ├── Resolution
+│   │       ├── Closure
+│   │       ├── Restricted Permissions
+│   │       ├── Case Timeline
+│   │       ├── Reports
+│   │       └── Case Audit
+│   ├── B52. IT & DEVICE LIFECYCLE MANAGEMENT
+│   │   └── IT Operations
+│   │       ├── Device Inventory
+│   │       ├── Asset Link
+│   │       ├── Device Types
+│   │       ├── Serial / Identifier
+│   │       ├── Ownership
+│   │       ├── Assignment to Student / Staff
+│   │       ├── MDM / Enrollment Status
+│   │       ├── Software / Licenses
+│   │       ├── Account Provisioning
+│   │       ├── Account Deprovisioning
+│   │       ├── Repair
+│   │       ├── Warranty
+│   │       ├── Replacement
+│   │       ├── Loan Devices
+│   │       ├── Return
+│   │       ├── Lost / Stolen
+│   │       ├── Remote Wipe / Lock — Integration
+│   │       ├── Disposal
+│   │       ├── IT Compliance
+│   │       ├── IT Reports
+│   │       └── IT Audit
+│   ├── B53. PHYSICAL SECURITY, ACCESS CONTROL & ID CARDS
+│   │   └── Physical Access
+│   │       ├── Identity Cards
+│   │       ├── Card / Badge Issuance
+│   │       ├── Card Templates
+│   │       ├── Lost / Stolen Cards
+│   │       ├── Access Groups
+│   │       ├── Doors / Gates
+│   │       ├── Zones
+│   │       ├── Schedules
+│   │       ├── Access Permissions
+│   │       ├── Temporary Access
+│   │       ├── Visitor Badges
+│   │       ├── Entry / Exit Events
+│   │       ├── Denied Access Events
+│   │       ├── Emergency Override
+│   │       ├── Door / Gate Integration
+│   │       ├── Access Alerts
+│   │       ├── Access Reports
+│   │       └── Physical Access Audit
+│   ├── B54. YEAR-END, PROMOTION & ROLLOVER ENGINE
+│   │   └── Year-End / Rollover
+│   │       ├── Readiness Dashboard
+│   │       ├── Group Rollover Orchestration
+│   │       │   ├── All Branches Status
+│   │       │   ├── Run Branch Independently
+│   │       │   ├── Run Selected Branches
+│   │       │   ├── Group Locked Dependencies
+│   │       │   ├── Branch Sign-off
+│   │       │   └── Group Final Sign-off
+│   │       ├── Pre-Close Validation
+│   │       ├── Academic Completion
+│   │       ├── Final Grade Completion
+│   │       ├── Report Publication
+│   │       ├── Promotion Decisions
+│   │       │   ├── Promoted
+│   │       │   ├── Repeat Year
+│   │       │   ├── Graduated
+│   │       │   ├── Withdrawn
+│   │       │   ├── Transferred
+│   │       │   └── Pending Decision
+│   │       ├── Create Next-Year Enrollments
+│   │       ├── Grade / Homeroom Placement
+│   │       ├── Course / Class Rollover
+│   │       ├── Student Group Rollover
+│   │       ├── Staff Assignment Rollover
+│   │       ├── Timetable Setup Handoff
+│   │       ├── Carry Financial Balances
+│   │       ├── Opening Balance Creation
+│   │       ├── Outstanding Contract / Enrollment Check
+│   │       ├── Archive Old Year
+│   │       ├── Open New Academic Year
+│   │       ├── Post-Rollover Validation
+│   │       ├── Exception Queue
+│   │       ├── Sign-off
+│   │       ├── Rollover History
+│   │       └── Rollover Audit
+│   ├── B55. REGULATORY & GOVERNMENT REPORTING
+│   │   └── Regulatory Reporting
+│   │       ├── Country / Ministry Pack
+│   │       ├── Reporting Calendar
+│   │       ├── Submission Definitions
+│   │       ├── Required Data Sets
+│   │       ├── Validation Rules
+│   │       ├── Data Preparation
+│   │       ├── Pre-Submission Checks
+│   │       ├── Errors / Warnings
+│   │       ├── Correction Workflow
+│   │       ├── Secure Export
+│   │       ├── API Submission
+│   │       ├── Submission Receipt / Acknowledgement
+│   │       ├── Versioning
+│   │       ├── Resubmission
+│   │       ├── Compliance Archive
+│   │       └── Regulatory Audit
+│   └── B56. BUSINESS CONTINUITY & OPERATIONAL RESILIENCE
+│       └── Business Continuity
+│           ├── Continuity Plans
+│           ├── Critical Processes
+│           ├── Critical Systems
+│           ├── Crisis Roles
+│           ├── Communication Trees
+│           ├── Emergency Contact Directory
+│           ├── Offline Student / Staff Rosters
+│           ├── Alternate Site / Remote Operations
+│           ├── Manual Fallback Procedures
+│           ├── Recovery Priorities
+│           ├── Recovery Time Objectives
+│           ├── Recovery Point Objectives
+│           ├── Continuity Drills
+│           ├── Continuity Incidents
+│           ├── Recovery Tracking
+│           ├── Post-Event Review
+│           ├── Corrective Actions
+│           └── Continuity Audit
+├── C. AFTER-SCHOOL / ACADEMY PACK
+│   ├── C01. ACADEMY ORGANIZATION & PROGRAM SETUP
+│   │   └── Academy Setup
+│   │       ├── Academy Groups / Chains
+│   │       ├── Academies / Branches
+│   │       ├── Central Academy Administration
+│   │       ├── Branch Managers
+│   │       ├── Branch-Level Instructor / Student Management
+│   │       ├── Shared Instructors Across Branches
+│   │       ├── Branch Configuration Inheritance
+│   │       ├── Venues
+│   │       ├── Rooms
+│   │       ├── Programmes
+│   │       ├── Age Groups
+│   │       ├── Levels
+│   │       ├── Terms / Seasons
+│   │       ├── Calendars
+│   │       ├── Capacity Rules
+│   │       └── Operating Hours
+│   ├── C02. MARKETING, LEADS & ENROLLMENT
+│   │   └── Academy CRM
+│   │       ├── Leads
+│   │       ├── Sources
+│   │       ├── Campaigns
+│   │       ├── Trial Requests
+│   │       ├── Trial Sessions
+│   │       ├── Follow-ups
+│   │       ├── Applications
+│   │       ├── Enrollment
+│   │       ├── Waiting Lists
+│   │       └── Conversion Analytics
+│   ├── C03. COURSES, CLASSES & SESSIONS
+│   │   └── Courses
+│   │       ├── Course Directory
+│   │       ├── Course Workspace
+│   │       │   ├── Overview
+│   │       │   ├── Programme
+│   │       │   ├── Level
+│   │       │   ├── Instructor
+│   │       │   ├── Schedule
+│   │       │   ├── Venue
+│   │       │   ├── Capacity
+│   │       │   ├── Age Range
+│   │       │   ├── Price
+│   │       │   ├── Sessions
+│   │       │   ├── Enrollments
+│   │       │   ├── Waiting List
+│   │       │   ├── Attendance
+│   │       │   ├── Learning Plan
+│   │       │   ├── Progress
+│   │       │   ├── Payments
+│   │       │   ├── Messages
+│   │       │   └── Reports
+│   │       ├── Class Groups
+│   │       ├── Sessions
+│   │       ├── Recurring Schedules
+│   │       ├── Make-up Sessions
+│   │       ├── Cancelled Sessions
+│   │       └── Room / Instructor Conflicts
+│   ├── C04. INSTRUCTORS & WORKLOAD
+│   │   └── Instructors
+│   │       ├── Instructor Directory
+│   │       ├── Instructor Workspace
+│   │       ├── Qualifications
+│   │       ├── Availability
+│   │       ├── Assignments
+│   │       ├── Teaching Hours
+│   │       ├── Extra Sessions
+│   │       ├── Substitutions
+│   │       ├── Performance
+│   │       ├── Compensation Profile
+│   │       └── Payroll / Payout History
+│   ├── C05. BOOKING, CAPACITY & WAITLISTS
+│   │   └── Bookings
+│   │       ├── Online Booking
+│   │       ├── Manual Booking
+│   │       ├── Capacity
+│   │       ├── Waitlist
+│   │       ├── Priority Rules
+│   │       ├── Seat Hold
+│   │       ├── Booking Expiry
+│   │       ├── Confirmation
+│   │       ├── Cancellation
+│   │       ├── Transfer
+│   │       └── Make-up Credit
+│   ├── C06. ATTENDANCE, CHECK-IN & PICKUP
+│   │   └── Attendance & Safety
+│   │       ├── Session Register
+│   │       ├── Check-in
+│   │       ├── Check-out
+│   │       ├── Late Arrival
+│   │       ├── Early Leave
+│   │       ├── Authorized Pickup
+│   │       ├── Pickup Code / Verification
+│   │       ├── Absent Alerts
+│   │       ├── Make-up Eligibility
+│   │       └── Attendance Analytics
+│   ├── C07. LEARNING, PROGRESS & ASSESSMENT
+│   │   └── Progress
+│   │       ├── Learning Plans
+│   │       ├── Skills / Objectives
+│   │       ├── Assessments
+│   │       ├── Teacher Notes
+│   │       ├── Progress Levels
+│   │       ├── Certificates
+│   │       ├── Parent Reports
+│   │       └── Progress Analytics
+│   ├── C08. FAMILY / PARENT EXPERIENCE
+│   │   └── Parent / Family Portal
+│   │       ├── Children
+│   │       ├── Courses
+│   │       ├── Schedule
+│   │       ├── Attendance
+│   │       ├── Progress
+│   │       ├── Messages
+│   │       ├── Invoices
+│   │       ├── Payments
+│   │       ├── Bookings
+│   │       ├── Waiting Lists
+│   │       ├── Pickup Authorization
+│   │       ├── Forms
+│   │       ├── Consents
+│   │       └── Documents
+│   ├── C09. ACADEMY BILLING, PACKAGES & MEMBERSHIPS
+│   │   └── Academy Finance
+│   │       ├── Student / Family Accounts
+│   │       ├── Course Fees
+│   │       ├── Session Fees
+│   │       ├── Packages
+│   │       ├── Memberships
+│   │       ├── Subscriptions
+│   │       ├── Discounts
+│   │       ├── Promo Codes
+│   │       ├── Sibling Discounts
+│   │       ├── Installments
+│   │       ├── Invoices
+│   │       ├── Payments
+│   │       ├── Credits
+│   │       ├── Make-up Credits
+│   │       ├── Refunds
+│   │       ├── Outstanding
+│   │       ├── Collections
+│   │       ├── Statements
+│   │       ├── Notifications
+│   │       └── Reports
+│   ├── C10. INSTRUCTOR COMPENSATION & PAYOUTS
+│   │   └── Instructor Compensation
+│   │       ├── Compensation Methods
+│   │       │   ├── Fixed Monthly
+│   │       │   ├── Hourly
+│   │       │   ├── Per Session
+│   │       │   ├── Per Course
+│   │       │   ├── Per Student
+│   │       │   ├── Percentage of Revenue
+│   │       │   └── Hybrid
+│   │       ├── Revenue Share Basis
+│   │       │   ├── Billed Revenue
+│   │       │   ├── Collected Revenue
+│   │       │   ├── Net Collected Revenue
+│   │       │   ├── Eligible Fee Types
+│   │       │   └── Discount / Refund Treatment
+│   │       ├── Session / Attendance Inputs
+│   │       ├── Course Revenue Inputs
+│   │       ├── Payout Calculation
+│   │       ├── Exceptions
+│   │       ├── Review
+│   │       ├── Approval
+│   │       ├── Payout Statement
+│   │       ├── Payment
+│   │       ├── Accounting Posting
+│   │       ├── Instructor Notification
+│   │       ├── History
+│   │       └── Audit
+│   ├── C11. REFUNDS, CREDITS & MAKE-UP MANAGEMENT
+│   │   └── Adjustments
+│   │       ├── Cancellation Rules
+│   │       ├── Refund Eligibility
+│   │       ├── Credit Rules
+│   │       ├── Make-up Session Credit
+│   │       ├── Transfer Credit
+│   │       ├── Approval
+│   │       ├── Refund Payment
+│   │       └── Audit
+│   ├── C12. COMMUNICATION & NOTIFICATIONS
+│   │   └── Communication
+│   │       ├── Announcements
+│   │       ├── Class Messages
+│   │       ├── Parent Messages
+│   │       ├── Reminders
+│   │       ├── Session Changes
+│   │       ├── Absence Alerts
+│   │       ├── Payment Reminders
+│   │       ├── Campaigns
+│   │       ├── Templates
+│   │       └── Delivery Logs
+│   ├── C13. FACILITIES & RESOURCE SCHEDULING
+│   │   └── Facilities
+│   │       ├── Venues
+│   │       ├── Rooms
+│   │       ├── Equipment
+│   │       ├── Bookings
+│   │       ├── Availability
+│   │       ├── Conflicts
+│   │       └── Maintenance Link
+│   ├── C14. REPORTING & ANALYTICS
+│   │   └── Academy Analytics
+│   │       ├── Enrollment
+│   │       ├── Retention
+│   │       ├── Attendance
+│   │       ├── Capacity Utilization
+│   │       ├── Revenue
+│   │       ├── Collections
+│   │       ├── Instructor Payout
+│   │       ├── Course Profitability
+│   │       ├── Lead Conversion
+│   │       └── Student Progress
+│   └── C15. SEASON / TERM ROLLOVER
+│       └── Rollover
+│           ├── Close Term
+│           ├── Complete Progress Reports
+│           ├── Renew Enrollments
+│           ├── Move Levels
+│           ├── Copy Courses
+│           ├── Copy Schedules
+│           ├── Carry Credits
+│           ├── Carry Balances
+│           ├── Archive Term
+│           ├── Open New Term
+│           └── Audit
+├── D. HIGHER EDUCATION PACK
+│   ├── D01. INSTITUTION STRUCTURE
+│   │   └── Institution
+│   │       ├── University Systems / Groups
+│   │       ├── Universities
+│   │       ├── Central Administration
+│   │       ├── Campuses
+│   │       ├── Campus Administrators
+│   │       ├── Shared Central Departments
+│   │       ├── Cross-Campus Faculty / Student Assignments
+│   │       ├── Colleges / Faculties
+│   │       ├── Schools
+│   │       ├── Departments
+│   │       ├── Centers / Institutes
+│   │       ├── Academic Units
+│   │       ├── Buildings
+│   │       ├── Rooms
+│   │       └── Governance Hierarchy
+│   ├── D02. RECRUITMENT & PROSPECT CRM
+│   │   └── Recruitment
+│   │       ├── Prospects
+│   │       ├── Leads
+│   │       ├── Campaigns
+│   │       ├── Events
+│   │       ├── School Visits
+│   │       ├── Open Days
+│   │       ├── Recruiters
+│   │       ├── Source Attribution
+│   │       ├── Lead Scoring
+│   │       ├── Nurture
+│   │       └── Conversion Analytics
+│   ├── D03. ADMISSIONS
+│   │   └── Admissions
+│   │       ├── Applications
+│   │       ├── Program Choices
+│   │       ├── Documents
+│   │       ├── Application Fees
+│   │       ├── Tests
+│   │       ├── Interviews
+│   │       ├── Evaluation
+│   │       ├── Decision
+│   │       ├── Offers
+│   │       ├── Conditions
+│   │       ├── Deposits
+│   │       ├── Acceptance
+│   │       ├── Matriculation
+│   │       └── Admissions Analytics
+│   ├── D04. ACADEMIC CATALOG
+│   │   └── Catalog
+│   │       ├── Catalog Years
+│   │       ├── Courses
+│   │       ├── Course Descriptions
+│   │       ├── Credits
+│   │       ├── Levels
+│   │       ├── Prerequisites
+│   │       ├── Corequisites
+│   │       ├── Equivalencies
+│   │       ├── Repeat Rules
+│   │       ├── Grading Basis
+│   │       └── Catalog Publication
+│   ├── D05. PROGRAMMES, DEGREES & CURRICULUM
+│   │   └── Programmes
+│   │       ├── Degrees
+│   │       ├── Majors
+│   │       ├── Minors
+│   │       ├── Concentrations
+│   │       ├── Curriculum Versions
+│   │       ├── Requirements
+│   │       │   ├── Core
+│   │       │   ├── Major
+│   │       │   ├── Electives
+│   │       │   ├── Credit Minimum
+│   │       │   ├── GPA Minimum
+│   │       │   ├── Residency Requirement
+│   │       │   └── Capstone
+│   │       ├── Progression Rules
+│   │       ├── Programme Workspace
+│   │       ├── Programme Approval
+│   │       └── Curriculum Governance
+│   ├── D06. COURSE SECTIONS & SCHEDULING
+│   │   └── Scheduling
+│   │       ├── Course Offerings
+│   │       ├── Sections
+│   │       ├── Terms
+│   │       ├── Meeting Patterns
+│   │       ├── Rooms
+│   │       ├── Faculty
+│   │       ├── Capacity
+│   │       ├── Waitlist Capacity
+│   │       ├── Conflict Detection
+│   │       ├── Cross-Listing
+│   │       ├── Combined Sections
+│   │       └── Schedule Publication
+│   ├── D07. REGISTRATION, ADD / DROP & WAITLISTS
+│   │   └── Registration
+│   │       ├── Registration Windows
+│   │       ├── Priority Registration
+│   │       ├── Eligibility
+│   │       ├── Prerequisite Check
+│   │       ├── Holds Check
+│   │       ├── Course Search
+│   │       ├── Register
+│   │       ├── Add
+│   │       ├── Drop
+│   │       ├── Swap
+│   │       ├── Waitlist
+│   │       ├── Auto-Enroll
+│   │       ├── Overload Request
+│   │       ├── Withdrawal
+│   │       └── Registration Audit
+│   ├── D08. UNIVERSITY STUDENT 360
+│   │   └── Student Workspace
+│   │       ├── Overview
+│   │       ├── Identity
+│   │       ├── Contact
+│   │       ├── Academic Programme
+│   │       ├── Enrollment
+│   │       ├── Registration
+│   │       ├── Schedule
+│   │       ├── Grades
+│   │       ├── GPA
+│   │       ├── Academic Standing
+│   │       ├── Advising
+│   │       ├── Degree Audit
+│   │       ├── Transfer Credit
+│   │       ├── Financial Account
+│   │       ├── Financial Aid
+│   │       ├── Housing
+│   │       ├── Student Affairs
+│   │       ├── Accessibility
+│   │       ├── Career
+│   │       ├── Documents
+│   │       ├── Communications
+│   │       ├── Tasks
+│   │       ├── Holds
+│   │       ├── Timeline
+│   │       └── Audit
+│   ├── D09. ACADEMIC ADVISING & STUDY PLANNING
+│   │   └── Advising
+│   │       ├── Advisor Assignment
+│   │       ├── Appointments
+│   │       ├── Advising Notes
+│   │       ├── Academic Plan
+│   │       ├── Planned Courses
+│   │       ├── Milestones
+│   │       ├── Alerts
+│   │       ├── Interventions
+│   │       ├── Student Success Plan
+│   │       └── Advisor Dashboard
+│   ├── D10. DEGREE AUDIT
+│   │   └── Degree Audit
+│   │       ├── Programme Requirements
+│   │       ├── Completed
+│   │       ├── In Progress
+│   │       ├── Planned
+│   │       ├── Missing
+│   │       ├── Not Satisfied
+│   │       ├── Exceptions
+│   │       ├── Substitutions
+│   │       ├── Waivers
+│   │       ├── Residency Rules
+│   │       ├── GPA Rules
+│   │       ├── Credit Rules
+│   │       ├── What-If Audit
+│   │       └── Graduation Readiness
+│   ├── D11. TRANSFER CREDIT & PRIOR LEARNING
+│   │   └── Transfer Credit
+│   │       ├── External Institutions
+│   │       ├── Incoming Transcript
+│   │       ├── Course Evaluation
+│   │       ├── Equivalency Rules
+│   │       ├── Credit Award
+│   │       ├── Prior Learning Assessment
+│   │       ├── Exam Credit
+│   │       ├── Manual Override
+│   │       ├── Approval
+│   │       └── Audit
+│   ├── D12. GRADES, GPA & ACADEMIC RECORDS
+│   │   └── Academic Records
+│   │       ├── Grade Entry
+│   │       ├── Grade Approval
+│   │       ├── Grade Changes
+│   │       ├── Incomplete Grades
+│   │       ├── Repeat / Replacement Rules
+│   │       ├── Term GPA
+│   │       ├── Cumulative GPA
+│   │       ├── Programme GPA
+│   │       ├── Academic History
+│   │       ├── Official Record Lock
+│   │       └── Audit
+│   ├── D13. ACADEMIC STANDING & PROGRESSION
+│   │   └── Progression
+│   │       ├── Good Standing
+│   │       ├── Warning
+│   │       ├── Probation
+│   │       ├── Suspension
+│   │       ├── Dismissal
+│   │       ├── Progression Rules
+│   │       ├── Automatic Evaluation
+│   │       ├── Appeal
+│   │       ├── Intervention
+│   │       ├── Reinstatement
+│   │       └── History
+│   ├── D14. EXAMS & ASSESSMENT
+│   │   └── Exams
+│   │       ├── Exam Periods
+│   │       ├── Exam Timetable
+│   │       ├── Rooms
+│   │       ├── Invigilators
+│   │       ├── Candidates
+│   │       ├── Special Arrangements
+│   │       ├── Attendance
+│   │       ├── Results
+│   │       ├── Deferred Exams
+│   │       ├── Resits
+│   │       └── Exam Appeals
+│   ├── D15. TRANSCRIPTS, CREDENTIALS & VERIFICATION
+│   │   └── Credentials
+│   │       ├── Unofficial Transcript
+│   │       ├── Official Transcript
+│   │       ├── Transcript Requests
+│   │       ├── Digital Credentials
+│   │       ├── Certificates
+│   │       ├── Verification Requests
+│   │       ├── Secure Share
+│   │       ├── Revocation
+│   │       └── Credential Audit
+│   ├── D16. GRADUATION & CLEARANCE
+│   │   └── Graduation
+│   │       ├── Graduation Application
+│   │       ├── Degree Audit Check
+│   │       ├── Academic Clearance
+│   │       ├── Finance Clearance
+│   │       ├── Library Clearance
+│   │       ├── Department Clearance
+│   │       ├── Thesis Clearance
+│   │       ├── Holds
+│   │       ├── Approval
+│   │       ├── Conferral
+│   │       ├── Ceremony
+│   │       ├── Credential Issue
+│   │       └── Alumni Conversion
+│   ├── D17. STUDENT ACCOUNTS & BILLING
+│   │   └── Student Finance
+│   │       ├── Tuition
+│   │       ├── Credit-Based Fees
+│   │       ├── Programme Fees
+│   │       ├── Housing
+│   │       ├── Meal Plan
+│   │       ├── Other Charges
+│   │       ├── Invoices
+│   │       ├── Payments
+│   │       ├── Refunds
+│   │       ├── Deposits
+│   │       ├── Sponsorships
+│   │       ├── Installments
+│   │       ├── Outstanding
+│   │       ├── Collections
+│   │       ├── Statements
+│   │       └── Payment Plans
+│   ├── D18. FINANCIAL AID
+│   │   └── Financial Aid
+│   │       ├── Aid Year
+│   │       ├── Application
+│   │       ├── Eligibility
+│   │       ├── Need Analysis
+│   │       ├── Awards
+│   │       ├── Loans
+│   │       ├── Grants
+│   │       ├── Scholarships
+│   │       ├── Work Study
+│   │       ├── Acceptance
+│   │       ├── Disbursement
+│   │       ├── Refund
+│   │       ├── Satisfactory Academic Progress Rules
+│   │       ├── Suspension
+│   │       ├── Appeal
+│   │       ├── Reconciliation
+│   │       └── Audit
+│   ├── D19. SCHOLARSHIPS & SPONSORSHIPS
+│   │   └── Scholarships
+│   │       ├── Scholarship Programs
+│   │       ├── Criteria
+│   │       ├── Applications
+│   │       ├── Selection
+│   │       ├── Awards
+│   │       ├── Renewal
+│   │       ├── Sponsor Billing
+│   │       ├── Sponsor Statements
+│   │       ├── Restrictions
+│   │       └── Reporting
+│   ├── D20. FACULTY LIFECYCLE & WORKLOAD
+│   │   └── Faculty
+│   │       ├── Faculty Directory
+│   │       ├── Rank
+│   │       ├── Appointment
+│   │       ├── Contract
+│   │       ├── Department
+│   │       ├── Credentials
+│   │       ├── Teaching Assignment
+│   │       ├── Teaching Load
+│   │       ├── Research Load
+│   │       ├── Service Load
+│   │       ├── Advising Load
+│   │       ├── Overload
+│   │       ├── Sabbatical
+│   │       ├── Promotion
+│   │       ├── Tenure — If Applicable
+│   │       ├── Workload Analytics
+│   │       └── Compensation Link
+│   ├── D21. RESEARCH & GRANT MANAGEMENT
+│   │   └── Research
+│   │       ├── Research Projects
+│   │       ├── Principal Investigator
+│   │       ├── Co-Investigators
+│   │       ├── Sponsors
+│   │       ├── Grant Applications
+│   │       ├── Awards
+│   │       ├── Budgets
+│   │       ├── Milestones
+│   │       ├── Expenditures
+│   │       ├── Deliverables
+│   │       ├── Publications
+│   │       ├── Research Outputs
+│   │       ├── Grant Reporting
+│   │       └── Closeout
+│   ├── D22. RESEARCH ETHICS & COMPLIANCE
+│   │   └── Research Compliance
+│   │       ├── Ethics Applications
+│   │       ├── IRB / Ethics Review
+│   │       ├── Protocols
+│   │       ├── Risk
+│   │       ├── Consent Documents
+│   │       ├── Approvals
+│   │       ├── Conditions
+│   │       ├── Amendments
+│   │       ├── Renewals
+│   │       ├── Adverse Events
+│   │       ├── Closure
+│   │       └── Audit
+│   ├── D23. THESIS / DISSERTATION MANAGEMENT
+│   │   └── Thesis / Dissertation
+│   │       ├── Topic Proposal
+│   │       ├── Supervisor Assignment
+│   │       ├── Committee
+│   │       ├── Proposal Approval
+│   │       ├── Milestones
+│   │       ├── Progress Reviews
+│   │       ├── Documents / Versions
+│   │       ├── Defense Scheduling
+│   │       ├── Examiners
+│   │       ├── Defense Result
+│   │       ├── Corrections
+│   │       ├── Final Submission
+│   │       ├── Repository
+│   │       └── Clearance
+│   ├── D24. INTERNSHIPS, PRACTICUM & PLACEMENTS
+│   │   └── Placements
+│   │       ├── Employers
+│   │       ├── Opportunities
+│   │       ├── Applications
+│   │       ├── Placement Assignment
+│   │       ├── Supervisor
+│   │       ├── Academic Supervisor
+│   │       ├── Hours
+│   │       ├── Attendance
+│   │       ├── Evaluations
+│   │       ├── Learning Outcomes
+│   │       ├── Documents
+│   │       └── Completion
+│   ├── D25. CAREER SERVICES & EMPLOYER RELATIONS
+│   │   └── Career
+│   │       ├── Student Career Profiles
+│   │       ├── CV / Resume
+│   │       ├── Appointments
+│   │       ├── Jobs
+│   │       ├── Employers
+│   │       ├── Career Fairs
+│   │       ├── Workshops
+│   │       ├── Applications
+│   │       ├── Interviews
+│   │       ├── Offers
+│   │       ├── Graduate Outcomes
+│   │       └── Employer Analytics
+│   ├── D26. HOUSING & RESIDENTIAL LIFE
+│   │   └── Housing
+│   │       ├── Buildings
+│   │       ├── Rooms
+│   │       ├── Beds
+│   │       ├── Applications
+│   │       ├── Assignments
+│   │       ├── Roommates
+│   │       ├── Charges
+│   │       ├── Check-in
+│   │       ├── Check-out
+│   │       ├── Maintenance
+│   │       ├── Conduct
+│   │       ├── Leave
+│   │       ├── Visitors
+│   │       └── Housing Reports
+│   ├── D27. CAMPUS SERVICES
+│   │   └── Campus Services
+│   │       ├── ID Cards
+│   │       ├── Library
+│   │       ├── Transport
+│   │       ├── Dining
+│   │       ├── Clinic
+│   │       ├── Sports / Recreation
+│   │       ├── Facilities
+│   │       ├── Parking
+│   │       ├── Printing
+│   │       └── Student Service Requests
+│   ├── D28. STUDENT AFFAIRS, CONDUCT & WELLBEING
+│   │   └── Student Affairs
+│   │       ├── Conduct Cases
+│   │       ├── Disciplinary Actions
+│   │       ├── Appeals
+│   │       ├── Counselling
+│   │       ├── Wellbeing
+│   │       ├── Student Organizations
+│   │       ├── Activities
+│   │       ├── Student Leadership
+│   │       ├── Complaints
+│   │       └── Case Management
+│   ├── D29. ACCESSIBILITY & ACCOMMODATIONS
+│   │   └── Accessibility
+│   │       ├── Accessibility Registration
+│   │       ├── Documentation
+│   │       ├── Needs Assessment
+│   │       ├── Accommodation Plans
+│   │       ├── Exam Accommodations
+│   │       ├── Classroom Accommodations
+│   │       ├── Assistive Technology
+│   │       ├── Faculty Notification
+│   │       ├── Reviews
+│   │       └── Confidentiality
+│   ├── D30. INTERNATIONAL STUDENT & IMMIGRATION SERVICES
+│   │   └── International Students
+│   │       ├── Passport / Visa
+│   │       ├── Immigration Status
+│   │       ├── Document Expiry
+│   │       ├── Compliance Dates
+│   │       ├── International Orientation
+│   │       ├── Insurance
+│   │       ├── Sponsor
+│   │       ├── Travel Signatures
+│   │       ├── Alerts
+│   │       └── Reports
+│   ├── D31. INSTITUTIONAL EFFECTIVENESS & ACCREDITATION
+│   │   └── Institutional Effectiveness
+│   │       ├── Strategic KPIs
+│   │       ├── Programme Review
+│   │       ├── Learning Outcomes
+│   │       ├── Assessment Plans
+│   │       ├── Accreditation Frameworks
+│   │       ├── Evidence
+│   │       ├── Self-Study
+│   │       ├── Action Plans
+│   │       ├── Surveys
+│   │       ├── Benchmarking
+│   │       ├── Institutional Research
+│   │       └── Regulatory Reporting
+│   ├── D32. CONTINUING EDUCATION & PROFESSIONAL PROGRAMMES
+│   │   └── Continuing Education
+│   │       ├── Non-Degree Programmes
+│   │       ├── Short Courses
+│   │       ├── Certificates
+│   │       ├── Cohorts
+│   │       ├── Registration
+│   │       ├── Attendance
+│   │       ├── Assessment
+│   │       ├── Credential
+│   │       ├── Employer-Sponsored Training
+│   │       ├── Billing
+│   │       └── Instructor Compensation
+│   └── D33. UNIVERSITY ALUMNI & ADVANCEMENT
+│       └── Advancement
+│           ├── Alumni
+│           ├── Constituents
+│           ├── Donors
+│           ├── Campaigns
+│           ├── Funds
+│           ├── Gifts
+│           ├── Pledges
+│           ├── Events
+│           ├── Stewardship
+│           ├── Mentoring
+│           ├── Engagement
+│           └── Analytics
+├── E. OPTIONAL EXTENSION PACKS
+│   └── Extensions
+│       ├── AI Assistant
+│       ├── AI Student / Academic Early Warning
+│       ├── AI Attendance Risk
+│       ├── AI Financial Risk / Collections Prioritization
+│       ├── AI Schedule Optimizer
+│       ├── AI Report / Comment Assistance
+│       ├── AI Knowledge Search
+│       ├── Advanced BI
+│       ├── Learning Analytics
+│       ├── Financial Forecasting
+│       ├── Enrollment Forecasting
+│       ├── Online Exams
+│       ├── Remote Proctoring
+│       ├── Virtual Classroom
+│       ├── Video Learning
+│       ├── Biometric Attendance
+│       ├── Biometric Staff Time
+│       ├── Smart ID Cards
+│       ├── Access Control
+│       ├── Bus GPS
+│       ├── Fleet Telematics
+│       ├── IoT / Smart Campus
+│       ├── Digital Signage
+│       ├── School Shop
+│       ├── Cafeteria POS
+│       ├── Hostel / Boarding
+│       ├── Clinic
+│       ├── Sports Management
+│       ├── Event Ticketing
+│       ├── RFID Library
+│       ├── Campus Map / Wayfinding
+│       ├── Document OCR / Intelligent Capture
+│       ├── Government Reporting Packs
+│       └── Third-Party Marketplace
+├── F. GLOBAL UI / RECORD CONTRACTS
+│   ├── GLOBAL WORKSPACE CONTRACT
+│   │   └── RECORD WORKSPACE
+│   │       ├── Header
+│   │       │   ├── Identity
+│   │       │   ├── Status
+│   │       │   ├── Owner
+│   │       │   ├── Important Badges
+│   │       │   ├── Quick Actions
+│   │       │   └── More Actions
+│   │       ├── Overview
+│   │       ├── Details
+│   │       ├── Relationships
+│   │       ├── Domain-Specific Tabs
+│   │       ├── Documents
+│   │       ├── Communications
+│   │       ├── Tasks
+│   │       ├── Notes
+│   │       ├── Timeline
+│   │       └── Audit
+│   ├── GLOBAL DATA TABLE CONTRACT
+│   │   └── DATA TABLE
+│   │       ├── Search
+│   │       ├── Filters
+│   │       ├── Saved Views
+│   │       ├── Sort
+│   │       ├── Columns
+│   │       ├── Column Visibility
+│   │       ├── Group
+│   │       ├── Pagination
+│   │       ├── Row Selection
+│   │       ├── Bulk Actions
+│   │       ├── Export
+│   │       ├── Import
+│   │       ├── Quick Edit
+│   │       └── Row Actions
+│   ├── GLOBAL FORM CONTRACT
+│   │   └── FORM
+│   │       ├── Header
+│   │       ├── Sections
+│   │       ├── Required Fields
+│   │       ├── Optional Fields
+│   │       ├── Conditional Fields
+│   │       ├── Inline Validation
+│   │       ├── Cross-Field Validation
+│   │       ├── Save Draft
+│   │       ├── Submit
+│   │       ├── Cancel
+│   │       ├── Autosave
+│   │       ├── Unsaved Change Warning
+│   │       └── Audit Metadata
+│   ├── GLOBAL RECORD CONTRACT
+│   │   └── RECORD
+│   │       ├── Unique ID
+│   │       ├── Human-readable Code
+│   │       ├── Tenant ID
+│   │       ├── Status
+│   │       ├── Effective From
+│   │       ├── Effective To
+│   │       ├── Created By
+│   │       ├── Created At
+│   │       ├── Updated By
+│   │       ├── Updated At
+│   │       ├── Version
+│   │       ├── Archived?
+│   │       └── Audit Reference
+│   ├── GLOBAL ACTION CONTRACT
+│   │   └── ACTION
+│   │       ├── Actor
+│   │       ├── Resource
+│   │       ├── Context
+│   │       ├── Preconditions
+│   │       ├── Permission Check
+│   │       ├── Validation
+│   │       ├── Confirmation
+│   │       ├── Execution
+│   │       ├── State Transition
+│   │       ├── Side Effects
+│   │       ├── Event
+│   │       ├── Notification
+│   │       ├── Audit
+│   │       └── Result
+│   ├── GLOBAL STATE / STATUS CONTRACT
+│   │   └── STATE
+│   │       ├── State ID
+│   │       ├── Name
+│   │       ├── Category
+│   │       ├── Initial?
+│   │       ├── Terminal?
+│   │       ├── Allowed Transitions
+│   │       ├── Transition Permission
+│   │       ├── Effective Date
+│   │       ├── Reason Requirement
+│   │       └── Audit
+│   ├── GLOBAL WORKFLOW CONTRACT
+│   │   └── WORKFLOW
+│   │       ├── Workflow ID
+│   │       ├── Trigger
+│   │       ├── Context
+│   │       ├── Initial State
+│   │       ├── Validation
+│   │       ├── Routing
+│   │       ├── Assigned Actor / Group
+│   │       ├── Tasks
+│   │       ├── Decision
+│   │       ├── Approval Levels
+│   │       ├── Transitions
+│   │       ├── SLA
+│   │       ├── Escalation
+│   │       ├── Delegation
+│   │       ├── Side Effects
+│   │       ├── Notifications
+│   │       ├── Completion
+│   │       ├── Cancellation
+│   │       ├── Exception Path
+│   │       ├── History
+│   │       └── Audit
+│   ├── GLOBAL PERMISSION CONTRACT
+│   │   └── PERMISSION DECISION
+│   │       ├── Actor
+│   │       ├── Role
+│   │       ├── Attributes
+│   │       ├── Resource
+│   │       ├── Record
+│   │       ├── Field
+│   │       ├── Action
+│   │       ├── Tenant
+│   │       ├── Scope
+│   │       ├── Context
+│   │       ├── Environment
+│   │       ├── Conditions
+│   │       ├── Policy
+│   │       ├── Default Deny
+│   │       ├── Decision
+│   │       ├── Reason
+│   │       └── Audit
+│   ├── GLOBAL EVENT CONTRACT
+│   │   └── EVENT
+│   │       ├── Event ID
+│   │       ├── Event Type
+│   │       ├── Timestamp
+│   │       ├── Tenant
+│   │       ├── Actor
+│   │       ├── Entity
+│   │       ├── Record ID
+│   │       ├── Previous State
+│   │       ├── New State
+│   │       ├── Payload
+│   │       ├── Correlation ID
+│   │       ├── Source
+│   │       ├── Consumers
+│   │       ├── Delivery Status
+│   │       ├── Retry
+│   │       └── Audit
+│   ├── GLOBAL AUTOMATION CONTRACT
+│   │   └── AUTOMATION
+│   │       ├── Automation ID
+│   │       ├── Trigger
+│   │       ├── Conditions
+│   │       ├── Schedule / Delay
+│   │       ├── Actions
+│   │       ├── Branching
+│   │       ├── Approvals
+│   │       ├── Notifications
+│   │       ├── Retry Policy
+│   │       ├── Failure Queue
+│   │       ├── Escalation
+│   │       ├── Execution Log
+│   │       ├── Enabled / Disabled
+│   │       └── Version
+│   ├── GLOBAL NOTIFICATION CONTRACT
+│   │   └── NOTIFICATION
+│   │       ├── Notification Type
+│   │       ├── Trigger
+│   │       ├── Audience
+│   │       ├── Recipient Resolution
+│   │       ├── Channel
+│   │       ├── Template
+│   │       ├── Locale
+│   │       ├── Priority
+│   │       ├── Schedule
+│   │       ├── Quiet Hours
+│   │       ├── Preference Check
+│   │       ├── Delivery
+│   │       ├── Read Status
+│   │       ├── Failure
+│   │       ├── Retry
+│   │       ├── Escalation
+│   │       └── Audit
+│   ├── GLOBAL IMPORT JOB CONTRACT
+│   │   └── IMPORT JOB
+│   │       ├── Import ID
+│   │       ├── Source
+│   │       ├── File
+│   │       ├── Entity Type
+│   │       ├── Mapping Version
+│   │       ├── Validation Result
+│   │       ├── Dry Run Result
+│   │       ├── Approval
+│   │       ├── Execution Status
+│   │       ├── Created Count
+│   │       ├── Updated Count
+│   │       ├── Skipped Count
+│   │       ├── Warning Count
+│   │       ├── Error Count
+│   │       ├── Rollback Point
+│   │       ├── Reconciliation
+│   │       └── Audit
+│   ├── GLOBAL EXPORT JOB CONTRACT
+│   │   └── EXPORT JOB
+│   │       ├── Export ID
+│   │       ├── Requester
+│   │       ├── Dataset
+│   │       ├── Scope
+│   │       ├── Fields
+│   │       ├── Format
+│   │       ├── Security Classification
+│   │       ├── Masking
+│   │       ├── Encryption
+│   │       ├── Destination
+│   │       ├── Expiration
+│   │       ├── Record Count
+│   │       ├── Status
+│   │       └── Audit
+│   ├── GLOBAL AUDIT EVENT CONTRACT
+│   │   └── AUDIT EVENT
+│   │       ├── Timestamp
+│   │       ├── Actor
+│   │       ├── Role
+│   │       ├── Tenant
+│   │       ├── Campus / Unit
+│   │       ├── Action
+│   │       ├── Entity
+│   │       ├── Record
+│   │       ├── Field
+│   │       ├── Old Value
+│   │       ├── New Value
+│   │       ├── Reason
+│   │       ├── Device
+│   │       ├── IP
+│   │       ├── Session
+│   │       ├── Source
+│   │       ├── Correlation ID
+│   │       └── Result
+│   └── GLOBAL FINANCIAL TRANSACTION CONTRACT
+│       └── FINANCIAL TRANSACTION
+│           ├── Transaction ID
+│           ├── Transaction Type
+│           ├── Entity / School
+│           ├── Person / Account
+│           ├── Currency
+│           ├── Amount
+│           ├── Tax
+│           ├── Debit Account
+│           ├── Credit Account
+│           ├── Cost Center
+│           ├── Fund / Grant
+│           ├── Reference Document
+│           ├── Status
+│           ├── Approval
+│           ├── Posting Date
+│           ├── Period
+│           ├── Created By
+│           ├── Posted By
+│           ├── Reversal Reference
+│           └── Audit
+├── G. DOMAIN REVIEW & COMPLETENESS MATRIX
+│   └── Every Domain / Module Must Be Reviewed Against
+│       ├── Business Purpose
+│       ├── Actors / Personas
+│       ├── Navigation
+│       ├── Pages
+│       ├── Subpages / Views
+│       ├── Workspaces
+│       ├── Tabs
+│       ├── Subtabs
+│       ├── Sections
+│       ├── Cards / Panels
+│       ├── Tables / Widgets
+│       ├── Entities
+│       ├── Relationships
+│       ├── Records
+│       ├── Fields
+│       ├── Custom Fields
+│       ├── Statuses / States
+│       ├── State Transitions
+│       ├── Actions
+│       ├── Bulk Actions
+│       ├── Validation Rules
+│       ├── Business Rules
+│       ├── Workflow
+│       ├── Approval Matrix
+│       ├── Permissions
+│       ├── Data Scope
+│       ├── Sensitive Data Classification
+│       ├── Events
+│       ├── Automations
+│       ├── Notifications
+│       ├── Documents
+│       ├── Forms
+│       ├── Consents
+│       ├── Tasks / Cases
+│       ├── Imports
+│       ├── Exports
+│       ├── Migration
+│       ├── Integrations
+│       ├── APIs
+│       ├── Webhooks
+│       ├── Audit Requirements
+│       ├── Reports
+│       ├── KPIs
+│       ├── Dashboards
+│       ├── Search
+│       ├── Filters
+│       ├── Saved Views
+│       ├── Exceptions / Edge Cases
+│       ├── Configuration
+│       ├── Terminology
+│       ├── Localization
+│       ├── Country Rules
+│       ├── Security
+│       ├── Privacy
+│       ├── Data Retention
+│       ├── Archival
+│       ├── Data Quality
+│       ├── Master Data Governance
+│       ├── Year-End / Lifecycle
+│       ├── Backup / Recovery
+│       ├── Monitoring / Alerts
+│       ├── Accessibility
+│       ├── Performance / Scale
+│       ├── Multi-Branch / Multi-Campus Scope
+│       ├── Central-vs-Local Ownership
+│       ├── Delegated Administration
+│       ├── Configuration Inheritance
+│       ├── Cross-Branch Mobility
+│       ├── Consolidated Reporting
+│       └── Testing / Acceptance Criteria
+└── H. MASTER MAP SUMMARY
+    └── EDUCATION PLATFORM
+        ├── PROVIDER / SaaS CONTROL PLANE
+        │   ├── Provider Control Tower
+        │   ├── Customer / Tenant 360
+        │   ├── Sales / Demo / Quote
+        │   ├── Contracts
+        │   ├── Plans / Pricing / Entitlements
+        │   ├── Subscriptions / Trials / Renewals
+        │   ├── Provider Billing / Dunning
+        │   ├── Usage / Quotas / Metering
+        │   ├── Tenant Provisioning
+        │   ├── Implementation / Migration
+        │   ├── Customer Self-Service
+        │   ├── Customer Success / Health
+        │   ├── Provider Support
+        │   ├── Privileged Support Access
+        │   ├── SaaS Operations / SRE
+        │   ├── Incident / Change / Maintenance
+        │   ├── Releases / Feature Rollouts
+        │   ├── Provider Security / Compliance
+        │   ├── Backup / DR
+        │   ├── Shared / Dedicated / Self-Hosted Deployments
+        │   ├── Region / Residency / Placement
+        │   ├── Domains / White Label
+        │   ├── Partner / Developer Platform
+        │   ├── Status / Customer Communications
+        │   ├── Offboarding / Export / Deletion
+        │   ├── Provider Finance / Revenue Ops
+        │   ├── SaaS KPIs
+        │   ├── FinOps / Cost-to-Serve
+        │   ├── Provider Roles / Segregation
+        │   ├── Provider Audit
+        │   ├── Abuse / Rate Protection
+        │   ├── Product Feedback / Beta
+        │   ├── Channel / Reseller — Optional
+        │   ├── Legal / Customer Assurance
+        │   └── Control-Plane API / Events
+        ├── PLATFORM CORE
+        │   ├── Tenant / Customer / School Group
+        │   ├── Multi-Branch / School-Chain Administration
+        │   ├── Organization / Branch Hierarchy
+        │   ├── People / Identity / Household
+        │   ├── Authentication
+        │   ├── Roles / Permissions / Delegated Administration
+        │   ├── Management Hierarchy / Module Ownership
+        │   ├── Configuration / Inheritance / Central-vs-Local Control
+        │   ├── Workflow
+        │   ├── Business Rules
+        │   ├── Events / Automation
+        │   ├── Communication
+        │   ├── Notifications
+        │   ├── Documents
+        │   ├── Forms / Consents
+        │   ├── Tasks / Cases
+        │   ├── Audit
+        │   ├── Privacy / Governance
+        │   ├── Data Quality
+        │   ├── Import / Export / Migration
+        │   ├── Integrations / API
+        │   ├── Search
+        │   ├── Analytics
+        │   ├── System Operations
+        │   ├── Backup / Disaster Recovery
+        │   ├── Master Data Governance
+        │   ├── Contracts
+        │   ├── Service Desk
+        │   ├── Localization / Country Packs
+        │   └── Records Management
+        ├── K-12 SCHOOL
+        │   ├── Academic Setup
+        │   ├── Admissions
+        │   ├── Enrollment / Re-enrollment
+        │   ├── Student Directory
+        │   ├── Student 360
+        │   ├── Curriculum
+        │   ├── Timetable
+        │   ├── Calendar
+        │   ├── Teaching / Learning
+        │   ├── Attendance
+        │   ├── Assessment
+        │   ├── Gradebook
+        │   ├── Exams
+        │   ├── Reports / Transcripts
+        │   ├── Behaviour
+        │   ├── Safeguarding
+        │   ├── Wellbeing
+        │   ├── Learning Support
+        │   ├── Medical
+        │   ├── Parent Portal
+        │   ├── Student Portal
+        │   ├── Teacher Portal
+        │   ├── Parent Meetings
+        │   ├── Activities
+        │   ├── Trips
+        │   ├── Transport
+        │   ├── Dismissal / Pickup
+        │   ├── Meals
+        │   ├── Library
+        │   ├── Student / Family Billing
+        │   ├── Accounting
+        │   ├── Procurement / Vendors
+        │   ├── Assets
+        │   ├── Facilities
+        │   ├── HR / Workforce
+        │   ├── Cover
+        │   ├── Reception
+        │   ├── Visitors
+        │   ├── Emergency
+        │   ├── Alumni / Advancement
+        │   ├── Boarding
+        │   ├── Payroll / Compensation
+        │   ├── Financial Aid
+        │   ├── Expenses / Reimbursements
+        │   ├── Fund / Grant Accounting
+        │   ├── Multi-Entity / Multi-Branch Finance
+        │   ├── Consolidated Group Reporting
+        │   ├── Cross-Branch Student / Staff Mobility
+        │   ├── Cashier / POS
+        │   ├── Marketing CRM
+        │   ├── School Website / CMS
+        │   ├── Quality / Accreditation
+        │   ├── Complaints / Appeals
+        │   ├── IT / Devices
+        │   ├── Physical Access
+        │   ├── Year-End / Rollover
+        │   ├── Regulatory Reporting
+        │   └── Business Continuity
+        ├── ACADEMY / AFTER-SCHOOL
+        │   ├── Programme Setup
+        │   ├── CRM / Enrollment
+        │   ├── Courses / Sessions
+        │   ├── Instructors
+        │   ├── Booking / Waitlists
+        │   ├── Attendance / Check-in / Pickup
+        │   ├── Learning / Progress
+        │   ├── Parent / Family
+        │   ├── Billing / Packages
+        │   ├── Instructor Compensation
+        │   ├── Refund / Credit
+        │   ├── Communication
+        │   ├── Facilities
+        │   ├── Analytics
+        │   └── Term Rollover
+        ├── HIGHER EDUCATION
+        │   ├── Institution Structure
+        │   ├── Recruitment
+        │   ├── Admissions
+        │   ├── Academic Catalog
+        │   ├── Programmes / Curriculum
+        │   ├── Scheduling
+        │   ├── Registration
+        │   ├── Student 360
+        │   ├── Advising
+        │   ├── Degree Audit
+        │   ├── Transfer Credit
+        │   ├── Grades / GPA
+        │   ├── Academic Standing
+        │   ├── Exams
+        │   ├── Transcripts / Credentials
+        │   ├── Graduation / Clearance
+        │   ├── Student Accounts
+        │   ├── Financial Aid
+        │   ├── Scholarships / Sponsors
+        │   ├── Faculty Lifecycle / Workload
+        │   ├── Research / Grants
+        │   ├── Research Ethics
+        │   ├── Thesis / Dissertation
+        │   ├── Internships / Placements
+        │   ├── Career Services
+        │   ├── Housing
+        │   ├── Campus Services
+        │   ├── Student Affairs
+        │   ├── Accessibility
+        │   ├── International Students
+        │   ├── Institutional Effectiveness
+        │   ├── Continuing Education
+        │   └── Alumni / Advancement
+        └── OPTIONAL EXTENSIONS
+            ├── AI
+            ├── Advanced Analytics
+            ├── Online / Virtual Learning
+            ├── Biometrics
+            ├── Smart ID / Access
+            ├── GPS / IoT
+            ├── POS / RFID
+            ├── OCR
+            ├── Government Packs
+            └── Marketplace Integrations

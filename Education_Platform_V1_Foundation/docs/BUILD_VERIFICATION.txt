@@ -1,0 +1,14 @@
+EDUCATION PLATFORM V1 FOUNDATION — BUILD VERIFICATION
+
+Architecture source lines: 5787
+Registered master modules: 169
+D1/SQLite schema tables validated: 37
+Worker TypeScript: parsed + typechecked against D1 interface stubs
+Frontend TypeScript/TSX: parser validation passed
+Migration scripts: executed successfully against SQLite compatibility check
+No production secret or API key is included.
+Cloudflare D1 database_id is configured for the user-provided deployment database.
+
+IMPORTANT
+Full npm install / Vite production build was not executed in this environment because package registry access is unavailable here.
+At deployment time, npm install will fetch the current Cloudflare/React dependencies declared in package.json, then we will run the real Cloudflare local/preview tests before production upload.
