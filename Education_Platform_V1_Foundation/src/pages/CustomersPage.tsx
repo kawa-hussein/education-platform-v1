@@ -23,8 +23,19 @@ export default function CustomersPage({onChanged,onOpenTenant}:{onChanged:()=>vo
         initial_owner:{name:form.owner_name,email:form.owner_email,password:form.owner_password},
         initial_branch:form.create_branch?{name:form.branch_name,code:form.branch_code,type:"school"}:null
       };
-      const r=await api<any>("/api/tenants/provision",{method:"POST",body:JSON.stringify(payload)});
-      setResult({...r,password:form.owner_password,email:form.owner_email});setStep(5);load();onChanged();
+      const tenantResponse=await api<any>("/api/tenants",{method:"POST",body:JSON.stringify({
+        name:payload.name,slug:payload.slug,plan_code:payload.plan_code,country:payload.country,default_currency:payload.default_currency,default_language:payload.default_language,timezone:payload.timezone
+      })});
+      const tenantId=tenantResponse.id;
+      await api("/api/users",{method:"POST",body:JSON.stringify({
+        tenant_id:tenantId,branch_id:null,name:form.owner_name,email:form.owner_email,password:form.owner_password,role_code:"tenant_owner",can_delegate:true,preferred_language:form.default_language
+      })});
+      let branchId:string|null=null;
+      if(form.create_branch){
+        const branchResponse=await api<any>("/api/branches",{method:"POST",body:JSON.stringify({tenant_id:tenantId,name:form.branch_name,code:form.branch_code,type:"school"})});
+        branchId=branchResponse.id;
+      }
+      setResult({tenant_id:tenantId,branch_id:branchId,login_url:location.origin,password:form.owner_password,email:form.owner_email});setStep(5);load();onChanged();
     }catch(e:any){setError(e.message)}finally{setBusy(false)}
   }
   const copy=(v:string)=>navigator.clipboard?.writeText(v);
