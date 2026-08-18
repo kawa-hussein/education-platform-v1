@@ -2,7 +2,10 @@ import type { AuthUser, Env, RoleAssignment } from "./types";
 import { addDays, base64ToBytes, bytesToBase64, clientFingerprint, getCookie, sha256, uuid } from "./utils";
 
 const SESSION_COOKIE = "edu_session";
-const PBKDF2_ITERATIONS = 210_000;
+// Workers Free has a very small per-request CPU budget. Keep bootstrap/login
+// within that budget for the V1 pilot; raise this when moving authentication
+// to a paid Worker / dedicated auth service.
+const PBKDF2_ITERATIONS = 25_000;
 
 async function derivePassword(password: string, saltBytes: Uint8Array): Promise<string> {
   const material = await crypto.subtle.importKey(
