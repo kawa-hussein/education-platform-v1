@@ -6,6 +6,8 @@ import AuthPage from "./pages/AuthPage";
 import ProviderDashboard from "./pages/ProviderDashboard";
 import CustomersPage from "./pages/CustomersPage";
 import Customer360Page from "./pages/Customer360Page";
+import ProviderTeamPage from "./pages/ProviderTeamPage";
+import ProviderInvitePage from "./pages/ProviderInvitePage";
 import TenantDashboard from "./pages/TenantDashboard";
 import BranchesPage from "./pages/BranchesPage";
 import StudentsPage from "./pages/StudentsPage";
@@ -25,18 +27,20 @@ export default function App(){
  const [me,setMe]=useState<any|null|undefined>(undefined),[page,setPage]=useState(currentPage()),[lang,setLang]=useState<Lang>((localStorage.getItem("edu_lang") as Lang)||"en");
  const [tenants,setTenants]=useState<any[]>([]),[selectedTenant,setSelectedTenantState]=useState<string|null>(localStorage.getItem("edu_tenant")),[branches,setBranches]=useState<any[]>([]),[selectedBranch,setSelectedBranchState]=useState<string|null>(localStorage.getItem("edu_branch"));
  const [students,setStudents]=useState<any[]>([]),[staff,setStaff]=useState<any[]>([]);
+ const inviteToken=new URLSearchParams(location.search).get("provider_invite");
 
  const refreshMe=useCallback(()=>api<any>("/api/auth/me").then(r=>setMe(r.user)).catch(()=>setMe(null)),[]);
- useEffect(()=>{refreshMe()},[]);
+ useEffect(()=>{if(!inviteToken)refreshMe()},[refreshMe,inviteToken]);
  useEffect(()=>{localStorage.setItem("edu_lang",lang)},[lang]);
 
+ const isProviderUser=!!me?.is_provider_user;
  const isPlatformOwner=!!me?.is_platform_owner;
  const assignedTenantIds=useMemo(()=>[...new Set((me?.assignments||[]).map((a:any)=>a.tenant_id).filter(Boolean))] as string[],[me]);
  const effectiveTenant=useMemo(()=>{
-   if(isPlatformOwner)return selectedTenant;
+   if(isProviderUser)return selectedTenant;
    if(selectedTenant&&assignedTenantIds.includes(selectedTenant))return selectedTenant;
    return assignedTenantIds[0]||null;
- },[isPlatformOwner,selectedTenant,assignedTenantIds]);
+ },[isProviderUser,selectedTenant,assignedTenantIds]);
 
  function setSelectedTenant(id:string|null){
    setSelectedTenantState(id); if(id)localStorage.setItem("edu_tenant",id);else localStorage.removeItem("edu_tenant");
@@ -50,12 +54,12 @@ export default function App(){
 
  const loadTenants=useCallback(()=>{if(!me)return;api<any>("/api/tenants").then(r=>{
    setTenants(r.rows);
-   if(!isPlatformOwner){
+   if(!isProviderUser){
      const allowed=(r.rows||[]).map((x:any)=>x.id);
      const id=allowed.includes(selectedTenant)?selectedTenant:(allowed[0]||null);
      if(id&&id!==selectedTenant)setSelectedTenant(id);
    }
- }).catch(()=>{})},[me,isPlatformOwner,selectedTenant]);
+ }).catch(()=>{})},[me,isProviderUser,selectedTenant]);
  useEffect(()=>{loadTenants()},[loadTenants]);
 
  useEffect(()=>{
@@ -69,28 +73,30 @@ export default function App(){
  },[effectiveTenant,selectedBranch]);
 
  useEffect(()=>{
-   if(!me||isPlatformOwner)return;
-   if(page==="provider-dashboard"||page==="customers"||page==="customer-360"||page.startsWith("module-P")){
+   if(!me||isProviderUser)return;
+   if(page==="provider-dashboard"||page==="customers"||page==="customer-360"||page==="provider-team"||page.startsWith("module-P")){
      setPage("tenant-dashboard");history.replaceState({},"",`${location.pathname}?page=tenant-dashboard`);
    }
- },[me,isPlatformOwner,page]);
+ },[me,isProviderUser,page]);
 
  async function logout(){await api("/api/auth/logout",{method:"POST"}).catch(()=>{});setMe(null);setTenants([]);setBranches([]);setSelectedTenantState(null);setSelectedBranchState(null);localStorage.removeItem("edu_tenant");localStorage.removeItem("edu_branch")}
+ if(inviteToken)return <ProviderInvitePage token={inviteToken} onDone={()=>{history.replaceState({},"",location.pathname);location.reload()}}/>;
  if(me===undefined)return <div className="boot-screen"><div className="spinner"></div><span>Loading Education Platform…</span></div>;
  if(!me)return <AuthPage onReady={refreshMe}/>;
 
  const tenant=tenants.find(t=>t.id===effectiveTenant);
- const needTenant=()=> <div className="choose-tenant enterprise-empty"><div className="empty-icon">⌘</div><h2>Select a customer tenant</h2><p>Choose a school group from the scope selector or provision a customer first.</p>{isPlatformOwner&&<button className="btn btn-primary" onClick={()=>navigate("customers")}>Open customer directory</button>}</div>;
+ const needTenant=()=> <div className="choose-tenant enterprise-empty"><div className="empty-icon">⌘</div><h2>Select a customer tenant</h2><p>Choose a school group from the scope selector or provision a customer first.</p>{isProviderUser&&<button className="btn btn-primary" onClick={()=>navigate("customers")}>Open customer directory</button>}</div>;
 
  let content:React.ReactNode=null;
  if(page.startsWith("module-")){
    const code=page.slice(7).toUpperCase();
-   if(code.startsWith("P")) content=isPlatformOwner?<ModuleWorkspacePage code={code} onNavigate={navigate}/>:needTenant();
+   if(code.startsWith("P")) content=isProviderUser?<ModuleWorkspacePage code={code} onNavigate={navigate}/>:needTenant();
    else content=effectiveTenant?<ModuleWorkspacePage code={code} onNavigate={navigate}/>:needTenant();
  } else switch(page){
-  case "provider-dashboard": content=isPlatformOwner?<ProviderDashboard onNavigate={navigate}/>:effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant(); break;
-  case "customers": content=isPlatformOwner?<CustomersPage onChanged={loadTenants} onOpenTenant={id=>{setSelectedTenant(id);navigate("customer-360")}}/>:needTenant(); break;
-  case "customer-360": content=isPlatformOwner&&effectiveTenant?<Customer360Page tenantId={effectiveTenant} tenant={tenant} branches={branches} onOpenTenantApp={()=>navigate("tenant-dashboard")} onNavigate={navigate}/>:needTenant(); break;
+  case "provider-dashboard": content=isProviderUser?<ProviderDashboard onNavigate={navigate}/>:effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant(); break;
+  case "customers": content=isProviderUser?<CustomersPage onChanged={loadTenants} onOpenTenant={id=>{setSelectedTenant(id);navigate("customer-360")}}/>:needTenant(); break;
+  case "customer-360": content=isProviderUser&&effectiveTenant?<Customer360Page tenantId={effectiveTenant} tenant={tenant} branches={branches} onOpenTenantApp={()=>navigate("tenant-dashboard")} onNavigate={navigate}/>:needTenant(); break;
+  case "provider-team": content=isProviderUser?<ProviderTeamPage/>:needTenant(); break;
   case "tenant-dashboard": content=effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant(); break;
   case "branches": content=effectiveTenant?<BranchesPage tenantId={effectiveTenant} onChanged={()=>{api<any>("/api/branches"+qs({tenant_id:effectiveTenant})).then(r=>setBranches(r.rows))}}/>:needTenant(); break;
   case "students": content=effectiveTenant?<StudentsPage tenantId={effectiveTenant} branchId={selectedBranch} branches={branches}/>:needTenant(); break;
@@ -100,11 +106,11 @@ export default function App(){
   case "payroll": content=effectiveTenant?<PayrollPage tenantId={effectiveTenant} branchId={selectedBranch} branches={branches} staff={staff} currency={tenant?.default_currency||"IQD"}/>:needTenant(); break;
   case "import": content=effectiveTenant?<ImportPage tenantId={effectiveTenant} branchId={selectedBranch} branches={branches}/>:needTenant(); break;
   case "access": content=effectiveTenant?<AccessPage tenantId={effectiveTenant} branchId={selectedBranch} branches={branches}/>:needTenant(); break;
-  case "architecture": content=isPlatformOwner?<ArchitecturePage/>:effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant(); break;
+  case "architecture": content=isProviderUser?<ArchitecturePage/>:effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant(); break;
   case "audit": content=effectiveTenant?<AuditPage tenantId={effectiveTenant} branchId={selectedBranch} isPlatformOwner={isPlatformOwner}/>:needTenant(); break;
-  default: content=isPlatformOwner?<ProviderDashboard onNavigate={navigate}/>:effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant();
+  default: content=isProviderUser?<ProviderDashboard onNavigate={navigate}/>:effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant();
  }
- return <Shell page={page} onNavigate={navigate} user={me} lang={lang} setLang={setLang} isPlatformOwner={isPlatformOwner}
+ return <Shell page={page} onNavigate={navigate} user={me} lang={lang} setLang={setLang} isPlatformOwner={isProviderUser}
    tenants={tenants} selectedTenant={effectiveTenant} setSelectedTenant={setSelectedTenant} branches={branches}
    selectedBranch={selectedBranch} setSelectedBranch={setSelectedBranch} onLogout={logout}>{content}</Shell>
 }
