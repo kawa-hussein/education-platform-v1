@@ -8,6 +8,7 @@ const moduleRoute=(code:string)=>`module-${code}`;
 export const operationalRouteByCode:Record<string,string>={
   P01:"provider-dashboard",
   P02:"customers",
+  P29:"provider-team",
   A01:"tenant-dashboard",
   A02:"branches",
   A06:"access",
