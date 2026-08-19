@@ -99,5 +99,6 @@ export async function getAuthUser(env: Env, request: Request): Promise<AuthUser 
 }
 
 export function isPlatformOwner(user: AuthUser): boolean {
-  return user.assignments.some(a => a.role_code === "platform_owner" && !a.tenant_id);
+  // platform_owner is the legacy bootstrap role; provider_owner is the V6 P29 role.
+  return user.assignments.some(a => !a.tenant_id && (a.role_code === "platform_owner" || a.role_code === "provider_owner"));
 }
