@@ -5,6 +5,7 @@ import {highestRole} from "./permissions";
 import {error,json,mutationOriginAllowed,securityHeaders,uuid} from "./utils";
 import {handleProviderTeamRoute,handlePublicProviderInvite} from "./providerTeam";
 import {hasProviderPermission,highestProviderRole,isProviderUser,providerPermissions} from "./providerAccess";
+import {handleModuleWorkbenchRoute} from "./moduleWorkbench";
 
 async function providerSummary(env:Env){
   const [tenants,active,branches,students,staff,renewals]=await Promise.all([
@@ -35,8 +36,13 @@ export default {
       }
 
       const user=await getAuthUser(env,request);
-      if(user&&path.startsWith("/api/provider/team")||user&&path==="/api/provider/roles"){
-        const handled=await handleProviderTeamRoute(request,env,user!,request.headers.get("cf-ray")||uuid());
+      if(user&&(path.startsWith("/api/provider/team")||path==="/api/provider/roles")){
+        const handled=await handleProviderTeamRoute(request,env,user,request.headers.get("cf-ray")||uuid());
+        if(handled)return securityHeaders(handled);
+      }
+
+      if(user&&path.startsWith("/api/modules/")){
+        const handled=await handleModuleWorkbenchRoute(request,env,user,request.headers.get("cf-ray")||uuid());
         if(handled)return securityHeaders(handled);
       }
 

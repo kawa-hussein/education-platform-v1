@@ -1,6 +1,6 @@
 import React,{useCallback,useEffect,useMemo,useState} from "react";
 import {api,qs} from "./lib/api";
-import type {Lang} from "./lib/i18n";
+import {useI18n} from "./lib/i18nContext";
 import {Shell} from "./components/Shell";
 import AuthPage from "./pages/AuthPage";
 import ProviderDashboard from "./pages/ProviderDashboard";
@@ -24,14 +24,14 @@ import ModuleWorkspacePage from "./pages/ModuleWorkspacePage";
 function currentPage(){return new URLSearchParams(location.search).get("page")||"provider-dashboard"}
 
 export default function App(){
- const [me,setMe]=useState<any|null|undefined>(undefined),[page,setPage]=useState(currentPage()),[lang,setLang]=useState<Lang>((localStorage.getItem("edu_lang") as Lang)||"en");
+ const {lang,setLang,t}=useI18n();
+ const [me,setMe]=useState<any|null|undefined>(undefined),[page,setPage]=useState(currentPage());
  const [tenants,setTenants]=useState<any[]>([]),[selectedTenant,setSelectedTenantState]=useState<string|null>(localStorage.getItem("edu_tenant")),[branches,setBranches]=useState<any[]>([]),[selectedBranch,setSelectedBranchState]=useState<string|null>(localStorage.getItem("edu_branch"));
  const [students,setStudents]=useState<any[]>([]),[staff,setStaff]=useState<any[]>([]);
  const inviteToken=new URLSearchParams(location.search).get("provider_invite");
 
  const refreshMe=useCallback(()=>api<any>("/api/auth/me").then(r=>setMe(r.user)).catch(()=>setMe(null)),[]);
  useEffect(()=>{if(!inviteToken)refreshMe()},[refreshMe,inviteToken]);
- useEffect(()=>{localStorage.setItem("edu_lang",lang)},[lang]);
 
  const isProviderUser=!!me?.is_provider_user;
  const isPlatformOwner=!!me?.is_platform_owner;
@@ -81,17 +81,17 @@ export default function App(){
 
  async function logout(){await api("/api/auth/logout",{method:"POST"}).catch(()=>{});setMe(null);setTenants([]);setBranches([]);setSelectedTenantState(null);setSelectedBranchState(null);localStorage.removeItem("edu_tenant");localStorage.removeItem("edu_branch")}
  if(inviteToken)return <ProviderInvitePage token={inviteToken} onDone={()=>{history.replaceState({},"",location.pathname);location.reload()}}/>;
- if(me===undefined)return <div className="boot-screen"><div className="spinner"></div><span>Loading Education Platform…</span></div>;
+ if(me===undefined)return <div className="boot-screen"><div className="spinner"></div><span>{t("loading")}</span></div>;
  if(!me)return <AuthPage onReady={refreshMe}/>;
 
- const tenant=tenants.find(t=>t.id===effectiveTenant);
- const needTenant=()=> <div className="choose-tenant enterprise-empty"><div className="empty-icon">⌘</div><h2>Select a customer tenant</h2><p>Choose a school group from the scope selector or provision a customer first.</p>{isProviderUser&&<button className="btn btn-primary" onClick={()=>navigate("customers")}>Open customer directory</button>}</div>;
+ const tenant=tenants.find(tn=>tn.id===effectiveTenant);
+ const needTenant=()=> <div className="choose-tenant enterprise-empty"><div className="empty-icon">⌘</div><h2>{t("selectTenant")}</h2><p>{t("selectTenantHelp")}</p>{isProviderUser&&<button className="btn btn-primary" onClick={()=>navigate("customers")}>{t("openCustomerDirectory")}</button>}</div>;
 
  let content:React.ReactNode=null;
  if(page.startsWith("module-")){
    const code=page.slice(7).toUpperCase();
-   if(code.startsWith("P")) content=isProviderUser?<ModuleWorkspacePage code={code} onNavigate={navigate}/>:needTenant();
-   else content=effectiveTenant?<ModuleWorkspacePage code={code} onNavigate={navigate}/>:needTenant();
+   if(code.startsWith("P")) content=isProviderUser?<ModuleWorkspacePage code={code} tenantId={null} branchId={null} onNavigate={navigate}/>:needTenant();
+   else content=effectiveTenant?<ModuleWorkspacePage code={code} tenantId={effectiveTenant} branchId={selectedBranch} onNavigate={navigate}/>:needTenant();
  } else switch(page){
   case "provider-dashboard": content=isProviderUser?<ProviderDashboard onNavigate={navigate}/>:effectiveTenant?<TenantDashboard tenantId={effectiveTenant} branchId={selectedBranch} tenant={tenant} onNavigate={navigate}/>:needTenant(); break;
   case "customers": content=isProviderUser?<CustomersPage onChanged={loadTenants} onOpenTenant={id=>{setSelectedTenant(id);navigate("customer-360")}}/>:needTenant(); break;

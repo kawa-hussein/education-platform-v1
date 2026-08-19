@@ -2,31 +2,24 @@ import React,{useMemo,useState} from "react";
 import * as XLSX from "xlsx";
 import {api} from "../lib/api";
 import {Badge,Button,DataTable,Field,PageHeader} from "../components/ui";
+import {useI18n} from "../lib/i18nContext";
 
 export default function ImportPage({tenantId,branchId,branches}:{tenantId:string,branchId:string|null,branches:any[]}){
+ const {lang}=useI18n(),c=(en:string,ku:string,ar:string,tr:string)=>lang==="ku"?ku:lang==="ar"?ar:lang==="tr"?tr:en;
  const [rows,setRows]=useState<any[]>([]),[filename,setFilename]=useState(""),[targetBranch,setTargetBranch]=useState(branchId||branches[0]?.id||""),[result,setResult]=useState<any>(null),[error,setError]=useState(""),[busy,setBusy]=useState(false);
- async function choose(file:File){
-   setError("");setResult(null);setFilename(file.name);
-   try{
-    const buf=await file.arrayBuffer(); const wb=XLSX.read(buf,{type:"array",cellDates:false}); const ws=wb.Sheets[wb.SheetNames[0]];
-    const data=XLSX.utils.sheet_to_json(ws,{defval:""}); setRows(data.slice(0,2000) as any[]);
-   }catch(e:any){setError("Could not read this Excel/CSV file: "+e.message)}
- }
- async function run(){if(!targetBranch)return setError("Select a target branch.");setBusy(true);setError("");try{
-   const r=await api<any>("/api/import/students",{method:"POST",body:JSON.stringify({tenant_id:tenantId,branch_id:targetBranch,filename,rows})});setResult(r);
- }catch(e:any){setError(e.message)}finally{setBusy(false)}}
+ async function choose(file:File){setError("");setResult(null);setFilename(file.name);try{const buf=await file.arrayBuffer();const wb=XLSX.read(buf,{type:"array",cellDates:false}),ws=wb.Sheets[wb.SheetNames[0]],data=XLSX.utils.sheet_to_json(ws,{defval:""});setRows(data.slice(0,2000) as any[])}catch(e:any){setError(c("Could not read this Excel/CSV file: ","نەتوانرا ئەم فایلەی Excel/CSV بخوێندرێتەوە: ","تعذر قراءة ملف Excel/CSV: ","Excel/CSV dosyası okunamadı: ")+e.message)}}
+ async function run(){if(!targetBranch)return setError(c("Select a target branch.","لقی ئامانج هەڵبژێرە.","اختر الفرع المستهدف.","Hedef şubeyi seçin."));setBusy(true);setError("");try{const r=await api<any>("/api/import/students",{method:"POST",body:JSON.stringify({tenant_id:tenantId,branch_id:targetBranch,filename,rows})});setResult(r)}catch(e:any){setError(e.message)}finally{setBusy(false)}}
  const cols=useMemo(()=>rows.length?Object.keys(rows[0]).slice(0,8).map(k=>({key:k,label:k})):[],[rows]);
- return <div><PageHeader title="Excel / CSV Import" description="Upload existing school data, preview it, then import it into the correct tenant and branch."/>
+ return <div><PageHeader title={c("Excel / CSV Import","هاوردەکردنی Excel / CSV","استيراد Excel / CSV","Excel / CSV İçe Aktarma")} description={c("Upload existing school data, preview it, then import it into the correct customer and branch.","داتای ئێستای قوتابخانە باربکە، پێشبینینی بکە و پاشان بۆ کڕیار و لقی دروست هاوردەی بکە.","ارفع بيانات المدرسة الحالية واعرضها مسبقاً ثم استوردها إلى العميل والفرع الصحيحين.","Mevcut okul verisini yükleyin, önizleyin ve doğru müşteri ile şubeye aktarın.")}/>
  <div className="grid-2">
-  <section className="panel"><h3>1. Select source file</h3><p className="muted-text">Student import currently recognizes Student ID/Student No, Student Name/First Name, Last Name, Date of Birth, Gender, Email and Phone.</p>
-   <div className="dropzone"><input type="file" accept=".xlsx,.xls,.csv" onChange={e=>e.target.files?.[0]&&choose(e.target.files[0])}/><strong>{filename||"Choose Excel or CSV"}</strong><span>Maximum 2,000 rows per starter batch</span></div>
-   <Field label="Target branch"><select value={targetBranch} onChange={e=>setTargetBranch(e.target.value)}><option value="">Select branch</option>{branches.map(b=><option key={b.id} value={b.id}>{b.name}</option>)}</select></Field>
-   <Button disabled={!rows.length||busy} onClick={run}>{busy?"Importing…":`Import ${rows.length||0} rows`}</Button>
-   {error&&<div className="alert alert-error mt-sm">{error}</div>}
-   {result&&<div className="import-result"><Badge tone="good">Completed</Badge><strong>{result.imported} imported</strong><span>{result.errors?.length||0} validation errors</span></div>}
+  <section className="panel"><h3>{c("1. Select source file","١. فایلی سەرچاوە هەڵبژێرە","1. اختر ملف المصدر","1. Kaynak dosyayı seç")}</h3><p className="muted-text">{c("Student import recognizes Student ID/No, Student Name/First Name, Last Name, Date of Birth, Gender, Email and Phone.","هاوردەکردنی قوتابی ئەم خانانە دەناسێتەوە: ژمارەی قوتابی، ناو، ناوی خێزان، بەرواری لەدایکبوون، ڕەگەز، ئیمەیڵ و تەلەفۆن.","يتم التعرف على رقم الطالب والاسم واسم العائلة وتاريخ الميلاد والجنس والبريد والهاتف.","Öğrenci aktarımı Öğrenci No, Ad, Soyad, Doğum Tarihi, Cinsiyet, E-posta ve Telefon alanlarını tanır.")}</p>
+   <div className="dropzone"><input type="file" accept=".xlsx,.xls,.csv" onChange={e=>e.target.files?.[0]&&choose(e.target.files[0])}/><strong>{filename||c("Choose Excel or CSV","Excel یان CSV هەڵبژێرە","اختر Excel أو CSV","Excel veya CSV seç")}</strong><span>{c("Maximum 2,000 rows per batch","زۆرترین ٢,٠٠٠ ڕیز لە هەر جارێکدا","بحد أقصى 2,000 صف لكل دفعة","Parti başına en fazla 2.000 satır")}</span></div>
+   <Field label={c("Target branch","لقی ئامانج","الفرع المستهدف","Hedef şube")}><select value={targetBranch} onChange={e=>setTargetBranch(e.target.value)}><option value="">{c("Select branch","لق هەڵبژێرە","اختر الفرع","Şube seç")}</option>{branches.map(b=><option key={b.id} value={b.id}>{b.name}</option>)}</select></Field>
+   <Button disabled={!rows.length||busy} onClick={run}>{busy?c("Importing…","هاوردە دەکرێت…","جارٍ الاستيراد…","İçe aktarılıyor…"):c(`Import ${rows.length||0} rows`,`هاوردەکردنی ${rows.length||0} ڕیز`,`استيراد ${rows.length||0} صف`,` ${rows.length||0} satırı içe aktar`)}</Button>
+   {error&&<div className="alert alert-error mt-sm">{error}</div>}{result&&<div className="import-result"><Badge tone="good">{c("Completed","تەواوکرا","مكتمل","Tamamlandı")}</Badge><strong>{result.imported} {c("imported","هاوردەکرا","تم استيرادها","aktarıldı")}</strong><span>{result.errors?.length||0} {c("validation errors","هەڵەی پشتڕاستکردنەوە","أخطاء تحقق","doğrulama hatası")}</span></div>}
   </section>
-  <section className="panel"><h3>2. Import controls</h3><div className="check-list"><span>✓ Tenant / branch scope required</span><span>✓ Duplicate student number protection</span><span>✓ Validation errors returned before review</span><span>✓ Import job recorded</span><span>✓ Full audit event created</span></div></section>
+  <section className="panel"><h3>{c("2. Import controls","٢. کۆنترۆڵەکانی هاوردەکردن","2. ضوابط الاستيراد","2. İçe aktarma kontrolleri")}</h3><div className="check-list"><span>✓ {c("Customer / branch scope required","ئاستی کڕیار / لق پێویستە","نطاق العميل / الفرع مطلوب","Müşteri / şube kapsamı gerekli")}</span><span>✓ {c("Duplicate student number protection","پاراستن لە ژمارەی قوتابی دووبارە","منع تكرار رقم الطالب","Tekrarlanan öğrenci numarası koruması")}</span><span>✓ {c("Validation errors returned for review","هەڵەکانی پشتڕاستکردنەوە بۆ پێداچوونەوە نیشان دەدرێن","إرجاع أخطاء التحقق للمراجعة","Doğrulama hataları inceleme için gösterilir")}</span><span>✓ {c("Import job recorded","کاری هاوردەکردن تۆمار دەکرێت","تسجيل عملية الاستيراد","İçe aktarma işi kaydedilir")}</span><span>✓ {c("Full audit event created","ڕووداوی تەواوی پشکنین دروست دەکرێت","إنشاء حدث تدقيق كامل","Tam denetim olayı oluşturulur")}</span></div></section>
  </div>
- {rows.length>0&&<div className="panel mt"><div className="panel-head"><h3>Preview</h3><Badge tone="info">{rows.length} rows</Badge></div><DataTable rows={rows.slice(0,25)} columns={cols}/>{rows.length>25&&<div className="table-note">Showing first 25 rows.</div>}</div>}
+ {rows.length>0&&<div className="panel mt"><div className="panel-head"><h3>{c("Preview","پێشبینین","معاينة","Önizleme")}</h3><Badge tone="info">{rows.length} {c("rows","ڕیز","صف","satır")}</Badge></div><DataTable rows={rows.slice(0,25)} columns={cols}/>{rows.length>25&&<div className="table-note">{c("Showing first 25 rows.","یەکەم ٢٥ ڕیز نیشان دەدرێن.","عرض أول 25 صفاً.","İlk 25 satır gösteriliyor.")}</div>}</div>}
  </div>
 }
