@@ -5,6 +5,7 @@ import "./styles.css";
 import "./v6-shell.css";
 import "./v6-workspace.css";
 import "./v6-tenant.css";
+import "./provider-team.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode><App/></React.StrictMode>
